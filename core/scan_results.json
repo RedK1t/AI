@@ -1,0 +1,1831 @@
+[
+    {
+        "timestamp": "2026-01-29T23:11:03.288079",
+        "attack_details": {
+            "payload": "1 OR 1=1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_5.18",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:11:03.614207",
+        "attack_details": {
+            "payload": "1 OR 1=1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:11:03.973247",
+        "attack_details": {
+            "payload": "1 OR 1=1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_5.18",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:11:04.299207",
+        "attack_details": {
+            "payload": "1 OR 1=1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_0.75",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:11:04.630496",
+        "attack_details": {
+            "payload": "1 OR 1=1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_0.75",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:11:04.966608",
+        "attack_details": {
+            "payload": "1 OR 1=1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_0.75",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:11:13.207164",
+        "attack_details": {
+            "payload": "1 OR 1=1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload 1+OR+1%3D1 successfully manipulated the query, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:11:21.308675",
+        "attack_details": {
+            "payload": "1 OR 1=1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload 1+OR+1%3D1 successfully altered the query logic, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:11:29.733859",
+        "attack_details": {
+            "payload": "1 OR 1=1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload 1+OR+1%3D1 successfully altered the query logic, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:11:38.220723",
+        "attack_details": {
+            "payload": "\" OR \"1\"=\"1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload ' OR '1'='1' successfully manipulated the query, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:11:46.378893",
+        "attack_details": {
+            "payload": "\" OR \"1\"=\"1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload ' OR '1'='1' successfully manipulated the query, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:11:54.193145",
+        "attack_details": {
+            "payload": "\" OR \"1\"=\"1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload ' OR '1'='1' successfully manipulated the query, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:11:54.525965",
+        "attack_details": {
+            "payload": "\" OR \"1\"=\"1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_0.75",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:12:02.712454",
+        "attack_details": {
+            "payload": "\" OR \"1\"=\"1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload %22%20OR%20%221%22%3D%221 successfully manipulated the query, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:12:10.806524",
+        "attack_details": {
+            "payload": "\" OR \"1\"=\"1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload successfully bypassed the SQL query, as indicated by the server response returning the same page structure without errors, suggesting a potential SQL injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:12:19.118906",
+        "attack_details": {
+            "payload": "\" OR \"1\"=\"1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload successfully manipulated the query, as indicated by the server response, suggesting SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:12:27.618626",
+        "attack_details": {
+            "payload": "\" OR \"1\"=\"1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload successfully manipulated the query, as indicated by the server response, suggesting SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:12:44.213290",
+        "attack_details": {
+            "payload": "\" OR \"1\"=\"1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload successfully manipulated the query, as indicated by the server response, suggesting SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:13:19.552191",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload ' OR '1'='1' successfully manipulated the query, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:13:27.476733",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload ' OR '1'='1' successfully manipulated the query, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:13:36.077415",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload ' OR '1'='1' successfully manipulated the query, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:13:36.400705",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_0.75",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:13:44.829130",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload '%27%20OR%20%271%27%3D%271' successfully manipulated the query, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:13:53.029678",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload '%27%20OR%20%271%27%3D%271' successfully manipulated the query, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:14:02.311777",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload '%27+OR+%271%27%3D%271' is a classic SQL injection attempt, and the server response does not indicate any error or filtering, suggesting vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:14:10.644676",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload '%27+OR+%271%27%3D%271' is a classic SQL injection attempt, and the server response does not indicate any error or filtering, suggesting vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:14:19.666378",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "artist",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload '%27+OR+%271%27%3D%271' is a classic SQL injection attempt, and the server response does not indicate any error or filtering, suggesting vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:14:28.277766",
+        "attack_details": {
+            "payload": "\"",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.9,
+            "explanation": "The server response does not indicate any SQL error messages or unusual behavior that would suggest SQL injection vulnerability.",
+            "ml_label": 0
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:14:36.218326",
+        "attack_details": {
+            "payload": "\"",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 1.0,
+            "explanation": "The server response does not indicate any SQL error messages or anomalies that would suggest SQL injection vulnerability.",
+            "ml_label": 0
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:14:45.333706",
+        "attack_details": {
+            "payload": "\"",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 1.0,
+            "explanation": "The server response does not indicate any SQL error messages or unexpected behavior, suggesting no SQL injection vulnerability.",
+            "ml_label": 0
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:14:45.664368",
+        "attack_details": {
+            "payload": "\"",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:14:55.464481",
+        "attack_details": {
+            "payload": "\"",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 1.0,
+            "explanation": "The server response does not indicate any SQL error messages or unexpected behavior from the payload.",
+            "ml_label": 0
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:15:05.002500",
+        "attack_details": {
+            "payload": "\"",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 1.0,
+            "explanation": "The server response does not indicate any error messages or unexpected behavior related to SQL Injection.",
+            "ml_label": 0
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:15:05.352481",
+        "attack_details": {
+            "payload": "\"",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:15:13.185091",
+        "attack_details": {
+            "payload": "\"",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 1.0,
+            "explanation": "The server response does not indicate any SQL error messages or unexpected behavior from the payload.",
+            "ml_label": 0
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:15:21.197085",
+        "attack_details": {
+            "payload": "\"",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 1.0,
+            "explanation": "The server response does not indicate any error messages or unexpected behavior that would suggest SQL Injection vulnerability.",
+            "ml_label": 0
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:15:29.913734",
+        "attack_details": {
+            "payload": "'",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.85,
+            "explanation": "The server response includes HTML content with a single quote (') in the payload, indicating potential SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:15:38.187621",
+        "attack_details": {
+            "payload": "'",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.85,
+            "explanation": "The server response includes HTML content with a single quote (') in the payload, indicating potential SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:15:46.381650",
+        "attack_details": {
+            "payload": "'",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.85,
+            "explanation": "The server response includes HTML content without proper error handling or sanitization, indicating potential SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:15:47.058875",
+        "attack_details": {
+            "payload": "'",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:15:56.007642",
+        "attack_details": {
+            "payload": "'",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 1.0,
+            "explanation": "The server response does not indicate any error messages or unexpected behavior that would suggest SQL Injection vulnerability.",
+            "ml_label": 0
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:16:04.532598",
+        "attack_details": {
+            "payload": "'",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 1.0,
+            "explanation": "The server response does not indicate any error messages or unexpected behavior that would suggest SQL Injection vulnerability.",
+            "ml_label": 0
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:16:04.869551",
+        "attack_details": {
+            "payload": "'",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:16:13.067435",
+        "attack_details": {
+            "payload": "'",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.85,
+            "explanation": "The payload '%27' caused an error in the server response, indicating potential SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:16:21.992058",
+        "attack_details": {
+            "payload": "'",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.9,
+            "explanation": "The server response does not indicate any error messages or unexpected behavior typically associated with SQL injection vulnerabilities.",
+            "ml_label": 0
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:16:31.121582",
+        "attack_details": {
+            "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload triggers an error related to `updatexml`, a common indicator of SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:16:39.721102",
+        "attack_details": {
+            "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload triggers an error related to XML update, indicating potential SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:16:48.137724",
+        "attack_details": {
+            "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload ' OR updatexml(1,concat(0x7e,user()),1)-- - attempts to exploit an SQL Injection vulnerability by using the `updatexml` function, which is a common technique to test for such vulnerabilities.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:16:56.857403",
+        "attack_details": {
+            "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload triggers an error related to `updatexml`, a common indicator of SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:17:05.095525",
+        "attack_details": {
+            "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.72",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload triggers an error-based SQL injection using `updatexml` and the server response includes the payload's signature (`~` from `0x7e`), confirming vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:17:13.504302",
+        "attack_details": {
+            "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.72",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload triggers an error-based SQL injection using `updatexml` and the server response includes the payload's output (`~` character), confirming vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:17:21.412622",
+        "attack_details": {
+            "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload triggers an error related to `updatexml`, a common indicator of SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:17:29.646583",
+        "attack_details": {
+            "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.72",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload triggers an error related to `updatexml`, a common indicator of SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:17:38.107757",
+        "attack_details": {
+            "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+            "parameter": "artist",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.72",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload triggers an error related to `updatexml`, a common indicator of SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:17:47.453583",
+        "attack_details": {
+            "payload": "'; WAITFOR DELAY '0:0:5'--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload '; WAITFOR DELAY '0:0:5'-- successfully caused a 5-second delay, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:17:56.044496",
+        "attack_details": {
+            "payload": "'; WAITFOR DELAY '0:0:5'--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload '; WAITFOR DELAY '0:0:5'-- successfully caused a 5-second delay, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:18:04.341772",
+        "attack_details": {
+            "payload": "'; WAITFOR DELAY '0:0:5'--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload '; WAITFOR DELAY '0:0:5'-- successfully caused a 5-second delay, indicating SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:18:04.682330",
+        "attack_details": {
+            "payload": "'; WAITFOR DELAY '0:0:5'--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_0.75",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:18:13.779874",
+        "attack_details": {
+            "payload": "'; WAITFOR DELAY '0:0:5'--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload contains SQL-specific syntax (WAITFOR DELAY) and the server response indicates a successful delay, confirming SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:18:22.032739",
+        "attack_details": {
+            "payload": "'; WAITFOR DELAY '0:0:5'--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload contains SQL-specific syntax (WAITFOR DELAY) and the server response indicates a successful delay, confirming SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:18:30.781295",
+        "attack_details": {
+            "payload": "'; WAITFOR DELAY '0:0:5'--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload caused a delay in the server response, indicating successful SQL Injection.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:18:39.055808",
+        "attack_details": {
+            "payload": "'; WAITFOR DELAY '0:0:5'--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload caused a delay in the server response, indicating successful SQL Injection.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:18:47.371702",
+        "attack_details": {
+            "payload": "'; WAITFOR DELAY '0:0:5'--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload caused a delay in the server response, indicating successful SQL Injection.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:18:55.527528",
+        "attack_details": {
+            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload caused a 5-second delay in the server response, indicating successful SQL Injection.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:19:04.943002",
+        "attack_details": {
+            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload includes a time-based sleep function (SLEEP(5)) which is a common technique for SQL injection, and the server response does not indicate any error or blocking of the request, suggesting the injection was successful.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:19:12.986465",
+        "attack_details": {
+            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 1.0,
+            "explanation": "The payload caused a 5-second delay in the server response, indicating successful SQL injection.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:19:13.356989",
+        "attack_details": {
+            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_0.75",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:19:21.982709",
+        "attack_details": {
+            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.72",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.95,
+            "explanation": "The payload includes SQL-specific syntax and a time delay function, indicating a likely SQL injection attempt.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:19:31.192184",
+        "attack_details": {
+            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.72",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.95,
+            "explanation": "The payload includes a time-based SQL injection attempt with SLEEP(5), and the server response does not indicate an error, suggesting potential vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:19:39.574457",
+        "attack_details": {
+            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.9,
+            "explanation": "The payload includes SQL syntax and a time delay function, and the server response does not indicate an error, suggesting potential SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:19:48.302681",
+        "attack_details": {
+            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.72",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.95,
+            "explanation": "The payload includes SQL syntax and a time delay function, and the server response does not indicate an error, suggesting potential SQL injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:19:56.864211",
+        "attack_details": {
+            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.72",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.9,
+            "explanation": "The payload includes SQL syntax and a time delay function, and the server response does not indicate an error, suggesting potential SQL injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:19:57.576143",
+        "attack_details": {
+            "payload": "1 AND SLEEP(5)",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_0.41",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:20:06.134993",
+        "attack_details": {
+            "payload": "1 AND SLEEP(5)",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.9,
+            "explanation": "The payload caused a noticeable delay in the server response, indicating potential SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:20:16.145790",
+        "attack_details": {
+            "payload": "1 AND SLEEP(5)",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_1.00",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:20:17.019297",
+        "attack_details": {
+            "payload": "1 AND SLEEP(5)",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_0.75",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:20:17.408437",
+        "attack_details": {
+            "payload": "1 AND SLEEP(5)",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_0.75",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:20:17.784742",
+        "attack_details": {
+            "payload": "1 AND SLEEP(5)",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 1.5,
+            "evidence": [
+                "length_diff_ratio_0.75",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "Safe by rules",
+            "ml_label": 0
+        },
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-01-29T23:20:26.792106",
+        "attack_details": {
+            "payload": "1 AND SLEEP(5)",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.9,
+            "explanation": "The payload caused a delay in the server response, indicating potential SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:20:35.059740",
+        "attack_details": {
+            "payload": "1 AND SLEEP(5)",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.9,
+            "explanation": "The payload caused a noticeable delay in the server response, indicating potential SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-01-29T23:20:44.261218",
+        "attack_details": {
+            "payload": "1 AND SLEEP(5)",
+            "parameter": "artist",
+            "category": "time"
+        },
+        "rule_analysis": {
+            "score": 3.5,
+            "evidence": [
+                "error_pattern_matched",
+                "length_diff_ratio_0.73",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "yes",
+            "confidence": 0.9,
+            "explanation": "The payload caused a noticeable delay in the server response, indicating potential SQL Injection vulnerability.",
+            "ml_label": 1
+        },
+        "is_vulnerable": true
+    }
+]
