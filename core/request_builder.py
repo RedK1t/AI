@@ -102,14 +102,31 @@ class RequestBuilder:
     def get_baseline(self, parsed_data):
         """
         Fetches the initial 'normal' state of the target using data from the Parser.
+        Supports ALL HTTP methods (GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD, TRACE, etc.)
         """
         logger.info(f"Establishing baseline for: {parsed_data['url']}")
 
         # reconstruct params from parser format {key: {value: val, type: type}}
         clean_params = {k: v['value'] for k, v in parsed_data['params'].items()}
 
-        return self.send_request(
-            url=parsed_data['url'],
-            method=parsed_data['method'],
-            params=clean_params
-        )
+        # Determine HTTP method and where to send data
+        method = parsed_data.get('method', 'GET').upper()
+        
+        # Methods that typically use request body: POST, PUT, PATCH
+        # Methods that typically use query params: GET, HEAD, OPTIONS, TRACE, DELETE
+        body_methods = {'POST', 'PUT', 'PATCH'}
+        
+        if method in body_methods:
+            # For body-based methods, send data in request body
+            return self.send_request(
+                url=parsed_data['url'],
+                method=method,
+                data=clean_params
+            )
+        else:
+            # For query-based methods, send data in URL params
+            return self.send_request(
+                url=parsed_data['url'],
+                method=method,
+                params=clean_params
+            )
