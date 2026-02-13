@@ -99,6 +99,10 @@ class Mutator:
             if not params:
                 continue
 
+            # Determine where to send data based on HTTP method
+            body_methods = {'POST', 'PUT', 'PATCH'}
+            query_methods = {'GET', 'HEAD', 'OPTIONS', 'TRACE', 'DELETE'}
+
             for param_name, param_info in params.items():
                 param_type = param_info.get('type', 'string') if isinstance(param_info, dict) else 'string'
 
@@ -117,6 +121,18 @@ class Mutator:
                         for enc in self.encodings:
                             final_payload = self._apply_encoding(payload, enc)
                             for mode in self.inject_modes:
+                                # Create mutated parameters
+                                mutated_params = self._inject_payload(params, param_name, final_payload, mode=mode)
+                                
+                                if method in body_methods:
+                                    # For body-based methods, send data in request body
+                                    params_to_send = None
+                                    body_data = mutated_params
+                                else:
+                                    # For query-based methods, send data in URL params
+                                    params_to_send = mutated_params
+                                    body_data = None
+                                
                                 mutation = {
                                     "id": str(uuid.uuid4()),
                                     "timestamp": datetime.utcnow().isoformat(),
@@ -129,8 +145,61 @@ class Mutator:
                                     "raw_payload": payload,
                                     "encoding": enc,
                                     "inject_mode": mode,
-                                    "params_to_send": self._inject_payload(params, param_name, final_payload, mode=mode),
-                                    "analyzer_hint": self._get_hint(category)
+                                    "params_to_send": params_to_send,
+                                    "body_data": body_data,
+                                    "analyzer_hint": self._get_hint(category),
+                                    "injection_type": "single"
                                 }
                                 attack_plan.append(mutation)
+
+            # Add multi-parameter injection for forms with multiple fields
+            # This injects payloads into ALL parameters simultaneously
+            if len(params) > 1:
+                for category, payload_list in self.payloads.items():
+                    # apply optional limit per param
+                    payloads_to_use = payload_list
+                    if self.max_per_param and len(payload_list) > self.max_per_param:
+                        import random
+                        payloads_to_use = random.sample(payload_list, self.max_per_param)
+
+                    for payload in payloads_to_use:
+                        for enc in self.encodings:
+                            final_payload = self._apply_encoding(payload, enc)
+                            for mode in self.inject_modes:
+                                # Inject payload into ALL params
+                                multi_params = {}
+                                for k, v in params.items():
+                                    original_val = v['value'] if isinstance(v, dict) else v
+                                    if mode == "replace":
+                                        multi_params[k] = final_payload
+                                    elif mode == "prefix":
+                                        multi_params[k] = f"{final_payload}{original_val}"
+                                    else:  # append
+                                        multi_params[k] = f"{original_val}{final_payload}"
+                                
+                                if method in body_methods:
+                                    multi_params_to_send = None
+                                    multi_body_data = multi_params
+                                else:
+                                    multi_params_to_send = multi_params
+                                    multi_body_data = None
+                                
+                                multi_mutation = {
+                                    "id": str(uuid.uuid4()),
+                                    "timestamp": datetime.utcnow().isoformat(),
+                                    "target_url": url,
+                                    "method": method,
+                                    "target_param": "ALL_PARAMS",
+                                    "param_type": "multi",
+                                    "category": category,
+                                    "payload": final_payload,
+                                    "raw_payload": payload,
+                                    "encoding": enc,
+                                    "inject_mode": mode,
+                                    "params_to_send": multi_params_to_send,
+                                    "body_data": multi_body_data,
+                                    "analyzer_hint": self._get_hint(category),
+                                    "injection_type": "multi"
+                                }
+                                attack_plan.append(multi_mutation)
         return attack_plan

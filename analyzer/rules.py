@@ -32,6 +32,17 @@ ERROR_PATTERNS = [
 ]
 ERROR_RE = re.compile("|".join(ERROR_PATTERNS), re.IGNORECASE)
 
+# Authentication bypass indicators (for login forms)
+AUTH_SUCCESS_INDICATORS = [
+    'welcome', 'hello', 'logout', 'dashboard', 'account', 'profile',
+    'admin', 'administrator', 'member', 'logged in', 'sign out',
+    'my account', 'user profile', 'control panel', 'cpanel'
+]
+AUTH_FAIL_INDICATORS = [
+    'invalid', 'incorrect', 'failed', 'error', 'wrong', 'denied',
+    'authentication failed', 'login failed', 'not found'
+]
+
 def _md5(text):
     return hashlib.md5(text.encode('utf-8', errors='ignore')).hexdigest()
 
@@ -72,10 +83,16 @@ def analyze_with_rules(baseline, response, hint=None, thresholds=None):
             reasons.append(f"status_changed_{baseline['status_code']}_to_{response['status_code']}")
             score += 2
 
-    # 3) Length diff
+    # 3) Length diff - also detect when response is SHORTER (login success often redirects)
     lr = length_diff_ratio(baseline.get("length", 0), response.get("length", 0))
     if lr >= thresholds["length_ratio"]:
         reasons.append(f"length_diff_ratio_{lr:.2f}")
+        score += 1
+    
+    # 3b) Large absolute length change (for auth bypass detection)
+    abs_diff = abs(baseline.get("length", 0) - response.get("length", 0))
+    if abs_diff > 1000:  # Significant content change
+        reasons.append(f"large_content_change_{abs_diff}_bytes")
         score += 1
 
     # 4) Time-based
@@ -95,7 +112,29 @@ def analyze_with_rules(baseline, response, hint=None, thresholds=None):
         reasons.append("normalized_hash_changed")
         score += 0.5  # مهم جدًا: مؤشر ضعيف فقط
 
-    # 6) Snippet diff (for LLM)
+    # 6) Authentication Bypass Detection (for login forms)
+    baseline_body_lower = baseline.get("body", "").lower()
+    response_body_lower = response.get("body", "").lower()
+    
+    # Check for auth success indicators appearing after injection
+    baseline_success = any(ind in baseline_body_lower for ind in AUTH_SUCCESS_INDICATORS)
+    response_success = any(ind in response_body_lower for ind in AUTH_SUCCESS_INDICATORS)
+    
+    if not baseline_success and response_success:
+        # Auth bypass successful - we weren't logged in before but now we are
+        reasons.append("authentication_bypass_detected")
+        score += 3  # High score for auth bypass
+    
+    # Check for auth failure indicators disappearing
+    baseline_fail = any(ind in baseline_body_lower for ind in AUTH_FAIL_INDICATORS)
+    response_fail = any(ind in response_body_lower for ind in AUTH_FAIL_INDICATORS)
+    
+    if baseline_fail and not response_fail:
+        # Error message disappeared - possible bypass
+        reasons.append("login_error_disappeared")
+        score += 2
+
+    # 7) Snippet diff (for LLM)
     snippet = snippet_diff(baseline.get("body",""), response.get("body",""))
 
     result = {
