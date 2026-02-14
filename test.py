@@ -16,7 +16,11 @@ logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
 
 def run_scan(target_url, progress_callback=None, result_callback=None):
     """
-    Run SQL injection scan on target URL.
+    Run SQL injection scan on target URL with smart parameter detection.
+    
+    Uses a two-phase approach:
+    1. Quick probe each parameter with 1-2 payloads to detect potential vulnerabilities
+    2. Full testing only on parameters that show potential, or multi-param if none do
     
     Args:
         target_url: The URL to scan
@@ -29,7 +33,15 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
     final_results_log = []
     total_vulnerabilities = 0
     total_payloads_tested = 0
-    total_payloads_planned = 0
+    
+    # Quick probe payloads - test these first on each parameter
+    QUICK_PROBE_PAYLOADS = [
+        "' OR '1'='1",
+        "' OR 1=1--",
+        "' OR '1'='1'--",
+        "1' AND 1=1--",
+        "' OR 1=1#"
+    ]
 
     def send_progress(msg, current=None, total=None):
         if progress_callback:
@@ -62,12 +74,13 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
             method = endpoint_data.get('method', 'GET')
             endpoint_url = endpoint_data.get('url', target_url)
             params = endpoint_data.get('params', {})
+            param_names = list(params.keys())
             
             send_progress(f"\n{'='*60}")
             send_progress(f"🔍 Testing Endpoint {endpoint_idx+1}/{len(endpoints)}")
             send_progress(f"   Method: {method}")
             send_progress(f"   URL: {endpoint_url}")
-            send_progress(f"   Params: {list(params.keys())}")
+            send_progress(f"   Params: {param_names}")
             send_progress(f"{'='*60}")
             
             builder = RequestBuilder()
@@ -79,20 +92,89 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
                 
             send_progress(f"✅ Baseline Captured (Length: {baseline['length']})")
 
-            send_progress("\n[Step 3] Generating Attack Plan...")
-            mutator = Mutator(max_per_param=3)
-            attack_plan = mutator.create_attack_plan([endpoint_data])
-            total_payloads_planned = len(attack_plan)
-            send_progress(f"📦 Created {len(attack_plan)} mutations to test.")
-
-            send_progress("\n[Step 4] Launching Attacks...")
             scan_client = HttpClient()
             llm = LLMAnalyzer()
             found_vulnerabilities = 0
-            
             vulnerable_params = set()
-            payloads_tested_for_endpoint = 0
-
+            potentially_vulnerable = {}  # param -> list of (payload, score) tuples
+            
+            send_progress(f"\n🧪 Phase 1: Quick probing {len(param_names)} parameter(s)...")
+            
+            # Phase 1: Quick probe each parameter with simple payloads
+            for param_name in param_names:
+                if param_name in vulnerable_params:
+                    continue
+                    
+                send_progress(f"   Probing parameter: {param_name}")
+                
+                for probe_payload in QUICK_PROBE_PAYLOADS:
+                    # Inject payload into this parameter
+                    test_params = {}
+                    for k, v in params.items():
+                        original_val = v['value'] if isinstance(v, dict) else v
+                        if k == param_name:
+                            test_params[k] = f"{original_val}{probe_payload}"
+                        else:
+                            test_params[k] = original_val
+                    
+                    body_methods = {'POST', 'PUT', 'PATCH'}
+                    if method in body_methods:
+                        response = scan_client.send(
+                            url=endpoint_url,
+                            method=method,
+                            data=test_params
+                        )
+                    else:
+                        response = scan_client.send(
+                            url=endpoint_url,
+                            method=method,
+                            params=test_params
+                        )
+                    
+                    total_payloads_tested += 1
+                    
+                    rule_result = analyze_with_rules(baseline, response, hint="check_content_change")
+                    score = rule_result.get('score', 0)
+                    
+                    if score > 0:
+                        send_progress(f"      ⚡ Potential vuln detected in '{param_name}' with score {score}")
+                        if param_name not in potentially_vulnerable:
+                            potentially_vulnerable[param_name] = []
+                        potentially_vulnerable[param_name].append((probe_payload, score))
+                        
+                        # If high score, mark as vulnerable immediately
+                        if score >= 2.0:
+                            vulnerable_params.add(param_name)
+                            break
+            
+            # Decide testing strategy based on probe results
+            if potentially_vulnerable:
+                send_progress(f"\n🔬 Phase 2: Deep testing on {len(potentially_vulnerable)} potentially vulnerable parameter(s)...")
+                
+                # Create focused attack plan for only potentially vulnerable params
+                mutator = Mutator(max_per_param=3)
+                
+                # Create custom endpoint data with only potentially vulnerable params
+                filtered_params = {k: v for k, v in params.items() if k in potentially_vulnerable}
+                filtered_endpoint = endpoint_data.copy()
+                filtered_endpoint['params'] = filtered_params
+                
+                attack_plan = mutator.create_attack_plan([filtered_endpoint])
+                send_progress(f"📦 Created {len(attack_plan)} focused mutations.")
+                
+            else:
+                send_progress(f"\n🔄 Phase 2: No individual params vulnerable, trying multi-parameter injection...")
+                
+                # Create attack plan with multi-param injection only
+                mutator = Mutator(max_per_param=3)
+                attack_plan = mutator.create_attack_plan([endpoint_data])
+                # Filter to only multi-param attacks
+                attack_plan = [a for a in attack_plan if a.get('injection_type') == 'multi' or a.get('target_param') == 'ALL_PARAMS']
+                send_progress(f"📦 Created {len(attack_plan)} multi-parameter mutations.")
+            
+            # Phase 2: Execute full attack plan
+            total_payloads_planned = len(attack_plan)
+            
             for idx, attack in enumerate(attack_plan):
                 target_param = attack['target_param']
                 
@@ -107,7 +189,6 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
                 )
 
                 total_payloads_tested += 1
-                payloads_tested_for_endpoint += 1
                 
                 send_progress(
                     f"   [{attack['method']}] {attack['target_param']} = {attack['raw_payload'][:50]}...",
