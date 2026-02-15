@@ -8,12 +8,35 @@ config = get_config()
 
 def build_response_object(resp, elapsed):
     body = resp.text if resp else ""
+    
+    # Build raw HTTP request
+    raw_request = ""
+    if resp and resp.request:
+        req = resp.request
+        raw_request = f"{req.method} {req.url} HTTP/1.1\n"
+        for header, value in req.headers.items():
+            raw_request += f"{header}: {value}\n"
+        raw_request += "\n"
+        if req.body:
+            raw_request += req.body.decode('utf-8', errors='ignore') if isinstance(req.body, bytes) else str(req.body)
+    
+    # Build raw HTTP response
+    raw_response = ""
+    if resp:
+        raw_response = f"HTTP/1.1 {resp.status_code} {resp.reason}\n"
+        for header, value in resp.headers.items():
+            raw_response += f"{header}: {value}\n"
+        raw_response += "\n"
+        raw_response += body
+    
     return {
         "status_code": resp.status_code if resp else None,
         "headers": dict(resp.headers) if resp else {},
         "body": body,
         "length": len(body),
-        "response_time": elapsed
+        "response_time": elapsed,
+        "raw_request": raw_request,
+        "raw_response": raw_response
     }
 
 

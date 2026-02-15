@@ -242,7 +242,9 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
                         "url": attack['target_url'],
                         "method": attack['method'],
                         "confidence": llm_result.get('confidence') if llm_result else 0,
-                        "explanation": llm_result.get('explanation') if llm_result else ""
+                        "explanation": llm_result.get('explanation') if llm_result else "",
+                        "raw_request": response.get('raw_request', ''),
+                        "raw_response": response.get('raw_response', '')
                     }
                     
                     if result_callback:

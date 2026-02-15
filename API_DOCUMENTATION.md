@@ -76,7 +76,7 @@ All messages are JSON-encoded. Below are the message flows grouped by functional
 ```json
 {
   "type": "start_scan",
-  "url": "http://example.com/login"
+  "url": "http://altoro.testfire.net/login.jsp"
 }
 ```
 
@@ -115,6 +115,8 @@ All messages are JSON-encoded. Below are the message flows grouped by functional
     "method": "POST",
     "confidence": 0.95,
     "explanation": "SQL injection confirmed via boolean-based blind injection",
+    "raw_request": "POST http://example.com/login HTTP/1.1\nHost: example.com\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin' OR '1'='1&password=test",
+    "raw_response": "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html>...",
     "timestamp": "2024-01-15T10:30:15"
   }
 }
@@ -137,7 +139,12 @@ All messages are JSON-encoded. Below are the message flows grouped by functional
     {
       "parameter": "username",
       "payload": "' OR '1'='1",
-      "confidence": 0.95
+      "url": "http://example.com/login",
+      "method": "POST",
+      "confidence": 0.95,
+      "explanation": "SQL injection confirmed via boolean-based blind injection",
+      "raw_request": "POST http://example.com/login HTTP/1.1\nHost: example.com\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin' OR '1'='1&password=test",
+      "raw_response": "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html>..."
     }
   ],
   "timestamp": "2024-01-15T10:35:00"
