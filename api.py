@@ -69,17 +69,18 @@ async def handle_scan_request(client_id: str, scan_id: str, target_url: str):
         # Store reference to main event loop for callbacks
         main_loop = asyncio.get_event_loop()
 
-        def progress_callback(msg: str, current = None, total = None):
+        def progress_callback(msg: str, url = None, current = None, total = None):
             progress_messages.append({
                 "timestamp": datetime.now().isoformat(),
                 "message": msg,
+                "url": url,
                 "current": current,
                 "total": total
             })
             try:
                 msg_data = {
                     "type": "progress",
-                    # "message": msg,
+                    "url": url,
                     "current": current,
                     "total": total,
                     "timestamp": datetime.now().isoformat()
@@ -110,6 +111,21 @@ async def handle_scan_request(client_id: str, scan_id: str, target_url: str):
             except Exception as e:
                 logger.error(f"Error sending vulnerability: {e}")
 
+        def endpoint_transition_callback(completed_url: str, next_url: str | None = None):
+            try:
+                # Schedule on main event loop from worker thread
+                asyncio.run_coroutine_threadsafe(
+                    send_to_client(client_id, {
+                        "type": "endpoint_transition",
+                        "completed_url": completed_url,
+                        "next_url": next_url,
+                        "timestamp": datetime.now().isoformat()
+                    }),
+                    main_loop
+                )
+            except Exception as e:
+                logger.error(f"Error sending endpoint transition: {e}")
+
         # Run scan in executor to avoid blocking event loop
         loop = asyncio.get_event_loop()
         result = await loop.run_in_executor(
@@ -117,7 +133,8 @@ async def handle_scan_request(client_id: str, scan_id: str, target_url: str):
             run_scan, 
             target_url, 
             progress_callback, 
-            result_callback
+            result_callback,
+            endpoint_transition_callback
         )
 
         await send_to_client(client_id, {

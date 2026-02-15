@@ -91,17 +91,32 @@ All messages are JSON-encoded. Below are the message flows grouped by functional
 }
 ```
 
-**← Server sends multiple:** `progress` (during scanning)
+**← Server sends multiple:** `progress` (during payload testing only)
 
 ```json
 {
   "type": "progress",
-  "message": "   [POST] uid = ' OR '1'='1...",
+  "url": "http://example.com/login",
   "current": 15,
-  "total": 162,
+  "total": 60,
   "timestamp": "2024-01-15T10:30:05"
 }
 ```
+
+**Note:** Progress messages are only sent during the actual payload testing phase. No progress messages are sent during parameter probing or after a vulnerability is found (to avoid noise after finding a probability).
+
+**← Server sends (when moving to next endpoint):** `endpoint_transition`
+
+```json
+{
+  "type": "endpoint_transition",
+  "completed_url": "http://example.com/search.jsp",
+  "next_url": "http://example.com/doLogin",
+  "timestamp": "2024-01-15T10:35:00"
+}
+```
+
+**Note:** This message is sent after an endpoint finishes testing and before starting the next one. The `next_url` will be `null` when the last endpoint is complete.
 
 **← Server sends (if vulnerability found):** `vulnerability_found`
 
@@ -118,6 +133,19 @@ All messages are JSON-encoded. Below are the message flows grouped by functional
     "raw_request": "POST http://example.com/login HTTP/1.1\nHost: example.com\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin' OR '1'='1&password=test",
     "raw_response": "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html>...",
     "timestamp": "2024-01-15T10:30:15"
+  }
+}
+```
+
+**Note:** When multiple parameters are injected simultaneously, the `parameter` field will be an array:
+
+```json
+{
+  "type": "vulnerability_found",
+  "vulnerability": {
+    "parameter": ["uid", "passw"],
+    "payload": "'))",
+    ...
   }
 }
 ```
@@ -150,6 +178,8 @@ All messages are JSON-encoded. Below are the message flows grouped by functional
   "timestamp": "2024-01-15T10:35:00"
 }
 ```
+
+**Note:** The `parameter` field can be either a string (single parameter) or an array of strings (multiple parameters injected simultaneously).
 
 ---
 

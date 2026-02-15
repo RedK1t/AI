@@ -14,7 +14,7 @@ from analyzer.llm_analyzer import LLMAnalyzer
 logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
 
 
-def run_scan(target_url, progress_callback=None, result_callback=None):
+def run_scan(target_url, progress_callback=None, result_callback=None, endpoint_transition_callback=None):
     """
     Run SQL injection scan on target URL with smart parameter detection.
     
@@ -26,13 +26,14 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
         target_url: The URL to scan
         progress_callback: Optional callback for progress updates (callback(message))
         result_callback: Optional callback for vulnerability found (callback(vulnerability_details))
+        endpoint_transition_callback: Optional callback when moving to next endpoint (callback(completed_url, next_url))
     
     Returns:
         Dictionary with scan results
     """
     final_results_log = []
     total_vulnerabilities = 0
-    total_payloads_tested = 0
+    previous_endpoint_url = None
     
     # Quick probe payloads - test these first on each parameter
     QUICK_PROBE_PAYLOADS = [
@@ -43,10 +44,16 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
         "' OR 1=1#"
     ]
 
-    def send_progress(msg, current=None, total=None):
-        if progress_callback:
-            progress_callback(msg, current, total)
+    def send_progress(msg, url=None, current=None, total=None):
+        """Send progress message - only send to callback if url is provided (actual payload testing phase)"""
+        if progress_callback and url is not None:
+            progress_callback(msg, url, current, total)
         logging.info(msg)
+    
+    def send_endpoint_transition(completed_url, next_url):
+        """Send endpoint transition message"""
+        if endpoint_transition_callback and completed_url:
+            endpoint_transition_callback(completed_url, next_url)
 
     try:
         parsed_data = parse_endpoint(target_url)
@@ -76,6 +83,15 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
             params = endpoint_data.get('params', {})
             param_names = list(params.keys())
             
+            # Send transition message if this is not the first endpoint
+            if endpoint_idx > 0 and previous_endpoint_url:
+                next_url = endpoint_url if endpoint_idx < len(endpoints) else None
+                send_endpoint_transition(previous_endpoint_url, next_url)
+            
+            # Per-endpoint counters (reset for each endpoint)
+            endpoint_current = 0
+            endpoint_total = 0
+            
             send_progress(f"\n{'='*60}")
             send_progress(f"🔍 Testing Endpoint {endpoint_idx+1}/{len(endpoints)}")
             send_progress(f"   Method: {method}")
@@ -101,11 +117,12 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
             send_progress(f"\n🧪 Phase 1: Quick probing {len(param_names)} parameter(s)...")
             
             # Phase 1: Quick probe each parameter with simple payloads
+            # NO progress messages here - only logging
             for param_name in param_names:
                 if param_name in vulnerable_params:
                     continue
                     
-                send_progress(f"   Probing parameter: {param_name}")
+                logging.info(f"   Probing parameter: {param_name}")
                 
                 for probe_payload in QUICK_PROBE_PAYLOADS:
                     # Inject payload into this parameter
@@ -131,13 +148,11 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
                             params=test_params
                         )
                     
-                    total_payloads_tested += 1
-                    
                     rule_result = analyze_with_rules(baseline, response, hint="check_content_change")
                     score = rule_result.get('score', 0)
                     
                     if score > 0:
-                        send_progress(f"      ⚡ Potential vuln detected in '{param_name}' with score {score}")
+                        logging.info(f"      ⚡ Potential vuln detected in '{param_name}' with score {score}")
                         if param_name not in potentially_vulnerable:
                             potentially_vulnerable[param_name] = []
                         potentially_vulnerable[param_name].append((probe_payload, score))
@@ -173,7 +188,8 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
                 send_progress(f"📦 Created {len(attack_plan)} multi-parameter mutations.")
             
             # Phase 2: Execute full attack plan
-            total_payloads_planned = len(attack_plan)
+            # Calculate total for this endpoint
+            endpoint_total = len(attack_plan)
             
             for idx, attack in enumerate(attack_plan):
                 target_param = attack['target_param']
@@ -188,19 +204,21 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
                     data=attack.get('body_data')
                 )
 
-                total_payloads_tested += 1
+                endpoint_current += 1
                 
+                # Send progress ONLY during actual payload testing with URL
                 send_progress(
                     f"   [{attack['method']}] {attack['target_param']} = {attack['raw_payload'][:50]}...",
-                    current=total_payloads_tested,
-                    total=total_payloads_planned
+                    url=endpoint_url,
+                    current=endpoint_current,
+                    total=endpoint_total
                 )
 
                 rule_result = analyze_with_rules(baseline, response, hint=attack['analyzer_hint'])
 
                 llm_result = None
                 if rule_result['score'] >= 3.0:
-                    send_progress(f"🔍 Score {rule_result['score']} is high. Consulting AI...")
+                    logging.info(f"🔍 Score {rule_result['score']} is high. Consulting AI...")
                     llm_result = llm.analyze_vulnerability(attack, response['body'])
                     time.sleep(6)
                 else:
@@ -232,31 +250,92 @@ def run_scan(target_url, progress_callback=None, result_callback=None):
                 if final_decision['is_vulnerable']:
                     found_vulnerabilities += 1
                     vulnerable_params.add(target_param)
-                    send_progress(f"⚠️  [VULNERABLE] Confirmed at: {attack['target_param']}")
+                    logging.info(f"⚠️  [VULNERABLE] Confirmed at: {attack['target_param']}")
                     if llm_result:
-                        send_progress(f"🤖 AI Confidence: {llm_result.get('confidence')} | Label: {llm_result.get('ml_label')}")
+                        logging.info(f"🤖 AI Confidence: {llm_result.get('confidence')} | Label: {llm_result.get('ml_label')}")
+                    
+                    # Build raw request from attack data (more accurate than response.request)
+                    attack_method = attack['method']
+                    attack_url = attack['target_url']
+                    params_to_send = attack.get('params_to_send')
+                    body_data = attack.get('body_data')
+                    
+                    # Build raw HTTP request
+                    raw_request_lines = [f"{attack_method} {attack_url} HTTP/1.1"]
+                    raw_request_lines.append("Host: " + attack_url.split('/')[2])
+                    raw_request_lines.append("User-Agent: SQL-Injector/1.0")
+                    raw_request_lines.append("Accept: */*")
+                    raw_request_lines.append("Connection: close")
+                    
+                    # Build body based on method
+                    if attack_method in ['POST', 'PUT', 'PATCH'] and body_data:
+                        body_str = '&'.join([f"{k}={v}" for k, v in body_data.items()])
+                        raw_request_lines.append("Content-Type: application/x-www-form-urlencoded")
+                        raw_request_lines.append(f"Content-Length: {len(body_str)}")
+                        raw_request_lines.append("")
+                        raw_request_lines.append(body_str)
+                    elif params_to_send:
+                        # GET with query params
+                        query_str = '&'.join([f"{k}={v}" for k, v in params_to_send.items()])
+                        raw_request_lines.append("")
+                        raw_request_lines.append(f"Query: {query_str}")
+                    else:
+                        raw_request_lines.append("")
+                    
+                    raw_request = '\n'.join(raw_request_lines)
+                    
+                    # Build raw HTTP response from actual response
+                    status_code = response.get('status_code', 0)
+                    raw_response_lines = [f"HTTP/1.1 {status_code}"]
+                    for header, value in response.get('headers', {}).items():
+                        raw_response_lines.append(f"{header}: {value}")
+                    raw_response_lines.append("")
+                    raw_response_lines.append(response.get('body', '')[:5000])  # Limit body size
+                    raw_response = '\n'.join(raw_response_lines)
+                    
+                    # Handle ALL_PARAMS - convert to array of actual parameter names
+                    target_param = attack['target_param']
+                    if target_param == "ALL_PARAMS":
+                        # Get parameter names from body_data or params_to_send
+                        if body_data:
+                            target_param = list(body_data.keys())
+                        elif params_to_send:
+                            target_param = list(params_to_send.keys())
+                        else:
+                            target_param = []
                     
                     vulnerability_details = {
-                        "parameter": attack['target_param'],
+                        "parameter": target_param,
                         "payload": attack.get('raw_payload'),
                         "url": attack['target_url'],
                         "method": attack['method'],
                         "confidence": llm_result.get('confidence') if llm_result else 0,
                         "explanation": llm_result.get('explanation') if llm_result else "",
-                        "raw_request": response.get('raw_request', ''),
-                        "raw_response": response.get('raw_response', '')
+                        "raw_request": raw_request,
+                        "raw_response": raw_response
                     }
                     
                     if result_callback:
                         result_callback(vulnerability_details)
                     
-                    send_progress(f"🛑 Stopping tests for parameter: {target_param} (vulnerability found)")
-                    send_progress(f"📊 Progress: {total_payloads_tested}/{total_payloads_planned} payloads tested")
-                    send_progress("-" * 30)
+                    # STOP sending progress messages after finding vulnerability
+                    logging.info(f"🛑 Stopping tests for parameter: {target_param} (vulnerability found)")
+                    logging.info(f"📊 Progress: {endpoint_current}/{endpoint_total} payloads tested")
+                    logging.info("-" * 30)
+                    
+                    # Break out of testing loop for this endpoint
+                    break
 
             total_vulnerabilities += found_vulnerabilities
             send_progress(f"\n✅ Endpoint {endpoint_idx+1} Complete. Found {found_vulnerabilities} vulnerabilities.")
             send_progress("-" * 60)
+            
+            # Track this endpoint as completed for transition messaging
+            previous_endpoint_url = endpoint_url
+        
+        # Send final transition after all endpoints complete
+        if previous_endpoint_url:
+            send_endpoint_transition(previous_endpoint_url, None)
         
         output_file = "core/scan_results.json"
         with open(output_file, "w", encoding="utf-8") as f:
