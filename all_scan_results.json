@@ -1,0 +1,3029 @@
+[
+  {
+    "timestamp": "2026-02-16T21:33:00.619322",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:00.783636",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:00.948061",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:01.112767",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:01.276777",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:01.441809",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:01.607661",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:01.772339",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:01.936907",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:02.098336",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:02.268823",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:02.436065",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:02.602111",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:02.766887",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:02.930657",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:03.096150",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:03.337963",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:03.501134",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:03.667618",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:03.832658",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:03.995676",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:04.159166",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:04.325114",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:04.489969",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:04.653419",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:04.820538",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:04.988557",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "query",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:05.154008",
+    "attack_details": {
+      "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:05.318167",
+    "attack_details": {
+      "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:05.482832",
+    "attack_details": {
+      "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:05.647171",
+    "attack_details": {
+      "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:05.815276",
+    "attack_details": {
+      "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:05.982015",
+    "attack_details": {
+      "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:06.148883",
+    "attack_details": {
+      "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:06.313479",
+    "attack_details": {
+      "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:06.479407",
+    "attack_details": {
+      "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:06.643427",
+    "attack_details": {
+      "payload": "'))",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:06.807381",
+    "attack_details": {
+      "payload": "'))",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:06.971888",
+    "attack_details": {
+      "payload": "'))",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:07.137301",
+    "attack_details": {
+      "payload": "'))",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:07.301714",
+    "attack_details": {
+      "payload": "'))",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:07.467670",
+    "attack_details": {
+      "payload": "'))",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:07.630982",
+    "attack_details": {
+      "payload": "'))",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:07.797061",
+    "attack_details": {
+      "payload": "'))",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:07.963780",
+    "attack_details": {
+      "payload": "'))",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:08.129587",
+    "attack_details": {
+      "payload": "'; WAITFOR DELAY '0:0:5'--",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:08.296449",
+    "attack_details": {
+      "payload": "'; WAITFOR DELAY '0:0:5'--",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:08.463084",
+    "attack_details": {
+      "payload": "'; WAITFOR DELAY '0:0:5'--",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:08.627459",
+    "attack_details": {
+      "payload": "'; WAITFOR DELAY '0:0:5'--",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:08.796431",
+    "attack_details": {
+      "payload": "'; WAITFOR DELAY '0:0:5'--",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:08.966035",
+    "attack_details": {
+      "payload": "'; WAITFOR DELAY '0:0:5'--",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:09.131561",
+    "attack_details": {
+      "payload": "'; WAITFOR DELAY '0:0:5'--",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:09.296647",
+    "attack_details": {
+      "payload": "'; WAITFOR DELAY '0:0:5'--",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:09.471760",
+    "attack_details": {
+      "payload": "'; WAITFOR DELAY '0:0:5'--",
+      "parameter": "query",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:09.636807",
+    "attack_details": {
+      "payload": "1 AND SLEEP(5)",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:09.803552",
+    "attack_details": {
+      "payload": "1 AND SLEEP(5)",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:09.968306",
+    "attack_details": {
+      "payload": "1 AND SLEEP(5)",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:10.133643",
+    "attack_details": {
+      "payload": "1 AND SLEEP(5)",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:10.300819",
+    "attack_details": {
+      "payload": "1 AND SLEEP(5)",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:10.465856",
+    "attack_details": {
+      "payload": "1 AND SLEEP(5)",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:10.630286",
+    "attack_details": {
+      "payload": "1 AND SLEEP(5)",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:10.795422",
+    "attack_details": {
+      "payload": "1 AND SLEEP(5)",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:10.961772",
+    "attack_details": {
+      "payload": "1 AND SLEEP(5)",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:11.129359",
+    "attack_details": {
+      "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:11.295698",
+    "attack_details": {
+      "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:11.461905",
+    "attack_details": {
+      "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:11.625774",
+    "attack_details": {
+      "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:11.791478",
+    "attack_details": {
+      "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:11.958416",
+    "attack_details": {
+      "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:12.123116",
+    "attack_details": {
+      "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:12.289196",
+    "attack_details": {
+      "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:12.454193",
+    "attack_details": {
+      "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:12.617738",
+    "attack_details": {
+      "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:12.789008",
+    "attack_details": {
+      "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:12.954352",
+    "attack_details": {
+      "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:13.120584",
+    "attack_details": {
+      "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:13.286104",
+    "attack_details": {
+      "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:13.451357",
+    "attack_details": {
+      "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:13.616588",
+    "attack_details": {
+      "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:13.781378",
+    "attack_details": {
+      "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:13.947494",
+    "attack_details": {
+      "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
+      "parameter": "query",
+      "category": "time"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:20.361544",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:20.689116",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:21.014553",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:21.332946",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:21.657102",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:21.980304",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:22.302140",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:22.622347",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:22.944304",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:23.268749",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:23.589026",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:23.908125",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:24.226200",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:24.543088",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:24.862208",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:25.187008",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:25.510821",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:25.828349",
+    "attack_details": {
+      "payload": "\" OR \"1\"=\"1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:26.150546",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:26.469851",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:26.789555",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:27.118691",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:27.439445",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:27.760017",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:28.090199",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:28.410454",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:28.730053",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0,
+      "evidence": []
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T21:33:29.050656",
+    "attack_details": {
+      "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+      "parameter": "ALL_PARAMS",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 2.5,
+      "evidence": [
+        "error_pattern_matched",
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": true
+  },
+  {
+    "timestamp": "2026-02-16T16:14:19.094883",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:19.494021",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:19.896123",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:20.300698",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:20.704798",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:21.107002",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:21.507157",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:21.910947",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:22.310792",
+    "attack_details": {
+      "payload": "1' AND '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:22.516640",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:22.723164",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:22.929073",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:23.329857",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:23.729874",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:24.132837",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:24.535602",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:24.938293",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:25.340011",
+    "attack_details": {
+      "payload": "' OR '1'='1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:25.740535",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:26.142299",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:26.544152",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:26.946626",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:27.350107",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:27.754691",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:28.159460",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:28.560001",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:28.961204",
+    "attack_details": {
+      "payload": "1 OR 1=1",
+      "parameter": "ALL_PARAMS",
+      "category": "boolean"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:29.363713",
+    "attack_details": {
+      "payload": "'",
+      "parameter": "ALL_PARAMS",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:29.763178",
+    "attack_details": {
+      "payload": "'",
+      "parameter": "ALL_PARAMS",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:30.164961",
+    "attack_details": {
+      "payload": "'",
+      "parameter": "ALL_PARAMS",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:30.567616",
+    "attack_details": {
+      "payload": "'",
+      "parameter": "ALL_PARAMS",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:30.974053",
+    "attack_details": {
+      "payload": "'",
+      "parameter": "ALL_PARAMS",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:31.376736",
+    "attack_details": {
+      "payload": "'",
+      "parameter": "ALL_PARAMS",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:31.779529",
+    "attack_details": {
+      "payload": "'",
+      "parameter": "ALL_PARAMS",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:32.180629",
+    "attack_details": {
+      "payload": "'",
+      "parameter": "ALL_PARAMS",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:32.589473",
+    "attack_details": {
+      "payload": "'",
+      "parameter": "ALL_PARAMS",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 0.5,
+      "evidence": [
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "no",
+      "confidence": 0.0,
+      "explanation": "Safe by rules",
+      "ml_label": 0
+    },
+    "is_vulnerable": false
+  },
+  {
+    "timestamp": "2026-02-16T16:14:40.420186",
+    "attack_details": {
+      "payload": "'; WAITFOR DELAY '0:0:5'--",
+      "parameter": "ALL_PARAMS",
+      "category": "error"
+    },
+    "rule_analysis": {
+      "score": 4.5,
+      "evidence": [
+        "error_pattern_matched",
+        "length_diff_ratio_0.96",
+        "large_content_change_5308_bytes",
+        "normalized_hash_changed"
+      ]
+    },
+    "ai_analysis": {
+      "verdict": "yes",
+      "confidence": 1.0,
+      "explanation": "The server response indicates successful injection of a time delay, confirming SQL Injection vulnerability.",
+      "ml_label": 1,
+      "severity": "Critical",
+      "severity_confidence": 0.6,
+      "risk_factors": [
+        "sql_error_exposure",
+        "database_errors",
+        "time_payload"
+      ],
+      "severity_method": "rule_based"
+    },
+    "is_vulnerable": true
+  },
+  "boolean",
+  "error",
+  "time"
+]

