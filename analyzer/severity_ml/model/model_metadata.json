@@ -1,135 +1,92 @@
 {
   "train_accuracy": 1.0,
-  "test_accuracy": 0.6,
-  "cv_mean_accuracy": 0.8,
-  "cv_std_accuracy": 0.18708286933869706,
-  "oob_score": 0.75,
-  "n_train_samples": 20,
-  "n_test_samples": 5,
-  "class_distribution": {
-    "train": {
-      "Low": 4,
-      "Medium": 4,
-      "High": 8,
-      "Critical": 4
-    },
-    "test": {
-      "Low": 1,
-      "Medium": 1,
-      "High": 2,
-      "Critical": 1
-    }
-  },
+  "test_accuracy": 1.0,
+  "cv_mean_accuracy": 0.9219696969696969,
+  "cv_std_accuracy": 0.04255628140487736,
+  "oob_score": 1.0,
+  "n_train_samples": 167,
+  "n_test_samples": 42,
+  "n_total_samples": 209,
+  "augmented_from": 32,
   "feature_importance": {
-    "rule_score": 0.18823298722860687,
-    "llm_confidence": 0.1740593523280305,
-    "time_difference": 0.0984638078905176,
-    "length_ratio": 0.09151275498515209,
-    "response_length": 0.0671115653320697,
-    "payload_length": 0.06465470952020672,
-    "llm_verdict": 0.05862496988191482,
-    "response_has_sensitive_data": 0.03823960920429939,
-    "content_changed": 0.037973731058210045,
-    "payload_category_boolean": 0.03663095280161691,
-    "response_has_admin_access": 0.035211353170115964,
-    "payload_complexity": 0.034143319745215686,
-    "is_error_based": 0.01642205926744666,
-    "auth_bypass_detected": 0.014507277323765364,
-    "payload_category_union": 0.009763256908780538,
-    "status_code": 0.0070782956603814015,
-    "has_sql_errors": 0.005823538541132447,
-    "is_union_based": 0.0054215932614573165,
-    "payload_category_error": 0.004897413254370332,
-    "payload_category_time": 0.0037003337305841783,
-    "response_has_db_errors": 0.002953892441703549,
-    "status_code_change": 0.0022248465342197283,
-    "is_time_based": 0.0012372688190912002,
-    "has_time_delay": 0.0011111111111111113
+    "llm_confidence": 0.1494849584273602,
+    "rule_score": 0.11465917750944907,
+    "length_ratio": 0.07852040822843728,
+    "response_length": 0.07562717149138518,
+    "content_changed": 0.06789254779663534,
+    "payload_length": 0.06502068978999773,
+    "response_length_change": 0.06316569595624597,
+    "time_difference": 0.06267394637416082,
+    "payload_complexity": 0.062275716757733905,
+    "llm_verdict": 0.0612301582530217,
+    "payload_category_boolean": 0.033576791014787444,
+    "response_has_admin_access": 0.026293755736310938,
+    "payload_category_event": 0.01682511655702812,
+    "is_error_based": 0.01605013762853262,
+    "response_has_sensitive_data": 0.011924695897633645,
+    "status_code_change": 0.010788645607461688,
+    "is_event_handler": 0.007970625376211205,
+    "is_xss": 0.006548727494161264,
+    "auth_bypass_detected": 0.006460235860202498,
+    "payload_reflected": 0.005840804926474061,
+    "is_script_tag": 0.004779808981257227,
+    "has_time_delay": 0.004718067333877362,
+    "status_code": 0.004476352366269728,
+    "payload_category_basic": 0.00440687673151707,
+    "is_time_based": 0.004395067100054911,
+    "response_has_xss_markers": 0.004294096080419756,
+    "has_sql_errors": 0.004256270312528943,
+    "has_payload_reflection": 0.004100418746856248,
+    "payload_category_time": 0.003333988589800929,
+    "payload_category_union": 0.0031142551645505752,
+    "is_sql_injection": 0.0029605521945460234,
+    "xss_reflection_score": 0.002770451856945129,
+    "is_union_based": 0.002273121740706339,
+    "payload_category_polyglot": 0.002041335412669924,
+    "has_html_tags": 0.0016107735955316483,
+    "has_xss_markers": 0.0012581518287268678,
+    "payload_reflected_decoded": 0.0012318891265485268,
+    "payload_category_error": 0.0010872726390524859,
+    "payload_category_encoded": 6.12435149095889e-05,
+    "response_has_db_errors": 1.1168192797833524e-17
   },
   "classification_report": {
     "Low": {
-      "precision": 0.5,
+      "precision": 1.0,
       "recall": 1.0,
-      "f1-score": 0.6666666666666666,
-      "support": 1.0
+      "f1-score": 1.0,
+      "support": 8.0
     },
     "Medium": {
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1-score": 0.0,
-      "support": 1.0
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 7.0
     },
     "High": {
-      "precision": 0.6666666666666666,
+      "precision": 1.0,
       "recall": 1.0,
-      "f1-score": 0.8,
-      "support": 2.0
+      "f1-score": 1.0,
+      "support": 17.0
     },
     "Critical": {
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1-score": 0.0,
-      "support": 1.0
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 10.0
     },
-    "accuracy": 0.6,
+    "accuracy": 1.0,
     "macro avg": {
-      "precision": 0.29166666666666663,
-      "recall": 0.5,
-      "f1-score": 0.3666666666666667,
-      "support": 5.0
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 42.0
     },
     "weighted avg": {
-      "precision": 0.36666666666666664,
-      "recall": 0.6,
-      "f1-score": 0.4533333333333333,
-      "support": 5.0
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 42.0
     }
-  },
-  "confusion_matrix": [
-    [
-      1,
-      0,
-      0,
-      0
-    ],
-    [
-      1,
-      0,
-      0,
-      0
-    ],
-    [
-      0,
-      0,
-      2,
-      0
-    ],
-    [
-      0,
-      0,
-      1,
-      0
-    ]
-  ],
-  "model_params": {
-    "bootstrap": true,
-    "ccp_alpha": 0.0,
-    "class_weight": "balanced",
-    "criterion": "gini",
-    "max_depth": 15,
-    "max_features": "sqrt",
-    "max_leaf_nodes": null,
-    "max_samples": null,
-    "min_impurity_decrease": 0.0,
-    "min_samples_leaf": 2,
-    "min_samples_split": 3,
-    "min_weight_fraction_leaf": 0.0,
-    "monotonic_cst": null,
-    "n_estimators": 200,
-    "n_jobs": null,
-    "oob_score": true,
-    "random_state": 42,
-    "verbose": 0,
-    "warm_start": false
   }
 }

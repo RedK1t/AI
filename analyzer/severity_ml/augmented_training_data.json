@@ -1,0 +1,6691 @@
+[
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT username, password, email FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4.0,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.65",
+          "sensitive_data_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.92
+      },
+      "response": {
+        "body": "admin:password123:admin@test.com\nuser1:qwerty456:user1@test.com\nuser2:letmein789:user2@test.com",
+        "status_code": 200,
+        "response_time": 0.6
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=4.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<details open ontoggle=alert(1)>",
+        "parameter": "id",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed",
+          "length_diff_ratio_0.05"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "Details: <details open ontoggle=alert(1)> - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Details: Sample item - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=2"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1--",
+        "parameter": "user",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2.0,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45",
+          "all_records_returned"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.78
+      },
+      "response": {
+        "body": "User List: admin, john, mary, bob, alice (50 total users)",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'x'='x",
+        "parameter": "name",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.3
+      },
+      "response": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: conf_variant base=0.45"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'><script>prompt(1)</script>",
+        "parameter": "comment",
+        "category": "polyglot"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.63
+      },
+      "response": {
+        "body": "'><script>prompt(1)</script> posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Nice article! posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.78"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<img src=x onerror=alert(1)>",
+        "parameter": "q",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 5.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "<img src=x onerror=alert(1)> not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "test not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1' AND 1=1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2.0,
+        "evidence": [
+          "normalized_hash_changed",
+          "length_diff_ratio_0.15"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.65
+      },
+      "response": {
+        "body": "Product: ABC-123\nDescription: Sample product variant",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: XYZ-789\nDescription: Another product",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, username, password FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.65
+      },
+      "response": {
+        "body": "admin:password123\nuser1:qwerty\nuser2:123456",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: conf_variant base=0.8"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<img src=x onerror=alert(1)>",
+        "parameter": "q",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 6.0,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "<img src=x onerror=alert(1)> not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "test not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "test",
+        "parameter": "query",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.5,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.45
+      },
+      "response": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: conf_variant base=0.3"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'",
+        "parameter": "search",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "error_pattern_matched",
+          "sql_syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "You have an error in your SQL syntax near ''' at line 1. SELECT * FROM products WHERE name LIKE '%'%'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Search results for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "SQL error messages exposed database query structure"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "admin'--",
+        "parameter": "username",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 5.0,
+        "evidence": [
+          "authentication_bypass_detected",
+          "admin_access_granted"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.91
+      },
+      "response": {
+        "body": "Welcome Administrator. Admin Dashboard loaded. Manage users.",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Login failed. Invalid credentials.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=4.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(5)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "time_delay_5.2s_vs_0.3s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 5.2
+      },
+      "baseline": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "admin'--",
+        "parameter": "username",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "authentication_bypass_detected",
+          "admin_access_granted"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.91
+      },
+      "response": {
+        "body": "Welcome Administrator. Admin Dashboard loaded. Manage users.",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Login failed. Invalid credentials.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "Authentication bypass with admin credentials"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR updatexml(1,concat(0x7e,user()),1)--",
+        "parameter": "id",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "error_pattern_matched",
+          "xpath_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.82
+      },
+      "response": {
+        "body": "ERROR: XPATH syntax error: '~root@localhost'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details page",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND '1'='1",
+        "parameter": "search",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.0,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Search Results: Found 15 items for query",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Search Results: Found 12 items for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR updatexml(1,concat(0x7e,user()),1)--",
+        "parameter": "id",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "error_pattern_matched",
+          "xpath_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.82
+      },
+      "response": {
+        "body": "ERROR: XPATH syntax error: '~root@localhost'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details page",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "Error-based injection extracted database user"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; DROP TABLE users;--",
+        "parameter": "name",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "error_pattern_matched",
+          "syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "ERROR: syntax error at or near \";\"",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "Stacked query attempted - database error"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<details open ontoggle=alert(1)>",
+        "parameter": "id",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 2,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed",
+          "length_diff_ratio_0.05"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.55
+      },
+      "response": {
+        "body": "Details: <details open ontoggle=alert(1)> - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Details: Sample item - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Low",
+    "notes": "synthetic: conf_variant base=0.4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR '1'='1",
+        "parameter": "username",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 5,
+        "evidence": [
+          "authentication_bypass_detected",
+          "content_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "Welcome admin. Dashboard available. User: admin. Admin panel loaded successfully.",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Invalid username or password. Please try again.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: conf_variant base=0.95"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT credit_card, cvv, expiry FROM payments--",
+        "parameter": "order_id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4.0,
+        "evidence": [
+          "sensitive_data_detected",
+          "credit_card_exposed",
+          "content_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.96
+      },
+      "response": {
+        "body": "4532-1234-5678-9012:123:12/25\n4532-9876-5432-1098:456:06/24",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Order #12345 details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'a'='a",
+        "parameter": "filter",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2.0,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "Filtered results: 100 items",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Filtered results: 98 items",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=1"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1 LIMIT 1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.0,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.5
+      },
+      "response": {
+        "body": "User: admin",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1 AND 1=1",
+        "parameter": "page",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.5,
+        "evidence": []
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.25
+      },
+      "response": {
+        "body": "Page 1 of results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Page 1 of results",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "No significant difference detected"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(5)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "time_delay_5.2s_vs_0.3s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 5.2
+      },
+      "baseline": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+        "parameter": "query",
+        "category": "encoded"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "payload_reflected_decoded",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.7
+      },
+      "response": {
+        "body": "<script>alert(1)</script> decoded",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Normal content",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(5)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "time_delay_5.2s_vs_0.3s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 5.2
+      },
+      "baseline": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "Time-based blind SQL injection confirmed with 5 second delay"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<svg onload=confirm(1)>",
+        "parameter": "search",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Search <svg onload=confirm(1)> results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search test results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, username, password FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "admin:password123\nuser1:qwerty\nuser2:123456",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "UNION-based SQL injection extracted user credentials"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<img src=x onerror=alert(1)>",
+        "parameter": "q",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 4.0,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "<img src=x onerror=alert(1)> not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "test not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(5)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 5.0,
+        "evidence": [
+          "time_delay_5.2s_vs_0.3s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 5.2
+      },
+      "baseline": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'",
+        "parameter": "search",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "error_pattern_matched",
+          "sql_syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "You have an error in your SQL syntax near ''' at line 1. SELECT * FROM products WHERE name LIKE '%'%'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Search results for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR pg_sleep(5)--",
+        "parameter": "search",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "time_delay_5.1s_vs_0.2s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.86
+      },
+      "response": {
+        "body": "Search results",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Search results",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "\"><script>alert(1)</script>",
+        "parameter": "name",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.95
+      },
+      "response": {
+        "body": "\"><script>alert(1)</script> error.",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello John.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.8"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1' AND 1=1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "normalized_hash_changed",
+          "length_diff_ratio_0.15"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "Product: ABC-123\nDescription: Sample product variant",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: XYZ-789\nDescription: Another product",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: conf_variant base=0.65"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "\"><script>alert(1)</script>",
+        "parameter": "name",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.65
+      },
+      "response": {
+        "body": "\"><script>alert(1)</script> error.",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello John.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.8"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'><script>prompt(1)</script>",
+        "parameter": "comment",
+        "category": "polyglot"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.78
+      },
+      "response": {
+        "body": "'><script>prompt(1)</script> posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Nice article! posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<script>alert(1)</script>",
+        "parameter": "search",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 5.0,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.9
+      },
+      "response": {
+        "body": "Search results for <script>alert(1)</script>.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search results for test.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, database(), null--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 5.0,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.25"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.87
+      },
+      "response": {
+        "body": "webapp_db",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product Name: Laptop",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=2--",
+        "parameter": "cat",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.5,
+        "evidence": [
+          "normalized_hash_changed",
+          "content_difference"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.7
+      },
+      "response": {
+        "body": "No products found in category",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Showing 25 products in category",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: conf_variant base=0.55"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR updatexml(1,concat(0x7e,user()),1)--",
+        "parameter": "id",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "error_pattern_matched",
+          "xpath_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.82
+      },
+      "response": {
+        "body": "ERROR: XPATH syntax error: '~root@localhost'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details page",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<script>alert(document.cookie)</script>",
+        "parameter": "search",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 5.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.9
+      },
+      "response": {
+        "body": "Search results for <script>alert(1)</script>.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search results for test.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "synthetic: payload_variant"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'x'='x",
+        "parameter": "name",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.45
+      },
+      "response": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "Minor timing difference, inconclusive"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1--",
+        "parameter": "user",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 3,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45",
+          "all_records_returned"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.78
+      },
+      "response": {
+        "body": "User List: admin, john, mary, bob, alice (50 total users)",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "Boolean injection returned all user records"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT username, password, email FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 5.0,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.65",
+          "sensitive_data_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.92
+      },
+      "response": {
+        "body": "admin:password123:admin@test.com\nuser1:qwerty456:user1@test.com\nuser2:letmein789:user2@test.com",
+        "status_code": 200,
+        "response_time": 0.6
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=4.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'a'='a",
+        "parameter": "filter",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.5,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "Filtered results: 100 items",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Filtered results: 98 items",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=1"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'",
+        "parameter": "search",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "error_pattern_matched",
+          "sql_syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 1.0
+      },
+      "response": {
+        "body": "You have an error in your SQL syntax near ''' at line 1. SELECT * FROM products WHERE name LIKE '%'%'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Search results for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.85"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "test",
+        "parameter": "query",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.0,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.3
+      },
+      "response": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=0.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1--",
+        "parameter": "user",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 3,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45",
+          "all_records_returned"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.93
+      },
+      "response": {
+        "body": "User List: admin, john, mary, bob, alice (50 total users)",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.78"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "test",
+        "parameter": "query",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.5,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.3
+      },
+      "response": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=0.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=1 UNION SELECT null, @@version--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "content_changed",
+          "version_exposed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.69
+      },
+      "response": {
+        "body": "Microsoft SQL Server 2019 (RTM) - 15.0.2000.5 (X64)",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.84"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "test",
+        "parameter": "query",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.5,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.15
+      },
+      "response": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: conf_variant base=0.3"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT credit_card, cvv, expiry FROM payments--",
+        "parameter": "order_id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 6.0,
+        "evidence": [
+          "sensitive_data_detected",
+          "credit_card_exposed",
+          "content_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.96
+      },
+      "response": {
+        "body": "4532-1234-5678-9012:123:12/25\n4532-9876-5432-1098:456:06/24",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Order #12345 details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=1 UNION SELECT null, @@version--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "content_changed",
+          "version_exposed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.99
+      },
+      "response": {
+        "body": "Microsoft SQL Server 2019 (RTM) - 15.0.2000.5 (X64)",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.84"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=2--",
+        "parameter": "cat",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.5,
+        "evidence": [
+          "normalized_hash_changed",
+          "content_difference"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.55
+      },
+      "response": {
+        "body": "No products found in category",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Showing 25 products in category",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "Content changed but no sensitive data"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, username, password FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.95
+      },
+      "response": {
+        "body": "admin:password123\nuser1:qwerty\nuser2:123456",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: conf_variant base=0.8"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "\"><script>alert('x')</script>",
+        "parameter": "name",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "\"><script>alert(1)</script> error.",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello John.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: payload_variant"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'x'='x",
+        "parameter": "name",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.0,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.45
+      },
+      "response": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=1"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR '1'='1",
+        "parameter": "username",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 5,
+        "evidence": [
+          "authentication_bypass_detected",
+          "content_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.95
+      },
+      "response": {
+        "body": "Welcome admin. Dashboard available. User: admin. Admin panel loaded successfully.",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Invalid username or password. Please try again.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "Authentication bypass successful - gained admin access to dashboard"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1 AND 1=1",
+        "parameter": "page",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.0,
+        "evidence": []
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.25
+      },
+      "response": {
+        "body": "Page 1 of results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Page 1 of results",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=0.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, database(), null--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.25"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.87
+      },
+      "response": {
+        "body": "webapp_db",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product Name: Laptop",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "UNION injection extracted database name"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1--",
+        "parameter": "user",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 3,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45",
+          "all_records_returned"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.63
+      },
+      "response": {
+        "body": "User List: admin, john, mary, bob, alice (50 total users)",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.78"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(10)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4.0,
+        "evidence": [
+          "time_delay_10.3s_vs_0.3s",
+          "confirmed_blind_injection"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.94
+      },
+      "response": {
+        "body": "Processing...",
+        "status_code": 200,
+        "response_time": 10.3
+      },
+      "baseline": {
+        "body": "Processing...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1' AND 1=1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "normalized_hash_changed",
+          "length_diff_ratio_0.15"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.65
+      },
+      "response": {
+        "body": "Product: ABC-123\nDescription: Sample product variant",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: XYZ-789\nDescription: Another product",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=1 UNION SELECT null, @@version--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4.0,
+        "evidence": [
+          "content_changed",
+          "version_exposed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.84
+      },
+      "response": {
+        "body": "Microsoft SQL Server 2019 (RTM) - 15.0.2000.5 (X64)",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT table_name, null FROM information_schema.tables--",
+        "parameter": "category",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 5.0,
+        "evidence": [
+          "content_changed",
+          "schema_information"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.89
+      },
+      "response": {
+        "body": "users\nproducts\norders\npayments\nsessions",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Category: Electronics",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "test",
+        "parameter": "query",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.0,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.3
+      },
+      "response": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=0.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "\"><script>alert(1)</script>",
+        "parameter": "name",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 5.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "\"><script>alert(1)</script> error.",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello John.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR '1'='1",
+        "parameter": "username",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "authentication_bypass_detected",
+          "content_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.95
+      },
+      "response": {
+        "body": "Welcome admin. Dashboard available. User: admin. Admin panel loaded successfully.",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Invalid username or password. Please try again.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT table_name, null FROM information_schema.tables--",
+        "parameter": "category",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "content_changed",
+          "schema_information"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.74
+      },
+      "response": {
+        "body": "users\nproducts\norders\npayments\nsessions",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Category: Electronics",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.89"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'a'='a",
+        "parameter": "filter",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.25
+      },
+      "response": {
+        "body": "Filtered results: 100 items",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Filtered results: 98 items",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: conf_variant base=0.4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR pg_sleep(5)--",
+        "parameter": "search",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 5.0,
+        "evidence": [
+          "time_delay_5.1s_vs_0.2s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.86
+      },
+      "response": {
+        "body": "Search results",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Search results",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; DROP TABLE users;--",
+        "parameter": "name",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "error_pattern_matched",
+          "syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.73
+      },
+      "response": {
+        "body": "ERROR: syntax error at or near \";\"",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.88"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "admin'--",
+        "parameter": "username",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "authentication_bypass_detected",
+          "admin_access_granted"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.91
+      },
+      "response": {
+        "body": "Welcome Administrator. Admin Dashboard loaded. Manage users.",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Login failed. Invalid credentials.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=4.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=2--",
+        "parameter": "cat",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2.0,
+        "evidence": [
+          "normalized_hash_changed",
+          "content_difference"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.55
+      },
+      "response": {
+        "body": "No products found in category",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Showing 25 products in category",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=1.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+        "parameter": "query",
+        "category": "encoded"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "payload_reflected_decoded",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "<script>alert(1)</script> decoded",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Normal content",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.7"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "test123",
+        "parameter": "query",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0,
+        "evidence": []
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.1
+      },
+      "response": {
+        "body": "No results found",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "No results found",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "No vulnerability indicators"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT credit_card, cvv, expiry FROM payments--",
+        "parameter": "order_id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 5,
+        "evidence": [
+          "sensitive_data_detected",
+          "credit_card_exposed",
+          "content_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.96
+      },
+      "response": {
+        "body": "4532-1234-5678-9012:123:12/25\n4532-9876-5432-1098:456:06/24",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Order #12345 details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "Credit card data extracted via UNION injection"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<svg onload=confirm(1)>",
+        "parameter": "search",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 2.0,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Search <svg onload=confirm(1)> results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search test results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; DROP TABLE users;--",
+        "parameter": "name",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 5.0,
+        "evidence": [
+          "error_pattern_matched",
+          "syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "ERROR: syntax error at or near \";\"",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1 AND 1=1",
+        "parameter": "page",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.5,
+        "evidence": []
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.25
+      },
+      "response": {
+        "body": "Page 1 of results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Page 1 of results",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=0.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1' AND 1=1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "normalized_hash_changed",
+          "length_diff_ratio_0.15"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.65
+      },
+      "response": {
+        "body": "Product: ABC-123\nDescription: Sample product variant",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: XYZ-789\nDescription: Another product",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT table_name, null FROM information_schema.tables--",
+        "parameter": "category",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "content_changed",
+          "schema_information"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.89
+      },
+      "response": {
+        "body": "users\nproducts\norders\npayments\nsessions",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Category: Electronics",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=2--",
+        "parameter": "cat",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "normalized_hash_changed",
+          "content_difference"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.55
+      },
+      "response": {
+        "body": "No products found in category",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Showing 25 products in category",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=1.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(5)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "time_delay_5.2s_vs_0.3s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.73
+      },
+      "response": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 5.2
+      },
+      "baseline": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.88"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "\"><script>alert(1)</script>",
+        "parameter": "name",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 4.0,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "\"><script>alert(1)</script> error.",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello John.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=2--",
+        "parameter": "cat",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.5,
+        "evidence": [
+          "normalized_hash_changed",
+          "content_difference"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "No products found in category",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Showing 25 products in category",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: conf_variant base=0.55"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; WAITFOR DELAY '0:0:5'--",
+        "parameter": "query",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "time_delay_5.1s_vs_0.2s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; DROP TABLE users;--",
+        "parameter": "name",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "error_pattern_matched",
+          "syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "ERROR: syntax error at or near \";\"",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "test123",
+        "parameter": "query",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.5,
+        "evidence": []
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.1
+      },
+      "response": {
+        "body": "No results found",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "No results found",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=0"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=1 UNION SELECT null, @@version--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "content_changed",
+          "version_exposed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.84
+      },
+      "response": {
+        "body": "Microsoft SQL Server 2019 (RTM) - 15.0.2000.5 (X64)",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=2--",
+        "parameter": "cat",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.5,
+        "evidence": [
+          "normalized_hash_changed",
+          "content_difference"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.55
+      },
+      "response": {
+        "body": "No products found in category",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Showing 25 products in category",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=1.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT table_name, null FROM information_schema.tables--",
+        "parameter": "category",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "content_changed",
+          "schema_information"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.89
+      },
+      "response": {
+        "body": "users\nproducts\norders\npayments\nsessions",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Category: Electronics",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1 LIMIT 1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.5,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.5
+      },
+      "response": {
+        "body": "User: admin",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR '1'='1",
+        "parameter": "username",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 5.5,
+        "evidence": [
+          "authentication_bypass_detected",
+          "content_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.95
+      },
+      "response": {
+        "body": "Welcome admin. Dashboard available. User: admin. Admin panel loaded successfully.",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Invalid username or password. Please try again.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=1 UNION SELECT null, @@version--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "content_changed",
+          "version_exposed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.84
+      },
+      "response": {
+        "body": "Microsoft SQL Server 2019 (RTM) - 15.0.2000.5 (X64)",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; DROP TABLE users;--",
+        "parameter": "name",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "error_pattern_matched",
+          "syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "ERROR: syntax error at or near \";\"",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'x'='x",
+        "parameter": "name",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.5,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.45
+      },
+      "response": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=1"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+        "parameter": "query",
+        "category": "encoded"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "payload_reflected_decoded",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.55
+      },
+      "response": {
+        "body": "<script>alert(1)</script> decoded",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Normal content",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.7"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR updatexml(1,concat(0x7e,user()),1)--",
+        "parameter": "id",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "error_pattern_matched",
+          "xpath_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.97
+      },
+      "response": {
+        "body": "ERROR: XPATH syntax error: '~root@localhost'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details page",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.82"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'x'='x",
+        "parameter": "name",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2.0,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.45
+      },
+      "response": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=1"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT credit_card, cvv, expiry FROM payments--",
+        "parameter": "order_id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 5,
+        "evidence": [
+          "sensitive_data_detected",
+          "credit_card_exposed",
+          "content_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.81
+      },
+      "response": {
+        "body": "4532-1234-5678-9012:123:12/25\n4532-9876-5432-1098:456:06/24",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Order #12345 details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: conf_variant base=0.96"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT credit_card, cvv, expiry FROM payments--",
+        "parameter": "order_id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 5.5,
+        "evidence": [
+          "sensitive_data_detected",
+          "credit_card_exposed",
+          "content_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.96
+      },
+      "response": {
+        "body": "4532-1234-5678-9012:123:12/25\n4532-9876-5432-1098:456:06/24",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Order #12345 details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<script>alert(1)</script>",
+        "parameter": "search",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.9
+      },
+      "response": {
+        "body": "Search results for <script>alert(1)</script>.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search results for test.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND '1'='1",
+        "parameter": "search",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Search Results: Found 15 items for query",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Search Results: Found 12 items for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+        "parameter": "query",
+        "category": "encoded"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "payload_reflected_decoded",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.7
+      },
+      "response": {
+        "body": "<script>alert(1)</script> decoded",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Normal content",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "XSS encoded payload decoded by server"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'><script>prompt(1)</script>",
+        "parameter": "comment",
+        "category": "polyglot"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.78
+      },
+      "response": {
+        "body": "'><script>prompt(1)</script> posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Nice article! posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR pg_sleep(5)--",
+        "parameter": "search",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "time_delay_5.1s_vs_0.2s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.86
+      },
+      "response": {
+        "body": "Search results",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Search results",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'",
+        "parameter": "search",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "error_pattern_matched",
+          "sql_syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.7
+      },
+      "response": {
+        "body": "You have an error in your SQL syntax near ''' at line 1. SELECT * FROM products WHERE name LIKE '%'%'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Search results for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.85"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, username, password FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "admin:password123\nuser1:qwerty\nuser2:123456",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "admin'--",
+        "parameter": "username",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 4.0,
+        "evidence": [
+          "authentication_bypass_detected",
+          "admin_access_granted"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.91
+      },
+      "response": {
+        "body": "Welcome Administrator. Admin Dashboard loaded. Manage users.",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Login failed. Invalid credentials.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=4.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; WAITFOR DELAY '0:0:5'--",
+        "parameter": "query",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "time_delay_5.1s_vs_0.2s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "MSSQL time-based blind injection with WAITFOR DELAY"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "admin'--",
+        "parameter": "username",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 5.5,
+        "evidence": [
+          "authentication_bypass_detected",
+          "admin_access_granted"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.91
+      },
+      "response": {
+        "body": "Welcome Administrator. Admin Dashboard loaded. Manage users.",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Login failed. Invalid credentials.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=4.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'><script>prompt(1)</script>",
+        "parameter": "comment",
+        "category": "polyglot"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.78
+      },
+      "response": {
+        "body": "'><script>prompt(1)</script> posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Nice article! posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "Polyglot XSS payload with quote/angle breakout"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'><script>prompt(1)</script>",
+        "parameter": "comment",
+        "category": "polyglot"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.78
+      },
+      "response": {
+        "body": "'><script>prompt(1)</script> posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Nice article! posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1--",
+        "parameter": "user",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 4.0,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45",
+          "all_records_returned"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.78
+      },
+      "response": {
+        "body": "User List: admin, john, mary, bob, alice (50 total users)",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1--",
+        "parameter": "user",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45",
+          "all_records_returned"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.78
+      },
+      "response": {
+        "body": "User List: admin, john, mary, bob, alice (50 total users)",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+        "parameter": "query",
+        "category": "encoded"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "payload_reflected_decoded",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.7
+      },
+      "response": {
+        "body": "<script>alert(1)</script> decoded",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Normal content",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR pg_sleep(5)--",
+        "parameter": "search",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "time_delay_5.1s_vs_0.2s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.71
+      },
+      "response": {
+        "body": "Search results",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Search results",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.86"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<img src=x onerror=alert(1)>",
+        "parameter": "q",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 1.0
+      },
+      "response": {
+        "body": "<img src=x onerror=alert(1)> not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "test not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "synthetic: conf_variant base=0.85"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<details open ontoggle=alert(1)>",
+        "parameter": "id",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 2,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed",
+          "length_diff_ratio_0.05"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.25
+      },
+      "response": {
+        "body": "Details: <details open ontoggle=alert(1)> - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Details: Sample item - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Low",
+    "notes": "synthetic: conf_variant base=0.4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+        "parameter": "query",
+        "category": "encoded"
+      },
+      "rule_analysis": {
+        "score": 4.0,
+        "evidence": [
+          "payload_reflected_decoded",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.7
+      },
+      "response": {
+        "body": "<script>alert(1)</script> decoded",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Normal content",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<script>alert(1)</script>",
+        "parameter": "search",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 6.0,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.9
+      },
+      "response": {
+        "body": "Search results for <script>alert(1)</script>.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search results for test.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'x'='x",
+        "parameter": "name",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.5,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.45
+      },
+      "response": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=1"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR pg_sleep(5)--",
+        "parameter": "search",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "time_delay_5.1s_vs_0.2s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.86
+      },
+      "response": {
+        "body": "Search results",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Search results",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR '1'='1",
+        "parameter": "username",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 6.0,
+        "evidence": [
+          "authentication_bypass_detected",
+          "content_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.95
+      },
+      "response": {
+        "body": "Welcome admin. Dashboard available. User: admin. Admin panel loaded successfully.",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Invalid username or password. Please try again.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'",
+        "parameter": "search",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 4.0,
+        "evidence": [
+          "error_pattern_matched",
+          "sql_syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "You have an error in your SQL syntax near ''' at line 1. SELECT * FROM products WHERE name LIKE '%'%'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Search results for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=2--",
+        "parameter": "cat",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.0,
+        "evidence": [
+          "normalized_hash_changed",
+          "content_difference"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.55
+      },
+      "response": {
+        "body": "No products found in category",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Showing 25 products in category",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=1.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "test123",
+        "parameter": "query",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.0,
+        "evidence": []
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.1
+      },
+      "response": {
+        "body": "No results found",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "No results found",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=0"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<details open ontoggle=alert(1)>",
+        "parameter": "id",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 1.5,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed",
+          "length_diff_ratio_0.05"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "Details: <details open ontoggle=alert(1)> - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Details: Sample item - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=2"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(5)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "time_delay_5.2s_vs_0.3s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 5.2
+      },
+      "baseline": {
+        "body": "Loading product details...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=1 UNION SELECT null, @@version--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "content_changed",
+          "version_exposed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.84
+      },
+      "response": {
+        "body": "Microsoft SQL Server 2019 (RTM) - 15.0.2000.5 (X64)",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "Database version exposed via UNION injection"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1' AND 1=1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "normalized_hash_changed",
+          "length_diff_ratio_0.15"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.5
+      },
+      "response": {
+        "body": "Product: ABC-123\nDescription: Sample product variant",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: XYZ-789\nDescription: Another product",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: conf_variant base=0.65"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; WAITFOR DELAY '0:0:5'--",
+        "parameter": "query",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "time_delay_5.1s_vs_0.2s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, database(), null--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.25"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.87
+      },
+      "response": {
+        "body": "webapp_db",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product Name: Laptop",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(10)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 6.0,
+        "evidence": [
+          "time_delay_10.3s_vs_0.3s",
+          "confirmed_blind_injection"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.94
+      },
+      "response": {
+        "body": "Processing...",
+        "status_code": 200,
+        "response_time": 10.3
+      },
+      "baseline": {
+        "body": "Processing...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT username, password, email FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.65",
+          "sensitive_data_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.77
+      },
+      "response": {
+        "body": "admin:password123:admin@test.com\nuser1:qwerty456:user1@test.com\nuser2:letmein789:user2@test.com",
+        "status_code": 200,
+        "response_time": 0.6
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: conf_variant base=0.92"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(10)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 5.5,
+        "evidence": [
+          "time_delay_10.3s_vs_0.3s",
+          "confirmed_blind_injection"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.94
+      },
+      "response": {
+        "body": "Processing...",
+        "status_code": 200,
+        "response_time": 10.3
+      },
+      "baseline": {
+        "body": "Processing...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1 AND 1=1",
+        "parameter": "page",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.5,
+        "evidence": []
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.1
+      },
+      "response": {
+        "body": "Page 1 of results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Page 1 of results",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: conf_variant base=0.25"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<img src=x onerror=alert(1)>",
+        "parameter": "q",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.7
+      },
+      "response": {
+        "body": "<img src=x onerror=alert(1)> not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "test not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "synthetic: conf_variant base=0.85"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<script>alert('xss')</script>",
+        "parameter": "search",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 5.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.9
+      },
+      "response": {
+        "body": "Search results for <script>alert(1)</script>.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search results for test.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "synthetic: payload_variant"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<img src=x onerror=alert(1)>",
+        "parameter": "q",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "<img src=x onerror=alert(1)> not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "test not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "Reflected XSS - event handler reflected"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, username, password FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "admin:password123\nuser1:qwerty\nuser2:123456",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1 LIMIT 1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.35
+      },
+      "response": {
+        "body": "User: admin",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: conf_variant base=0.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND '1'='1",
+        "parameter": "search",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.45
+      },
+      "response": {
+        "body": "Search Results: Found 15 items for query",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Search Results: Found 12 items for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: conf_variant base=0.6"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR updatexml(1,concat(0x7e,user()),1)--",
+        "parameter": "id",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "error_pattern_matched",
+          "xpath_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.82
+      },
+      "response": {
+        "body": "ERROR: XPATH syntax error: '~root@localhost'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details page",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT table_name, null FROM information_schema.tables--",
+        "parameter": "category",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "content_changed",
+          "schema_information"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.89
+      },
+      "response": {
+        "body": "users\nproducts\norders\npayments\nsessions",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Category: Electronics",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR pg_sleep(5)--",
+        "parameter": "search",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "time_delay_5.1s_vs_0.2s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.86
+      },
+      "response": {
+        "body": "Search results",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Search results",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "PostgreSQL time-based blind injection"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'",
+        "parameter": "search",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "error_pattern_matched",
+          "sql_syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "You have an error in your SQL syntax near ''' at line 1. SELECT * FROM products WHERE name LIKE '%'%'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Search results for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; DROP TABLE users;--",
+        "parameter": "name",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "error_pattern_matched",
+          "syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "ERROR: syntax error at or near \";\"",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(10)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "time_delay_10.3s_vs_0.3s",
+          "confirmed_blind_injection"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.94
+      },
+      "response": {
+        "body": "Processing...",
+        "status_code": 200,
+        "response_time": 10.3
+      },
+      "baseline": {
+        "body": "Processing...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND '1'='1",
+        "parameter": "search",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.75
+      },
+      "response": {
+        "body": "Search Results: Found 15 items for query",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Search Results: Found 12 items for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: conf_variant base=0.6"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'a'='a",
+        "parameter": "filter",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.0,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "Filtered results: 100 items",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Filtered results: 98 items",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=1"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'a'='a",
+        "parameter": "filter",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "Filtered results: 100 items",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Filtered results: 98 items",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "Minor difference, possibly normal behavior"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(10)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 5,
+        "evidence": [
+          "time_delay_10.3s_vs_0.3s",
+          "confirmed_blind_injection"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.79
+      },
+      "response": {
+        "body": "Processing...",
+        "status_code": 200,
+        "response_time": 10.3
+      },
+      "baseline": {
+        "body": "Processing...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: conf_variant base=0.94"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<details open ontoggle=alert(1)>",
+        "parameter": "id",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 2,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed",
+          "length_diff_ratio_0.05"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "Details: <details open ontoggle=alert(1)> - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Details: Sample item - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Low",
+    "notes": "Reflected XSS weak signal - HTML reflected but LLM not confident"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "test123",
+        "parameter": "query",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0,
+        "evidence": []
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.25
+      },
+      "response": {
+        "body": "No results found",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "No results found",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: conf_variant base=0.1"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1 AND 1=1",
+        "parameter": "page",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.5,
+        "evidence": []
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "Page 1 of results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Page 1 of results",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: conf_variant base=0.25"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND SLEEP(10)--",
+        "parameter": "id",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 5,
+        "evidence": [
+          "time_delay_10.3s_vs_0.3s",
+          "confirmed_blind_injection"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.94
+      },
+      "response": {
+        "body": "Processing...",
+        "status_code": 200,
+        "response_time": 10.3
+      },
+      "baseline": {
+        "body": "Processing...",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "Confirmed time-based blind injection with 10 second delay"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1' AND 1=1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.5,
+        "evidence": [
+          "normalized_hash_changed",
+          "length_diff_ratio_0.15"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.65
+      },
+      "response": {
+        "body": "Product: ABC-123\nDescription: Sample product variant",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: XYZ-789\nDescription: Another product",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<svg onload=confirm(1)>",
+        "parameter": "search",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Search <svg onload=confirm(1)> results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search test results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, database(), null--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.25"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.87
+      },
+      "response": {
+        "body": "webapp_db",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product Name: Laptop",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, database(), null--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.25"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.72
+      },
+      "response": {
+        "body": "webapp_db",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product Name: Laptop",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.87"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<script>alert(1)</script>",
+        "parameter": "search",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 5.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.9
+      },
+      "response": {
+        "body": "Search results for <script>alert(1)</script>.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search results for test.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "Reflected XSS - script directly reflected"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1--",
+        "parameter": "user",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45",
+          "all_records_returned"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.78
+      },
+      "response": {
+        "body": "User List: admin, john, mary, bob, alice (50 total users)",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<svg onload=confirm(1)>",
+        "parameter": "search",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.75
+      },
+      "response": {
+        "body": "Search <svg onload=confirm(1)> results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search test results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Medium",
+    "notes": "synthetic: conf_variant base=0.6"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, username, password FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 5.0,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "admin:password123\nuser1:qwerty\nuser2:123456",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'x'='x",
+        "parameter": "name",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Welcome back user",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: conf_variant base=0.45"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, username, password FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.45"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "admin:password123\nuser1:qwerty\nuser2:123456",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT username, password, email FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 5.5,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.65",
+          "sensitive_data_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.92
+      },
+      "response": {
+        "body": "admin:password123:admin@test.com\nuser1:qwerty456:user1@test.com\nuser2:letmein789:user2@test.com",
+        "status_code": 200,
+        "response_time": 0.6
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=4.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "\"><script>alert(1)</script>",
+        "parameter": "name",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "\"><script>alert(1)</script> error.",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello John.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT null, database(), null--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.25"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.87
+      },
+      "response": {
+        "body": "webapp_db",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product Name: Laptop",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'><script>prompt(1)</script>",
+        "parameter": "comment",
+        "category": "polyglot"
+      },
+      "rule_analysis": {
+        "score": 5.0,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.78
+      },
+      "response": {
+        "body": "'><script>prompt(1)</script> posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Nice article! posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT username, password, email FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.65",
+          "sensitive_data_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.92
+      },
+      "response": {
+        "body": "admin:password123:admin@test.com\nuser1:qwerty456:user1@test.com\nuser2:letmein789:user2@test.com",
+        "status_code": 200,
+        "response_time": 0.6
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=4.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT username, password, email FROM users--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "content_changed",
+          "length_diff_ratio_0.65",
+          "sensitive_data_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.92
+      },
+      "response": {
+        "body": "admin:password123:admin@test.com\nuser1:qwerty456:user1@test.com\nuser2:letmein789:user2@test.com",
+        "status_code": 200,
+        "response_time": 0.6
+      },
+      "baseline": {
+        "body": "Product: Laptop\nPrice: $999",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "UNION-based SQL injection extracted user credentials with passwords"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND '1'='1",
+        "parameter": "search",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Search Results: Found 15 items for query",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Search Results: Found 12 items for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1 LIMIT 1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.5
+      },
+      "response": {
+        "body": "User: admin",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1 AND 1=1",
+        "parameter": "page",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.0,
+        "evidence": []
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.25
+      },
+      "response": {
+        "body": "Page 1 of results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Page 1 of results",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=0.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; WAITFOR DELAY '0:0:5'--",
+        "parameter": "query",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "time_delay_5.1s_vs_0.2s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "admin'--",
+        "parameter": "username",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "authentication_bypass_detected",
+          "admin_access_granted"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.76
+      },
+      "response": {
+        "body": "Welcome Administrator. Admin Dashboard loaded. Manage users.",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Login failed. Invalid credentials.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: conf_variant base=0.91"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'><script>prompt(1)</script>",
+        "parameter": "comment",
+        "category": "polyglot"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.93
+      },
+      "response": {
+        "body": "'><script>prompt(1)</script> posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Nice article! posted",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.78"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+        "parameter": "query",
+        "category": "encoded"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "payload_reflected_decoded",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.7
+      },
+      "response": {
+        "body": "<script>alert(1)</script> decoded",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Normal content",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<img src=x onerror=alert(1)>",
+        "parameter": "q",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "<img src=x onerror=alert(1)> not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "test not found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'",
+        "parameter": "search",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "error_pattern_matched",
+          "sql_syntax_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "You have an error in your SQL syntax near ''' at line 1. SELECT * FROM products WHERE name LIKE '%'%'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Search results for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'a'='a",
+        "parameter": "filter",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.55
+      },
+      "response": {
+        "body": "Filtered results: 100 items",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Filtered results: 98 items",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: conf_variant base=0.4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<details open ontoggle=alert(1)>",
+        "parameter": "id",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 1.0,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed",
+          "length_diff_ratio_0.05"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "Details: <details open ontoggle=alert(1)> - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Details: Sample item - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=2"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1 LIMIT 1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.65
+      },
+      "response": {
+        "body": "User: admin",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: conf_variant base=0.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND 1=1 UNION SELECT null, @@version--",
+        "parameter": "id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "content_changed",
+          "version_exposed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.84
+      },
+      "response": {
+        "body": "Microsoft SQL Server 2019 (RTM) - 15.0.2000.5 (X64)",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR updatexml(1,concat(0x7e,user()),1)--",
+        "parameter": "id",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 4.0,
+        "evidence": [
+          "error_pattern_matched",
+          "xpath_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.82
+      },
+      "response": {
+        "body": "ERROR: XPATH syntax error: '~root@localhost'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details page",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=3.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; WAITFOR DELAY '0:0:5'--",
+        "parameter": "query",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 5.0,
+        "evidence": [
+          "time_delay_5.1s_vs_0.2s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.88
+      },
+      "response": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT table_name, null FROM information_schema.tables--",
+        "parameter": "category",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "content_changed",
+          "schema_information"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.89
+      },
+      "response": {
+        "body": "users\nproducts\norders\npayments\nsessions",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Category: Electronics",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "Database schema enumerated via UNION injection"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND '1'='1",
+        "parameter": "search",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Search Results: Found 15 items for query",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Search Results: Found 12 items for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "Content difference detected but no sensitive data exposed"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "test",
+        "parameter": "query",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 0.5,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.3
+      },
+      "response": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Results for test",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "Weak signal, likely false positive"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' UNION SELECT credit_card, cvv, expiry FROM payments--",
+        "parameter": "order_id",
+        "category": "union"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "sensitive_data_detected",
+          "credit_card_exposed",
+          "content_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.96
+      },
+      "response": {
+        "body": "4532-1234-5678-9012:123:12/25\n4532-9876-5432-1098:456:06/24",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Order #12345 details",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1 LIMIT 1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.5
+      },
+      "response": {
+        "body": "User: admin",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 1=1 LIMIT 1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.5
+      },
+      "response": {
+        "body": "User: admin",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "User: john",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "Different user returned but limited impact"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR 'a'='a",
+        "parameter": "filter",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.5,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "maybe",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "Filtered results: 100 items",
+        "status_code": 200,
+        "response_time": 0.32
+      },
+      "baseline": {
+        "body": "Filtered results: 98 items",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=1"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<details open ontoggle=alert(1)>",
+        "parameter": "id",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 3.0,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed",
+          "length_diff_ratio_0.05"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "Details: <details open ontoggle=alert(1)> - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Details: Sample item - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Low",
+    "notes": "synthetic: score_variant base=2"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "\"><script>alert(1)</script>",
+        "parameter": "name",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 5.0,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "\"><script>alert(1)</script> error.",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello John.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "synthetic: score_variant base=4.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "\"><script>alert(1)</script>",
+        "parameter": "name",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "\"><script>alert(1)</script> error.",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Hello John.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "Reflected XSS with HTML attribute breakout"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<svg onload=confirm(1)>",
+        "parameter": "search",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 1.5,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Search <svg onload=confirm(1)> results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search test results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2.5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR '1'='1",
+        "parameter": "username",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 4.0,
+        "evidence": [
+          "authentication_bypass_detected",
+          "content_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.95
+      },
+      "response": {
+        "body": "Welcome admin. Dashboard available. User: admin. Admin panel loaded successfully.",
+        "status_code": 200,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Invalid username or password. Please try again.",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Critical",
+    "notes": "synthetic: score_variant base=5"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'; WAITFOR DELAY '0:0:5'--",
+        "parameter": "query",
+        "category": "time"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": [
+          "time_delay_5.1s_vs_0.2s"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.73
+      },
+      "response": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 5.1
+      },
+      "baseline": {
+        "body": "Results found",
+        "status_code": 200,
+        "response_time": 0.2
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.88"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' OR updatexml(1,concat(0x7e,user()),1)--",
+        "parameter": "id",
+        "category": "error"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": [
+          "error_pattern_matched",
+          "xpath_error"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.67
+      },
+      "response": {
+        "body": "ERROR: XPATH syntax error: '~root@localhost'",
+        "status_code": 500,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product details page",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "High",
+    "notes": "synthetic: conf_variant base=0.82"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "' AND '1'='1",
+        "parameter": "search",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 1.5,
+        "evidence": [
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Search Results: Found 15 items for query",
+        "status_code": 200,
+        "response_time": 0.35
+      },
+      "baseline": {
+        "body": "Search Results: Found 12 items for query",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "synthetic: score_variant base=2"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<svg onload=confirm(1)>",
+        "parameter": "search",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.45
+      },
+      "response": {
+        "body": "Search <svg onload=confirm(1)> results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search test results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Medium",
+    "notes": "synthetic: conf_variant base=0.6"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "1' AND 1=1--",
+        "parameter": "id",
+        "category": "boolean"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "normalized_hash_changed",
+          "length_diff_ratio_0.15"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.65
+      },
+      "response": {
+        "body": "Product: ABC-123\nDescription: Sample product variant",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Product: XYZ-789\nDescription: Another product",
+        "status_code": 200,
+        "response_time": 0.3
+      }
+    },
+    "severity": "Medium",
+    "notes": "Boolean-based injection with minor content change"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<svg onload=confirm(1)>",
+        "parameter": "search",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": [
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Search <svg onload=confirm(1)> results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search test results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Medium",
+    "notes": "SVG onload reflected with moderate confidence"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<script>alert(1)</script>",
+        "parameter": "search",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 5.5,
+        "evidence": [
+          "payload_reflected_in_response",
+          "xss_markers_detected",
+          "normalized_hash_changed"
+        ]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.75
+      },
+      "response": {
+        "body": "Search results for <script>alert(1)</script>.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search results for test.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "synthetic: conf_variant base=0.9"
+  }
+]

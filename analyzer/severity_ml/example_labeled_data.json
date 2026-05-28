@@ -230,5 +230,215 @@
     },
     "severity": "High",
     "notes": "Error-based injection extracted database user"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<script>alert(1)</script>",
+        "parameter": "search",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 5.5,
+        "evidence": ["payload_reflected_in_response", "xss_markers_detected", "normalized_hash_changed"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.9
+      },
+      "response": {
+        "body": "Search results for <script>alert(1)</script>. No results found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Search results for test. No results found.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "Reflected XSS - script payload directly reflected in response with HTML context break"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<img src=x onerror=alert(1)>",
+        "parameter": "q",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 5,
+        "evidence": ["payload_reflected_in_response", "xss_markers_detected", "length_diff_ratio_0.10"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.85
+      },
+      "response": {
+        "body": "<img src=x onerror=alert(1)> was not found. Please try again.",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "test was not found. Please try again.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Critical",
+    "notes": "Reflected XSS - event handler payload reflected enabling script execution"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "\"><script>alert(1)</script>",
+        "parameter": "name",
+        "category": "basic"
+      },
+      "rule_analysis": {
+        "score": 4.5,
+        "evidence": ["payload_reflected_in_response", "status_changed_200_to_500", "normalized_hash_changed"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.8
+      },
+      "response": {
+        "body": "Hello \"><script>alert(1)</script>. Error: unable to process request.",
+        "status_code": 500,
+        "response_time": 0.5
+      },
+      "baseline": {
+        "body": "Hello John. Welcome to our site.",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "Reflected XSS - HTML context break with attribute breakout reflected in error page"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+        "parameter": "query",
+        "category": "encoded"
+      },
+      "rule_analysis": {
+        "score": 3.5,
+        "evidence": ["payload_reflected_decoded", "xss_markers_detected", "normalized_hash_changed"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.7
+      },
+      "response": {
+        "body": "<script>alert(1)</script> decoded and executed by browser",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Normal search results page content here",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "Reflected XSS - URL-encoded payload decoded and reflected by server"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "'><script>prompt(1)</script>",
+        "parameter": "comment",
+        "category": "polyglot"
+      },
+      "rule_analysis": {
+        "score": 4,
+        "evidence": ["payload_reflected_in_response", "xss_markers_detected"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.78
+      },
+      "response": {
+        "body": "Posted: '><script>prompt(1)</script>",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Posted: Nice article!",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "High",
+    "notes": "Reflected XSS with single quote and angle bracket breakout"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<svg onload=confirm(1)>",
+        "parameter": "search",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 2.5,
+        "evidence": ["xss_markers_detected", "normalized_hash_changed"]
+      },
+      "ai_analysis": {
+        "verdict": "yes",
+        "confidence": 0.6
+      },
+      "response": {
+        "body": "Search for <svg onload=confirm(1)> returned no results",
+        "status_code": 200,
+        "response_time": 0.4
+      },
+      "baseline": {
+        "body": "Search for test returned no results",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Medium",
+    "notes": "Reflected XSS - SVG with onload event handler, moderate confidence"
+  },
+  {
+    "scan_result": {
+      "attack_details": {
+        "payload": "<details open ontoggle=alert(1)>",
+        "parameter": "id",
+        "category": "event"
+      },
+      "rule_analysis": {
+        "score": 2,
+        "evidence": ["xss_markers_detected", "normalized_hash_changed", "length_diff_ratio_0.05"]
+      },
+      "ai_analysis": {
+        "verdict": "no",
+        "confidence": 0.4
+      },
+      "response": {
+        "body": "Details: <details open ontoggle=alert(1)> - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "baseline": {
+        "body": "Details: Sample item - content below",
+        "status_code": 200,
+        "response_time": 0.3
+      },
+      "vuln_type": "reflected_xss"
+    },
+    "severity": "Low",
+    "notes": "Reflected XSS weak signal - HTML reflected but LLM not confident"
   }
 ]

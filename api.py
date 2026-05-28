@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-SQL Injection Scanner WebSocket API
+Vulnerability Scanner WebSocket API
 
-This module provides a WebSocket API for real-time SQL injection scanning.
-The scanner analyzes web forms and inputs, tests payloads, and reports
+This module provides a WebSocket API for real-time security vulnerability scanning.
+The scanner analyzes web forms and inputs, tests payloads (SQLi, XSS), and reports
 vulnerabilities as they are discovered.
 """
 
@@ -166,7 +166,7 @@ async def handle_client(websocket: Any):
     await send_to_client(client_id, {
         "type": "connected",
         "client_id": client_id,
-        "message": "Connected to SQL Injection Scanner API"
+        "message": "Connected to Vulnerability Scanner API (SQLi + XSS)"
     })
 
     try:
@@ -262,7 +262,7 @@ async def main():
     host = config.API_HOST
     port = config.API_PORT
     
-    logger.info(f"Starting SQL Injection Scanner WebSocket API on {host}:{port}")
+    logger.info(f"Starting Vulnerability Scanner WebSocket API (SQLi + XSS) on {host}:{port}")
     
     async with websockets.serve(handle_client, host, port):
         await asyncio.Future()

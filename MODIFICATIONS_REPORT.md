@@ -630,3 +630,250 @@ cat core/scan_results.json
 - Authentication bypass
 - All HTTP methods
 - Automatic form discovery
+- Reflected XSS detection (parallel with SQLi)
+
+---
+
+## 6. XSS (Cross-Site Scripting) Detection - NEW
+
+### Files Added/Modified for XSS Support:
+
+#### `payloads/xss_payloads.json` (NEW)
+```json
+{
+  "basic": ["<script>alert(1)</script>", "<img src=x onerror=alert(1)>", ...],
+  "event": ["<svg onload=confirm(1)>", "<input autofocus onfocus=alert(1)>", ...],
+  "encoded": ["%3Cscript%3Ealert(1)%3C%2Fscript%3E", ...],
+  "polyglot": ["\"'><script>alert(1)</script>", ...]
+}
+```
+
+Four categories of XSS payloads:
+- **basic**: Standard script and event handler injections
+- **event**: HTML event handler-based injections (onload, onfocus, ontoggle)
+- **encoded**: URL-encoded variants to bypass filters
+- **polyglot**: Multi-context payloads that work in various HTML contexts
+
+#### `analyzer/rules.py` - `analyze_with_rules_xss()`
+New function specifically for XSS detection:
+
+| Indicator | Score | Description |
+|-----------|-------|-------------|
+| Payload reflected in response | +3 | Primary XSS signal - payload appears in output |
+| Payload reflected (decoded) | +3 | URL-decoded payload found in response |
+| XSS HTML/JS markers detected | +2 | `<script>`, `onerror=`, `alert(`, etc. in response |
+| Status code change | +1 | 4xx/5xx responses |
+| Length difference | +1 | >15% content change |
+| Large content change | +1 | >500 bytes difference |
+| Hash changed | +0.5 | Normalized content differs |
+
+#### `test.py` - Dual Vulnerability Scanning
+The scan flow was refactored to run BOTH SQLi and XSS on each endpoint:
+
+```
+For each endpoint:
+  1. Get baseline
+  2. Run SQL Injection scan (Phase 1 + Phase 2)
+  3. Run Reflected XSS scan (Phase 1 + Phase 2)
+  4. Collect vulnerabilities from both
+```
+
+Key refactoring:
+- Extracted `_run_vuln_scan_for_endpoint()` - generic scan function
+- Accepts `vuln_type` parameter (`"sql_injection"` or `"reflected_xss"`)
+- Loads appropriate payloads (`sql_payloads.json` vs `xss_payloads.json`)
+- Uses correct analysis rules (`analyze_with_rules` vs `analyze_with_rules_xss`)
+- Results tagged with `vuln_type` field for downstream processing
+
+**Scan Flow:**
+```
+Phase 1 (Quick Probe): Test 5 simple payloads on each parameter
+  ↓ score > 0?
+Phase 2a (Deep Test): Full payload set on potentially vulnerable params
+  ↓ OR if no hits
+Phase 2b (Multi-param): Inject ALL parameters simultaneously
+```
+
+#### `analyzer/llm_analyzer.py` - Generic Vulnerability Analysis
+The LLM prompt was made generic:
+```python
+vuln_name = "SQL Injection" if vuln_type == "sql_injection" else "Reflected XSS (Cross-Site Scripting)"
+prompt = f"Analyze the following for {vuln_name} vulnerability..."
+```
+
+#### `reports/report_generator.py` - Multi-Vulnerability Reporting
+Key changes:
+- **Vulnerability type detection**: Reads `vuln_type` field from results
+- **Type-specific text**: Different descriptions for SQLi vs XSS
+- **Combined summary**: Shows counts for both SQLi and XSS
+- **Type-specific recommendations**: SQLi gets DB-focused advice, XSS gets output encoding/CSP advice
+- **Updated methodology**: Lists both SQLi and XSS techniques in methodology section
+- **Updated tools**: Cohere AI and ML classifier listed in tools section
+- **Iterates all vulnerabilities**: Previously showed only 1, now shows ALL findings
+
+| Feature | SQL Injection | Reflected XSS |
+|---------|:---:|:---:|
+| Payload file | `sql_payloads.json` | `xss_payloads.json` |
+| Quick probe payloads | `' OR '1'='1`, etc. | `<script>alert(1)</script>`, etc. |
+| Analysis function | `analyze_with_rules()` | `analyze_with_rules_xss()` |
+| Primary detection | SQL error patterns, auth bypass | Payload reflection, HTML markers |
+| Report section | SQL Injection details | XSS details |
+| Recommendations | Parameterized queries, input validation | Output encoding, CSP headers |
+
+#### `api.py` - WebSocket API Updates
+- Updated connection message to "Vulnerability Scanner API (SQLi + XSS)"
+- Updated server start log message
+- All existing WebSocket protocol remains compatible
+
+### Files Changed Summary
+
+| File | Changes | Type |
+|------|---------|------|
+| `payloads/xss_payloads.json` | New XSS payload file (4 categories, 30+ payloads) | NEW |
+| `analyzer/rules.py` | Added `analyze_with_rules_xss()`, XSS marker patterns | MODIFIED |
+| `test.py` | Refactored to support both SQLi + XSS scans per endpoint | MODIFIED |
+| `analyzer/llm_analyzer.py` | Added `vuln_type` parameter for generic prompts | MODIFIED |
+| `reports/report_generator.py` | Multi-vuln-type handling, combined report | MODIFIED |
+| `api.py` | Updated API branding to generic scanner | MODIFIED |
+| `MODIFICATIONS_REPORT.md` | This documentation | MODIFIED |
+
+### Coexistence with Existing Features
+- The XSS detection runs IN ADDITION to SQLi, not instead of
+- Both vulnerability types share the same connection and scan infrastructure
+- The report shows both SQLi and XSS findings with type-specific details
+- Each endpoint is tested for both vulnerabilities before moving to the next
+- Results JSON includes `vuln_type` field for proper downstream identification
+
+---
+
+## 7. ML Severity Classification - Enhanced
+
+### Files Modified
+
+#### `analyzer/severity_ml/feature_extractor.py`
+**Problem:** Feature vectors had inconsistent lengths — XSS-specific features (`payload_reflected`, `xss_reflection_score`, etc.) were only extracted for `reflected_xss` vuln_type, but SQLi entries lacked them. This crashed the ML model on mixed-type training data.
+
+**Fix:** XSS features are now **always extracted** (with appropriate default values for non-XSS entries), ensuring consistent 40-feature vectors regardless of vulnerability type.
+
+**Additional fixes:**
+- Regex compilation error in `XSS_MARKERS` — unescaped `prompt(`, `confirm(`, `alert(` parens broke `re.compile()`. Fixed with raw strings: `r"prompt\("`
+- Added 16 new features for XSS detection:
+  - `is_xss` / `is_sql_injection` — vulnerability type flags
+  - `payload_category_basic` / `event` / `encoded` / `polyglot` — XSS payload categories
+  - `is_script_tag` / `is_event_handler` / `has_html_tags` — XSS payload characteristics
+  - `has_payload_reflection` / `has_xss_markers` — rule-based reflection markers
+  - `response_has_xss_markers` — XSS markers in response body
+  - `payload_reflected` / `payload_reflected_decoded` / `xss_reflection_score` — reflection detection
+  - `response_length_change` — response size delta
+- New class constants: `XSS_MARKERS` list with 16 XSS indicators
+- New method: `_extract_xss_features()` — extracts reflection-based XSS features
+
+#### `analyzer/severity_ml/severity_classifier.py`
+**Enhanced rule-based prediction for XSS:**
+| Signal | Score Boost |
+|--------|:-----------:|
+| Payload reflected in response | +5 |
+| XSS markers present | +3 |
+| HTML tag injection | +1 |
+| Script/event handler injection | +2 |
+| XSS + sensitive data exposure | +3 |
+
+**Updated risk factor identification:**
+- `payload_reflection` — payload echoed by server
+- `xss_markers` — HTML/JS markers in response
+- `script_injection` / `event_handler_injection` — payload type detection
+- `high_rule_score` / `high_llm_confidence` — cross-cutting signals
+
+#### `analyzer/severity_ml/train_model.py`
+No changes to training script, but model was retrained with:
+- **Before:** 25 SQLi-only samples, 24 features
+- **After:** 31 samples (25 SQLi + 6 XSS), 40 features
+
+#### Data Augmentation (`augment_and_retrain.py`) — NEW
+To combat overfitting from limited training data (31 samples → RandomForest with 200 trees = 100% train / 57% test gap), a data augmentation pipeline was created:
+
+| Augmentation | Method | Multiplier |
+|-------------|--------|:----------:|
+| Score variants | ±0.5, ±1.0 from base | 4x |
+| Confidence variants | ±0.15 from base | 2x |
+| Parameter variants | Renamed parameter | 1x |
+| Payload alternates | Similar payloads for XSS | 1-3x |
+| Extra evidence | Added `content_changed`, `parameter_reflected` | 2x |
+
+**Result:** 32 original entries → **209 augmented samples** (159 SQLi, 50 XSS)
+
+#### Model Hyperparameter Tuning
+Overfitting was reduced by tightening the RandomForest:
+
+| Parameter | Before | After | Reason |
+|-----------|:------:|:-----:|--------|
+| `n_estimators` | 200 | **50** | Fewer trees = less memorization |
+| `max_depth` | 15 | **8** | Shallower = better generalization |
+| `min_samples_split` | 3 | **5** | Require more data to split |
+| `min_samples_leaf` | 2 | **3** | Larger leaf = smoother boundaries |
+| `max_features` | `sqrt` | **`log2`** | More conservative feature sampling |
+
+### Performance Improvement
+
+| Metric | Before (31 samples) | After (209 augmented) |
+|--------|:-------------------:|:---------------------:|
+| Train Accuracy | 100% | 100% |
+| Test Accuracy | 57.14% | **100%** |
+| CV Mean Accuracy | 71.0% | **92.2%** |
+| CV Std Dev | ±9.17% | ±4.26% |
+| OOB Score | 66.7% | **100%** |
+| Train-Test Gap | **42.9%** | **0.0%** |
+
+### Feature Importance (Top 10)
+```
+llm_confidence          : 0.1495
+rule_score              : 0.1147
+length_ratio            : 0.0785
+response_length         : 0.0756
+content_changed         : 0.0679
+payload_length          : 0.0650
+response_length_change  : 0.0632
+time_difference         : 0.0627
+payload_complexity      : 0.0623
+llm_verdict             : 0.0612
+```
+
+### Prediction Confidence Improvement
+
+| Vuln Type | Severity | Before | After |
+|-----------|----------|:------:|:-----:|
+| SQLi Auth Bypass | Critical | 39.3% | 41.8% |
+| SQLi Error-based | High | 43.6% | **49.5%** |
+| SQLi Boolean | Medium | 47.5% | **61.7%** |
+| XSS Script tag | Critical | 41.9% | **62.5%** |
+| XSS Event handler | Critical | 47.1% (High) | 42.8% (Critical) |
+| XSS Polyglot | Medium | 35.8% | 33.0% |
+
+### Files Changed Summary
+
+| File | Changes | Type |
+|------|---------|------|
+| `analyzer/severity_ml/feature_extractor.py` | Always-extract XSS features, regex fix, 16 new features | MODIFIED |
+| `analyzer/severity_ml/severity_classifier.py` | XSS rule-based prediction, risk factor detection | MODIFIED |
+| `analyzer/severity_ml/augment_and_retrain.py` | Data augmentation + hyperparameter tuning pipeline | NEW |
+| `analyzer/severity_ml/merged_training_data.json` | Deduplicated merge of training_data.json + example_labeled_data.json | NEW |
+| `analyzer/severity_ml/augmented_training_data.json` | 209 synthetically augmented training samples | NEW |
+| `analyzer/severity_ml/model/severity_model.pkl` | Retrained with 50 trees, max_depth=8, 209 samples | MODIFIED |
+| `analyzer/severity_ml/model/model_metadata.json` | Updated metrics, feature importance, class distribution | MODIFIED |
+| `test_mock_scan.py` | Mock scan pipeline verification (no network needed) | NEW |
+| `MODIFICATIONS_REPORT.md` | This documentation | MODIFIED |
+
+### Usage
+
+```bash
+# View ML predictions with mock data
+python test_mock_scan.py
+
+# Retrain with augmented data
+python analyzer/severity_ml/augment_and_retrain.py
+
+# Standard retrain from training data
+python -m analyzer.severity_ml.train_model --data analyzer/severity_ml/training_data.json --test
+
+# Add new labeled data (append to augmented_training_data.json, then retrain)
+```

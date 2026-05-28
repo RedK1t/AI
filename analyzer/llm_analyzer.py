@@ -27,7 +27,7 @@ class LLMAnalyzer:
             except Exception as e:
                 print(f"⚠️ Could not load severity classifier: {e}")
 
-    def analyze_vulnerability(self, attack_data, response_body, rule_result=None, baseline=None, response=None):
+    def analyze_vulnerability(self, attack_data, response_body, rule_result=None, baseline=None, response=None, vuln_type="sql_injection"):
         """
         Analyze vulnerability using LLM and predict severity if vulnerable.
 
@@ -37,15 +37,19 @@ class LLMAnalyzer:
             rule_result: Rule analysis result (optional, for severity)
             baseline: Baseline response data (optional, for severity)
             response: Full response data (optional, for severity)
+            vuln_type: Type of vulnerability ("sql_injection" or "reflected_xss")
 
         Returns:
             Dictionary with LLM analysis and severity prediction
         """
         # We take only the first 1500 characters to ensure that the API and analysis speed limits are not exceeded
         snippet = str(response_body)[:1500].replace('\n', ' ')
+
+        vuln_name = "SQL Injection" if vuln_type == "sql_injection" else "Reflected XSS (Cross-Site Scripting)"
+
         # the prompet to force AI to JSON-only format
         prompt = f"""
-        Analyze the following for SQL Injection vulnerability.
+        Analyze the following for {vuln_name} vulnerability.
         Payload used: {attack_data.get('payload')}
         Server Response: {snippet}
         Return ONLY a JSON object with this exact structure:

@@ -120,45 +120,90 @@ class SeverityClassifier:
         }
     
     def _rule_based_prediction(self, features: Dict[str, Any]) -> Dict[str, Any]:
-        """Fallback rule-based prediction when ML model is not available."""
+        """Fallback rule-based prediction when ML model is not available.
+        Handles both SQL Injection and XSS vulnerability types.
+        """
         score = 0
         risk_factors = []
+        is_xss = features.get('is_xss', 0)
         
-        # Critical indicators (highest weight)
-        if features.get('auth_bypass_detected', 0):
-            score += 5
-            risk_factors.append('authentication_bypass')
+        # ===== XSS-Specific Indicators =====
+        if is_xss:
+            # Payload reflection is the strongest XSS indicator
+            if features.get('has_payload_reflection', 0):
+                score += 5
+                risk_factors.append('payload_reflected')
+            
+            if features.get('payload_reflected_decoded', 0):
+                score += 4
+                risk_factors.append('payload_reflected_decoded')
+            
+            if features.get('has_xss_markers', 0):
+                score += 3
+                risk_factors.append('xss_markers_detected')
+            
+            if features.get('response_has_xss_markers', 0):
+                score += 2
+                risk_factors.append('xss_indicators_in_response')
+            
+            if features.get('has_html_tags', 0):
+                score += 1
+                risk_factors.append('html_tag_injection')
+            
+            if features.get('is_script_tag', 0):
+                score += 2
+                risk_factors.append('script_tag_injection')
+            
+            if features.get('is_event_handler', 0):
+                score += 2
+                risk_factors.append('event_handler_injection')
+            
+            # Only use XSS-relevant evidence from response
+            if features.get('response_has_sensitive_data', 0):
+                score += 3
+                risk_factors.append('sensitive_data_exposure')
+            
+            if features.get('response_has_admin_access', 0):
+                score += 3
+                risk_factors.append('admin_panel_access')
         
-        if features.get('response_has_admin_access', 0) and features.get('response_has_sensitive_data', 0):
-            score += 4
-            risk_factors.append('admin_with_sensitive_data')
+        # ===== SQLi-Specific Indicators =====
+        else:
+            # Critical indicators (highest weight)
+            if features.get('auth_bypass_detected', 0):
+                score += 5
+                risk_factors.append('authentication_bypass')
+            
+            if features.get('response_has_admin_access', 0) and features.get('response_has_sensitive_data', 0):
+                score += 4
+                risk_factors.append('admin_with_sensitive_data')
+            
+            if features.get('is_union_based', 0) and features.get('response_has_sensitive_data', 0):
+                score += 4
+                risk_factors.append('union_data_extraction')
+            
+            # High severity indicators
+            if features.get('has_sql_errors', 0):
+                score += 3
+                risk_factors.append('sql_error_exposure')
+            
+            if features.get('response_has_db_errors', 0):
+                score += 3
+                risk_factors.append('database_errors')
+            
+            if features.get('has_time_delay', 0):
+                score += 3
+                risk_factors.append('time_based_injection')
+            
+            if features.get('response_has_sensitive_data', 0):
+                score += 3
+                risk_factors.append('sensitive_data_exposure')
+            
+            if features.get('response_has_admin_access', 0):
+                score += 3
+                risk_factors.append('admin_panel_access')
         
-        if features.get('is_union_based', 0) and features.get('response_has_sensitive_data', 0):
-            score += 4
-            risk_factors.append('union_data_extraction')
-        
-        # High severity indicators
-        if features.get('has_sql_errors', 0):
-            score += 3
-            risk_factors.append('sql_error_exposure')
-        
-        if features.get('response_has_db_errors', 0):
-            score += 3
-            risk_factors.append('database_errors')
-        
-        if features.get('has_time_delay', 0):
-            score += 3
-            risk_factors.append('time_based_injection')
-        
-        if features.get('response_has_sensitive_data', 0):
-            score += 3
-            risk_factors.append('sensitive_data_exposure')
-        
-        if features.get('response_has_admin_access', 0):
-            score += 3
-            risk_factors.append('admin_panel_access')
-        
-        # Medium severity indicators
+        # ===== Shared Indicators (both XSS and SQLi) =====
         if features.get('is_time_based', 0):
             score += 2
             risk_factors.append('time_payload')
@@ -222,19 +267,36 @@ class SeverityClassifier:
     def _identify_risk_factors(self, features: Dict[str, Any]) -> List[str]:
         """Identify which risk factors contributed to the severity."""
         factors = []
+        is_xss = features.get('is_xss', 0)
         
-        if features.get('auth_bypass_detected', 0):
-            factors.append('authentication_bypass')
-        if features.get('has_sql_errors', 0) or features.get('response_has_db_errors', 0):
-            factors.append('sql_errors')
-        if features.get('has_time_delay', 0):
-            factors.append('time_based_injection')
+        if is_xss:
+            if features.get('has_payload_reflection', 0):
+                factors.append('payload_reflection')
+            if features.get('payload_reflected_decoded', 0):
+                factors.append('decoded_payload_reflection')
+            if features.get('has_xss_markers', 0):
+                factors.append('xss_markers')
+            if features.get('response_has_xss_markers', 0):
+                factors.append('xss_indicators')
+            if features.get('is_script_tag', 0):
+                factors.append('script_injection')
+            if features.get('is_event_handler', 0):
+                factors.append('event_handler_injection')
+        else:
+            if features.get('auth_bypass_detected', 0):
+                factors.append('authentication_bypass')
+            if features.get('has_sql_errors', 0) or features.get('response_has_db_errors', 0):
+                factors.append('sql_errors')
+            if features.get('has_time_delay', 0):
+                factors.append('time_based_injection')
+            if features.get('is_union_based', 0):
+                factors.append('union_based_injection')
+        
+        # Shared factors
         if features.get('response_has_sensitive_data', 0):
             factors.append('sensitive_data')
         if features.get('response_has_admin_access', 0):
             factors.append('admin_access')
-        if features.get('is_union_based', 0):
-            factors.append('union_based_injection')
         if features.get('rule_score', 0) >= 4:
             factors.append('high_rule_score')
         if features.get('llm_confidence', 0) >= 0.8:
