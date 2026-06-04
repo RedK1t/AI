@@ -2,11 +2,13 @@
 
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 
-load_dotenv()
+env_path = Path(__file__).resolve().parent.parent / '.env'
+load_dotenv(dotenv_path=env_path)
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "REDACTED_GEMINI_KEY")
-COHERE_API_KEY = os.getenv("COHERE_API_KEY", "REDACTED_COHERE_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 
 class Config:
     """Central configuration for the scanner."""

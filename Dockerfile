@@ -12,5 +12,8 @@ COPY . /code/app/
 
 EXPOSE 3006
 
+# Set working directory to app folder so relative paths work correctly
+WORKDIR /code/app
+
 # Run Uvicorn directly (standard practice for modern FastAPI)
-CMD ["python", "app/api.py"]
+CMD ["python", "api.py"]
