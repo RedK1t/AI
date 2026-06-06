@@ -1,472 +1,209 @@
-# SQL Injection Scanner WebSocket API
+# RedKit AI Scanner — API Documentation
 
-A real-time WebSocket API for SQL injection vulnerability scanning. The scanner discovers forms and inputs on web pages and tests them for SQL injection vulnerabilities, reporting findings as they are discovered.
+The AI service provides two co-located APIs, started together by `api.py`:
 
-## Features
+| API | Protocol | Default port | Purpose |
+|---|---|---|---|
+| **Scanner** | WebSocket | `3006` (`API_PORT`) | Real-time SQL Injection + Reflected XSS scanning |
+| **Report** | REST/HTTP | `3007` (`REPORT_API_PORT`) | Build & download a report from the latest scan |
 
-- **Real-time Results**: Get vulnerability findings instantly as they're discovered
-- **Smart Testing**: Stops testing a parameter once a vulnerability is found and moves to the next
-- **Form Discovery**: Automatically extracts forms and inputs from target URLs
-- **Multi-Payload Testing**: Tests various SQL injection payloads with different encoding modes
-- **AI-Powered Analysis**: Uses rule-based analysis and LLM for vulnerability confirmation
-
-## Installation
-
-```bash
-pip install python-dotenv websockets
-```
+Both run in the same process (`python api.py`). If the report API's optional dependencies are missing, the scanner still starts and a warning is logged.
 
 ## Configuration
 
-Create or edit the `.env` file in the project root:
+Environment variables (see `template.env`):
 
-```env
-API_PORT=8765
-API_HOST=0.0.0.0
-GEMINI_API_KEY=your_gemini_api_key
-COHERE_API_KEY=your_cohere_api_key
-```
+| Variable | Default | Description |
+|---|---|---|
+| `API_PORT` | `8765` (compose uses `3006`) | Scanner WebSocket port |
+| `API_HOST` | `0.0.0.0` | Bind host for both servers |
+| `REPORT_API_PORT` | `3007` | Report REST API port |
+| `COHERE_API_KEY` | — | LLM used to confirm findings |
+| `GEMINI_API_KEY` | — | Optional secondary key |
 
-## Running the API
+## Running
 
 ```bash
+pip install -r requirements.txt   # includes fastapi, uvicorn, markdown, weasyprint, python-docx
 python api.py
+# Scanner:  ws://0.0.0.0:3006
+# Report:   http://0.0.0.0:3007
 ```
 
-The server will start on `ws://0.0.0.0:8765` (or the port specified in `.env`).
-
-## WebSocket Connection
-
-Connect to the WebSocket endpoint:
-
-```javascript
-const ws = new WebSocket('ws://localhost:8765');
-```
+PDF reports require WeasyPrint's native libraries (installed in the Docker image:
+`libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf-2.0-0 libcairo2 shared-mime-info`). If they're
+absent, PDF is skipped while HTML/Markdown/DOCX still work.
 
 ---
 
-## Message Protocol
+# 1. Scanner WebSocket API (port 3006)
 
-All messages are JSON-encoded. Below are the message flows grouped by functionality.
-
-### 1. Connection Flow
-
-**When you connect to the server:**
-
-**→ Client connects to:** `ws://localhost:8765`
-
-**← Server sends:** `connected`
+Connect to `ws://<host>:3006`. On connect the server sends:
 
 ```json
-{
-  "type": "connected",
-  "client_id": "uuid",
-  "message": "Connected to SQL Injection Scanner API"
-}
+{ "type": "connected", "client_id": "<uuid>", "message": "Connected to Vulnerability Scanner API (SQLi + XSS)" }
 ```
 
----
+## Starting a scan — `start_scan`
 
-### 2. Start Scan Flow
+There are **two modes**:
 
-**To initiate a new SQL injection scan:**
+### A) Full raw request (recommended — tests body params & any method)
 
-**→ Client sends:** `start_scan`
+Send the captured HTTP request verbatim. This lets the scanner test **POST/PUT/PATCH body
+parameters**, GET/DELETE query parameters, JSON bodies, and replays captured headers
+(cookies/authorization) so authenticated endpoints stay authenticated.
 
 ```json
 {
   "type": "start_scan",
-  "url": "http://altoro.testfire.net/login.jsp"
+  "raw_request": "POST /login.php HTTP/1.1\r\nHost: example.com\r\nContent-Type: application/x-www-form-urlencoded\r\nCookie: sid=abc\r\n\r\nuname=admin&pass=secret",
+  "url": "https://example.com/login.php"
 }
 ```
 
-**← Server responds:** `scan_start`
+- `raw_request` (string, required for this mode): the full raw HTTP request (request line + headers + blank line + body).
+- `url` (string, optional but recommended): the absolute URL, used to resolve scheme/host reliably (the raw request line often carries only a path).
+
+**Body handling:**
+- `Content-Type: application/x-www-form-urlencoded` → body parsed into params and sent as a form body.
+- `Content-Type: application/json` (or a JSON-looking body) → keys parsed into params and sent as a JSON body.
+- Parameter placement follows the method: body methods (POST/PUT/PATCH) test **body** params; other methods test **query** params. (A request mixing query + body params tests the method-appropriate set.)
+
+### B) URL only (recon / legacy)
 
 ```json
-{
-  "type": "scan_start",
-  "scan_id": "uuid",
-  "target_url": "http://example.com/login",
-  "timestamp": "2024-01-15T10:30:00"
-}
+{ "type": "start_scan", "url": "http://example.com/listproducts.php?cat=1" }
 ```
 
-**← Server sends multiple:** `progress` (during payload testing only)
+The scanner parses URL query params and fetches the page to discover `<form>` inputs, then tests them.
 
+> One of `raw_request` or `url` is required; otherwise an `error` is returned.
+
+## Other client messages
+
+| Message | Shape | Effect |
+|---|---|---|
+| `ping` | `{ "type": "ping" }` | Server replies `{ "type": "pong", ... }` |
+| `watch_scan` | `{ "type": "watch_scan", "scan_id": "<id>" }` | Subscribe to another in-flight scan |
+| `list_scans` | `{ "type": "list_scans" }` | Returns active scans |
+
+## Server → client message stream
+
+During a scan the server streams these message types:
+
+**`scan_start`**
 ```json
-{
-  "type": "progress",
-  "url": "http://example.com/login",
-  "current": 15,
-  "total": 60,
-  "timestamp": "2024-01-15T10:30:05"
-}
+{ "type": "scan_start", "scan_id": "<uuid>", "target_url": "<url>", "timestamp": "<iso>" }
 ```
 
-**Note:** Progress messages are only sent during the actual payload testing phase. No progress messages are sent during parameter probing or after a vulnerability is found (to avoid noise after finding a probability).
-
-**← Server sends (when moving to next endpoint):** `endpoint_transition`
-
+**`progress`** — one per payload tested
 ```json
-{
-  "type": "endpoint_transition",
-  "completed_url": "http://example.com/search.jsp",
-  "next_url": "http://example.com/doLogin",
-  "timestamp": "2024-01-15T10:35:00"
-}
+{ "type": "progress", "url": "<endpoint>", "current": 12, "total": 240, "timestamp": "<iso>" }
 ```
 
-**Note:** This message is sent after an endpoint finishes testing and before starting the next one. The `next_url` will be `null` when the last endpoint is complete.
-
-**← Server sends (if vulnerability found):** `vulnerability_found`
-
-```json
-{
-  "type": "vulnerability_found",
-  "vulnerability": {
-    "parameter": "username",
-    "payload": "' OR '1'='1",
-    "url": "http://example.com/login",
-    "method": "POST",
-    "confidence": 0.95,
-    "explanation": "SQL injection confirmed via boolean-based blind injection",
-    "raw_request": "POST http://example.com/login HTTP/1.1\nHost: example.com\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin' OR '1'='1&password=test",
-    "raw_response": "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html>...",
-    "timestamp": "2024-01-15T10:30:15"
-  }
-}
-```
-
-**Note:** When multiple parameters are injected simultaneously, the `parameter` field will be an array:
-
+**`vulnerability_found`** — emitted immediately when a finding is confirmed (covers **both** SQLi and XSS via `vuln_type`)
 ```json
 {
   "type": "vulnerability_found",
   "vulnerability": {
-    "parameter": ["uid", "passw"],
-    "payload": "'))",
-    ...
+    "vuln_type": "sql_injection" | "reflected_xss",
+    "parameter": "<name>" | ["p1", "p2"],
+    "payload": "<injected string>",
+    "url": "<target url>",
+    "method": "GET" | "POST" | "PUT" | "PATCH" | "...",
+    "confidence": 0.0,
+    "explanation": "<LLM explanation>",
+    "raw_request": "<reconstructed HTTP request>",
+    "raw_response": "<HTTP response snippet>",
+    "timestamp": "<iso>"
   }
 }
 ```
 
-**← Server sends (when complete):** `scan_complete`
+**`endpoint_transition`**
+```json
+{ "type": "endpoint_transition", "completed_url": "<url>", "next_url": "<url>|null", "timestamp": "<iso>" }
+```
 
+**`scan_complete`** — terminal
 ```json
 {
   "type": "scan_complete",
-  "scan_id": "uuid",
+  "scan_id": "<uuid>",
   "result": {
     "success": true,
-    "total_endpoints": 3,
+    "total_endpoints": 1,
     "total_vulnerabilities": 2,
-    "results_file": "core/scan_results.json"
+    "sqli_vulnerabilities": 1,
+    "xss_vulnerabilities": 1,
+    "results_file": "<path to scan_results.json>"
   },
   "total_vulnerabilities": 2,
-  "vulnerabilities": [
-    {
-      "parameter": "username",
-      "payload": "' OR '1'='1",
-      "url": "http://example.com/login",
-      "method": "POST",
-      "confidence": 0.95,
-      "explanation": "SQL injection confirmed via boolean-based blind injection",
-      "raw_request": "POST http://example.com/login HTTP/1.1\nHost: example.com\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin' OR '1'='1&password=test",
-      "raw_response": "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html>..."
-    }
-  ],
-  "timestamp": "2024-01-15T10:35:00"
+  "vulnerabilities": [ /* all vulnerability objects from this scan */ ],
+  "timestamp": "<iso>"
 }
 ```
 
-**Note:** The `parameter` field can be either a string (single parameter) or an array of strings (multiple parameters injected simultaneously).
+**`error`**
+```json
+{ "type": "error", "error": "<message>", "timestamp": "<iso>" }
+```
+
+After each scan, results are written to `core/scan_results.json` and recorded as the
+"latest scan" for the report API.
 
 ---
 
-### 3. Watch Scan Flow
+# 2. Report REST API (port 3007)
 
-**To watch an existing scan in progress:**
+Builds a security report **from the most recent scan's findings** (no manual data entry).
+Base URL: `http://<host>:3007`. CORS allows all origins.
 
-**→ Client sends:** `watch_scan`
-
+### `GET /api/health`
 ```json
-{
-  "type": "watch_scan",
-  "scan_id": "uuid-of-scan"
-}
+{ "status": "ok", "service": "report-api" }
 ```
 
-**← Server responds (if scan exists):** `watching_scan`
+### `POST /api/generate-report`
+Generates the report from the latest `scan_results.json` and returns preview content plus
+download links for each available format.
 
+Request body (optional):
+```json
+{ "target_url": "https://example.com" }
+```
+- `target_url` (optional): overrides the report's target label; defaults to the last scan's target.
+
+Response `200`:
 ```json
 {
-  "type": "watching_scan",
-  "scan_id": "uuid-of-scan",
-  "timestamp": "2024-01-15T10:30:00"
-}
-```
-
-**← Server responds (if scan not found):** `error`
-
-```json
-{
-  "type": "error",
-  "error": "Scan uuid-of-scan not found",
-  "timestamp": "2024-01-15T10:30:00"
-}
-```
-
----
-
-### 4. List Active Scans Flow
-
-**To get all currently running scans:**
-
-**→ Client sends:** `list_scans`
-
-```json
-{
-  "type": "list_scans"
-}
-```
-
-**← Server responds:** `scans_list`
-
-```json
-{
-  "type": "scans_list",
-  "scans": [
-    {
-      "scan_id": "scan-uuid-1",
-      "target_url": "http://example.com/login",
-      "start_time": "2024-01-15T10:30:00"
-    }
-  ],
-  "timestamp": "2024-01-15T10:30:00"
-}
-```
-
----
-
-### 5. Keep-Alive Flow
-
-**To check if the connection is alive:**
-
-**→ Client sends:** `ping`
-
-```json
-{
-  "type": "ping"
-}
-```
-
-**← Server responds:** `pong`
-
-```json
-{
-  "type": "pong",
-  "timestamp": "2024-01-15T10:30:00"
-}
-```
-
----
-
-### 6. Error Handling Flow
-
-**Server sends error messages when something goes wrong:**
-
-**← Server sends:** `error`
-
-**Missing URL parameter:**
-```json
-{
-  "type": "error",
-  "error": "Missing 'url' parameter",
-  "timestamp": "2024-01-15T10:30:00"
-}
-```
-
-**Invalid JSON:**
-```json
-{
-  "type": "error",
-  "error": "Invalid JSON message",
-  "timestamp": "2024-01-15T10:30:00"
-}
-```
-
-**Unknown message type:**
-```json
-{
-  "type": "error",
-  "error": "Unknown message type: invalid_type",
-  "timestamp": "2024-01-15T10:30:00"
-}
-```
-
-**Scan error:**
-```json
-{
-  "type": "error",
-  "scan_id": "uuid",
-  "error": "Error description here",
-  "timestamp": "2024-01-15T10:30:00"
-}
-```
-
----
-
-## Example Usage
-
-### JavaScript Client Example
-
-```javascript
-const ws = new WebSocket('ws://localhost:8765');
-
-ws.onopen = () => {
-  console.log('Connected to SQL Injection Scanner API');
-  
-  // Start a scan
-  ws.send(JSON.stringify({
-    type: 'start_scan',
-    url: 'http://altoro.testfire.net/login.jsp'
-  }));
-};
-
-ws.onmessage = (event) => {
-  const data = JSON.parse(event.data);
-  
-  switch (data.type) {
-    case 'connected':
-      console.log('Client ID:', data.client_id);
-      break;
-      
-    case 'progress':
-      console.log(`Progress: ${data.current}/${data.total} - ${data.message}`);
-      break;
-      
-    case 'vulnerability_found':
-      console.log('⚠️ VULNERABILITY FOUND!');
-      console.log('Parameter:', data.vulnerability.parameter);
-      console.log('Payload:', data.vulnerability.payload);
-      console.log('Confidence:', data.vulnerability.confidence);
-      break;
-      
-    case 'scan_complete':
-      console.log('✅ Scan Complete');
-      console.log('Total Vulnerabilities:', data.total_vulnerabilities);
-      break;
-      
-    case 'error':
-      console.error('Error:', data.error);
-      break;
+  "target_url": "https://example.com",
+  "markdown_content": "# Vulnerability Assessment Report\n...",
+  "html_content": "<!DOCTYPE html>... styled report ...",
+  "downloads": {
+    "md":   "/api/report/download?format=md",
+    "docx": "/api/report/download?format=docx",
+    "pdf":  "/api/report/download?format=pdf"
   }
-};
-
-ws.onerror = (error) => {
-  console.error('WebSocket Error:', error);
-};
-
-ws.onclose = () => {
-  console.log('Disconnected from server');
-};
+}
 ```
+- `html_content` is the Markdown report rendered to a styled, standalone HTML document (used for in-app preview).
+- A `downloads.*` value is `null` if that format could not be produced (e.g. `pdf` when WeasyPrint native libs are missing).
+- `404` if no scan has been run yet; `500` on generation failure.
 
-### Python Client Example
-
-```python
-import asyncio
-import json
-import websockets
-
-async def scan():
-    uri = "ws://localhost:8765"
-    async with websockets.connect(uri) as ws:
-        # Start scan
-        await ws.send(json.dumps({
-            "type": "start_scan",
-            "url": "http://altoro.testfire.net/login.jsp"
-        }))
-        
-        async for message in ws:
-            data = json.loads(message)
-            
-            if data["type"] == "progress":
-                current = data.get("current", "?")
-                total = data.get("total", "?")
-                print(f"Progress: {current}/{total} - {data['message']}")
-                
-            elif data["type"] == "vulnerability_found":
-                vuln = data["vulnerability"]
-                print(f"VULNERABILITY: {vuln['parameter']} - {vuln['payload']}")
-                
-            elif data["type"] == "scan_complete":
-                print(f"Scan complete. Total: {data['total_vulnerabilities']}")
-                break
-
-asyncio.run(scan())
-```
+### `GET /api/report/download?format=docx|pdf|md`
+Returns the most recently generated report file (`FileResponse`).
+- `format` (default `docx`): one of `docx`, `pdf`, `md`.
+- `400` for an unsupported format; `404` if no report has been generated yet.
 
 ---
 
-## How It Works
+## End-to-end flow (front-end)
 
-### Scanning Flow
-
-1. **URL Parsing**: The scanner fetches the target URL and extracts all forms and inputs
-2. **Endpoint Discovery**: Identifies all testable endpoints (GET/POST parameters, form fields)
-3. **Baseline Request**: Makes a baseline request to understand normal behavior
-4. **Payload Generation**: Generates SQL injection test cases using various payloads and encoding modes
-5. **Vulnerability Testing**:
-   - Sends each payload to the target
-   - Analyzes responses using rule-based detection
-   - If score >= 3.0, uses AI to confirm vulnerability
-   - **On vulnerability found**: Immediately stops testing further payloads for that parameter and moves to the next
-6. **Results Export**: Saves all results to `core/scan_results.json`
-
-### Smart Parameter Testing
-
-The scanner tracks which parameters have been found vulnerable and skips testing them with additional payloads:
-
-```
-Testing parameter: username
-  - Payload 1: ' OR '1'='1 → VULNERABLE!
-  → Stop testing username, move to next parameter
-```
-
-This significantly reduces testing time while maintaining thorough coverage.
-
----
-
-## Port Configuration
-
-The API port is configured via the `.env` file:
-
-```env
-API_PORT=8765
-API_HOST=0.0.0.0
-```
-
-Default: `8765`
-
----
-
-## Error Reference
-
-| Error | Description | When It Occurs |
-|-------|-------------|----------------|
-| `Missing 'url' parameter` | No URL provided in start_scan request | When `start_scan` message lacks `url` field |
-| `Invalid JSON message` | Client sent malformed JSON | When message cannot be parsed as JSON |
-| `Unknown message type` | Unrecognized message type | When `type` field doesn't match known types |
-| `Scan {id} not found` | Attempted to watch non-existent scan | When `watch_scan` references invalid scan_id |
-
----
-
-## Notes
-
-- The scanner requires internet access to:
-  - Fetch target web pages
-  - Make test requests to targets
-  - Call AI APIs (Gemini/Cohere) for advanced analysis
-- Some targets may block automated requests (CAPTCHA, WAF, etc.)
-- Always get permission before scanning websites you don't own
+1. **Interceptor** → right-click a captured request → **Do Quick Scan**. The front-end sends the
+   full `raw_request` (+ `url`) over the scanner WebSocket; for history rows without a loaded body
+   it falls back to a URL-only scan.
+2. **/AiScanner** streams `progress` / `vulnerability_found` and renders results (SQLi & XSS).
+3. **Generate Report** → **/AiReport** calls `POST /api/generate-report`, previews `html_content`,
+   and offers **DOCX / PDF / Markdown** downloads via `/api/report/download`.

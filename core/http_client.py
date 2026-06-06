@@ -46,10 +46,13 @@ class HttpClient:
         # نأخذ التايم أوت من الإعدادات المركزية التي يستخدمها الـ Scanner
         self.timeout = getattr(config, 'TIMEOUT', 10)
 
-    def send(self, url, method="GET", params=None, data=None, headers=None):
+    def send(self, url, method="GET", params=None, data=None, headers=None, json_data=None):
         """
         هذه الدالة هي التي ستستدعيها كل وحدات الحقن (SQLi, XSS)
         التي يوزعها الـ Scanner.
+
+        json_data: when provided, the body is sent as JSON (Content-Type: application/json)
+        instead of form-encoded. Used for endpoints captured with a JSON request body.
         """
         try:
             start = time.time()
@@ -58,6 +61,7 @@ class HttpClient:
                 url=url,
                 params=params,
                 data=data,
+                json=json_data,
                 headers=headers,
                 timeout=self.timeout,
                 verify=False

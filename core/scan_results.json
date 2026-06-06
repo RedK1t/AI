@@ -1,10 +1,10 @@
 [
     {
-        "timestamp": "2026-05-28T07:56:21.957391",
+        "timestamp": "2026-06-06T12:30:16.137251",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "1 OR 1=1",
-            "parameter": "query",
+            "payload": "1' AND '1'='1",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -16,18 +16,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:22.129816",
+        "timestamp": "2026-06-06T12:30:16.501506",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "1 OR 1=1",
-            "parameter": "query",
+            "payload": "1' AND '1'='1",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -39,18 +39,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:22.318790",
+        "timestamp": "2026-06-06T12:30:16.835571",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "1 OR 1=1",
-            "parameter": "query",
+            "payload": "1' AND '1'='1",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -62,18 +62,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:22.498616",
+        "timestamp": "2026-06-06T12:30:17.168480",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "1 OR 1=1",
-            "parameter": "query",
+            "payload": "1' AND '1'='1",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -85,18 +85,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:22.688574",
+        "timestamp": "2026-06-06T12:30:17.704220",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "1 OR 1=1",
-            "parameter": "query",
+            "payload": "1' AND '1'='1",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -108,18 +108,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:22.865738",
+        "timestamp": "2026-06-06T12:30:18.075351",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "1 OR 1=1",
-            "parameter": "query",
+            "payload": "1' AND '1'='1",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -131,18 +131,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:23.217884",
+        "timestamp": "2026-06-06T12:30:18.440414",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "1 OR 1=1",
-            "parameter": "query",
+            "payload": "1' AND '1'='1",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -154,18 +154,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:23.394647",
+        "timestamp": "2026-06-06T12:30:18.987762",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "1 OR 1=1",
-            "parameter": "query",
+            "payload": "1' AND '1'='1",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -177,18 +177,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:23.570822",
+        "timestamp": "2026-06-06T12:30:19.347938",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "1 OR 1=1",
-            "parameter": "query",
+            "payload": "1' AND '1'='1",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -200,18 +200,225 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:23.752041",
+        "timestamp": "2026-06-06T12:30:19.717771",
+        "vuln_type": "sql_injection",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "uid",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 0.5,
+            "evidence": [
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:30:20.081596",
+        "vuln_type": "sql_injection",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "uid",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 0.5,
+            "evidence": [
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:30:20.445638",
+        "vuln_type": "sql_injection",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "uid",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 0.5,
+            "evidence": [
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:30:20.810737",
+        "vuln_type": "sql_injection",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "uid",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 0.5,
+            "evidence": [
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:30:21.168575",
+        "vuln_type": "sql_injection",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "uid",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 0.5,
+            "evidence": [
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:30:21.499545",
+        "vuln_type": "sql_injection",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "uid",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 0.5,
+            "evidence": [
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:30:22.032807",
+        "vuln_type": "sql_injection",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "uid",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 0.5,
+            "evidence": [
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:30:22.396307",
+        "vuln_type": "sql_injection",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "uid",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 0.5,
+            "evidence": [
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:30:22.760049",
+        "vuln_type": "sql_injection",
+        "attack_details": {
+            "payload": "' OR '1'='1",
+            "parameter": "uid",
+            "category": "boolean"
+        },
+        "rule_analysis": {
+            "score": 0.5,
+            "evidence": [
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:30:23.128320",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\" OR \"1\"=\"1",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -223,18 +430,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:23.923391",
+        "timestamp": "2026-06-06T12:30:23.484545",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\" OR \"1\"=\"1",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -246,18 +453,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:24.258455",
+        "timestamp": "2026-06-06T12:30:23.845997",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\" OR \"1\"=\"1",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -269,18 +476,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:24.431758",
+        "timestamp": "2026-06-06T12:30:24.217742",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\" OR \"1\"=\"1",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -292,18 +499,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:24.611136",
+        "timestamp": "2026-06-06T12:30:24.582360",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\" OR \"1\"=\"1",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -315,18 +522,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:24.782052",
+        "timestamp": "2026-06-06T12:30:24.945832",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\" OR \"1\"=\"1",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -338,18 +545,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:25.132933",
+        "timestamp": "2026-06-06T12:30:25.315929",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\" OR \"1\"=\"1",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -361,18 +568,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:25.471141",
+        "timestamp": "2026-06-06T12:30:25.886851",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\" OR \"1\"=\"1",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -384,18 +591,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:25.841414",
+        "timestamp": "2026-06-06T12:30:26.437892",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\" OR \"1\"=\"1",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "boolean"
         },
         "rule_analysis": {
@@ -407,639 +614,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:26.013613",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR '1'='1",
-            "parameter": "query",
-            "category": "boolean"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:26.188016",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR '1'='1",
-            "parameter": "query",
-            "category": "boolean"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:26.360747",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR '1'='1",
-            "parameter": "query",
-            "category": "boolean"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:26.715379",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR '1'='1",
-            "parameter": "query",
-            "category": "boolean"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:26.888043",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR '1'='1",
-            "parameter": "query",
-            "category": "boolean"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:27.060417",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR '1'='1",
-            "parameter": "query",
-            "category": "boolean"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:27.236337",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR '1'='1",
-            "parameter": "query",
-            "category": "boolean"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:27.413479",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR '1'='1",
-            "parameter": "query",
-            "category": "boolean"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:27.755552",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR '1'='1",
-            "parameter": "query",
-            "category": "boolean"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:27.928476",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'))",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:28.113454",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'))",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:28.285396",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'))",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:28.645575",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'))",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:28.816875",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'))",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:28.986853",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'))",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:29.158672",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'))",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:29.495396",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'))",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:29.830741",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'))",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:30.011273",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:30.188803",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:30.361779",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:30.534886",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:30.707501",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:31.040704",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:31.393204",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:31.564211",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:31.736223",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "'",
-            "parameter": "query",
-            "category": "error"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:31.913057",
+        "timestamp": "2026-06-06T12:30:26.826992",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\"",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "error"
         },
         "rule_analysis": {
@@ -1051,18 +637,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:32.084394",
+        "timestamp": "2026-06-06T12:30:27.215928",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\"",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "error"
         },
         "rule_analysis": {
@@ -1074,18 +660,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:32.254938",
+        "timestamp": "2026-06-06T12:30:27.597667",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\"",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "error"
         },
         "rule_analysis": {
@@ -1097,18 +683,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:32.589680",
+        "timestamp": "2026-06-06T12:30:27.984182",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\"",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "error"
         },
         "rule_analysis": {
@@ -1120,18 +706,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:32.761210",
+        "timestamp": "2026-06-06T12:30:28.372485",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\"",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "error"
         },
         "rule_analysis": {
@@ -1143,18 +729,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:32.931895",
+        "timestamp": "2026-06-06T12:30:28.754920",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\"",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "error"
         },
         "rule_analysis": {
@@ -1166,18 +752,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:33.107257",
+        "timestamp": "2026-06-06T12:30:29.129180",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\"",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "error"
         },
         "rule_analysis": {
@@ -1189,18 +775,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:33.455626",
+        "timestamp": "2026-06-06T12:30:29.516051",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\"",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "error"
         },
         "rule_analysis": {
@@ -1212,18 +798,18 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:33.627824",
+        "timestamp": "2026-06-06T12:30:29.902781",
         "vuln_type": "sql_injection",
         "attack_details": {
             "payload": "\"",
-            "parameter": "query",
+            "parameter": "uid",
             "category": "error"
         },
         "rule_analysis": {
@@ -1235,19 +821,91 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:33.805287",
+        "timestamp": "2026-06-06T12:30:37.616460",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
+            "payload": "'))",
+            "parameter": "uid",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 2.5,
+            "evidence": [
+                "error_pattern_matched",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.9,
+            "explanation": "The server response does not indicate any error messages or unexpected behavior that would suggest SQL Injection vulnerability.",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:30:45.333756",
+        "vuln_type": "sql_injection",
+        "attack_details": {
+            "payload": "'))",
+            "parameter": "uid",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 2.5,
+            "evidence": [
+                "error_pattern_matched",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.9,
+            "explanation": "The server response does not indicate any error messages or unexpected behavior that would suggest SQL Injection vulnerability.",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:30:52.914536",
+        "vuln_type": "sql_injection",
+        "attack_details": {
+            "payload": "'))",
+            "parameter": "uid",
+            "category": "error"
+        },
+        "rule_analysis": {
+            "score": 2.5,
+            "evidence": [
+                "error_pattern_matched",
+                "normalized_hash_changed"
+            ]
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.9,
+            "explanation": "The server response does not indicate any error messages or unexpected behavior that would suggest SQL Injection vulnerability.",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:30:53.305632",
+        "vuln_type": "sql_injection",
+        "attack_details": {
+            "payload": "'))",
+            "parameter": "uid",
+            "category": "error"
         },
         "rule_analysis": {
             "score": 0.5,
@@ -1258,19 +916,19 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:34.159394",
+        "timestamp": "2026-06-06T12:30:53.877171",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
+            "payload": "'))",
+            "parameter": "uid",
+            "category": "error"
         },
         "rule_analysis": {
             "score": 0.5,
@@ -1281,19 +939,19 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:34.335081",
+        "timestamp": "2026-06-06T12:30:54.282742",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
+            "payload": "'))",
+            "parameter": "uid",
+            "category": "error"
         },
         "rule_analysis": {
             "score": 0.5,
@@ -1304,19 +962,19 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:34.506719",
+        "timestamp": "2026-06-06T12:30:54.677678",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
+            "payload": "'))",
+            "parameter": "uid",
+            "category": "error"
         },
         "rule_analysis": {
             "score": 0.5,
@@ -1327,19 +985,19 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:34.679354",
+        "timestamp": "2026-06-06T12:30:55.090992",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
+            "payload": "'))",
+            "parameter": "uid",
+            "category": "error"
         },
         "rule_analysis": {
             "score": 0.5,
@@ -1350,19 +1008,19 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:34.852330",
+        "timestamp": "2026-06-06T12:30:55.692796",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
+            "payload": "'))",
+            "parameter": "uid",
+            "category": "error"
         },
         "rule_analysis": {
             "score": 0.5,
@@ -1373,665 +1031,57 @@
         "ai_analysis": {
             "verdict": "no",
             "confidence": 0.0,
-            "explanation": "Safe by rules",
+            "explanation": "No strong indicators (rule analysis)",
             "ml_label": 0
         },
         "severity_analysis": null,
         "is_vulnerable": false
     },
     {
-        "timestamp": "2026-05-28T07:56:35.195659",
+        "timestamp": "2026-06-06T12:31:04.032448",
         "vuln_type": "sql_injection",
         "attack_details": {
-            "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
+            "payload": "' OR updatexml(1,concat(0x7e,user()),1)-- -",
+            "parameter": "uid",
+            "category": "error"
         },
         "rule_analysis": {
-            "score": 0.5,
+            "score": 2.5,
             "evidence": [
+                "error_pattern_matched",
                 "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:35.368674",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:35.539571",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "\" OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:35.712650",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:35.882106",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:36.053581",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:36.223149",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:36.394803",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:36.566231",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:36.900585",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:37.072264",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:37.244738",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR (SELECT 1 FROM (SELECT(SLEEP(5)))a)--",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:37.415311",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "1 AND SLEEP(5)",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:37.587125",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "1 AND SLEEP(5)",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:37.939213",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "1 AND SLEEP(5)",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:38.112924",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "1 AND SLEEP(5)",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:38.282973",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "1 AND SLEEP(5)",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:38.639484",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "1 AND SLEEP(5)",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:38.997400",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "1 AND SLEEP(5)",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:39.169672",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "1 AND SLEEP(5)",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:39.341750",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "1 AND SLEEP(5)",
-            "parameter": "query",
-            "category": "time"
-        },
-        "rule_analysis": {
-            "score": 0.5,
-            "evidence": [
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": null,
-        "is_vulnerable": false
-    },
-    {
-        "timestamp": "2026-05-28T07:56:55.179461",
-        "vuln_type": "sql_injection",
-        "attack_details": {
-            "payload": "' OR '1'='1",
-            "parameter": "ALL_PARAMS",
-            "category": "boolean"
-        },
-        "rule_analysis": {
-            "score": 4.5,
-            "evidence": [
-                "length_diff_ratio_0.22",
-                "large_content_change_1916_bytes",
-                "normalized_hash_changed",
-                "login_error_disappeared"
             ]
         },
         "ai_analysis": {
             "verdict": "yes",
             "confidence": 1.0,
-            "explanation": "The payload ' OR '1'='1 successfully bypassed authentication, indicating SQL Injection vulnerability.",
+            "explanation": "The server response includes an XML-related error, indicating successful exploitation of an SQL Injection vulnerability using the `updatexml` function.",
             "ml_label": 1,
-            "severity": "Medium",
-            "severity_confidence": 0.4053827555162604,
+            "severity": "Critical",
+            "severity_confidence": 0.33101700512267584,
             "risk_factors": [
+                "sql_errors",
                 "sensitive_data",
                 "admin_access",
-                "high_rule_score",
                 "high_llm_confidence"
             ],
             "severity_method": "ml_model"
         },
         "severity_analysis": {
-            "severity": "Medium",
-            "severity_label": 1,
-            "confidence": 0.4053827555162604,
+            "severity": "Critical",
+            "severity_label": 3,
+            "confidence": 0.33101700512267584,
             "risk_factors": [
+                "sql_errors",
                 "sensitive_data",
                 "admin_access",
-                "high_rule_score",
                 "high_llm_confidence"
             ],
             "all_probabilities": {
-                "Low": 0.08277227722772278,
-                "Medium": 0.4053827555162604,
-                "High": 0.1416516468825201,
-                "Critical": 0.3701933203734966
-            },
-            "model_used": true,
-            "features_used": [
-                "is_xss",
-                "is_sql_injection",
-                "payload_category_boolean",
-                "payload_category_error",
-                "payload_category_time",
-                "payload_category_union",
-                "payload_category_basic",
-                "payload_category_event",
-                "payload_category_encoded",
-                "payload_category_polyglot",
-                "payload_length",
-                "payload_complexity",
-                "is_time_based",
-                "is_union_based",
-                "is_error_based",
-                "is_script_tag",
-                "is_event_handler",
-                "has_html_tags",
-                "rule_score",
-                "has_sql_errors",
-                "has_time_delay",
-                "auth_bypass_detected",
-                "content_changed",
-                "has_payload_reflection",
-                "has_xss_markers",
-                "llm_confidence",
-                "llm_verdict",
-                "response_length",
-                "response_has_db_errors",
-                "response_has_sensitive_data",
-                "response_has_admin_access",
-                "response_has_xss_markers",
-                "status_code",
-                "length_ratio",
-                "time_difference",
-                "status_code_change",
-                "payload_reflected",
-                "payload_reflected_decoded",
-                "xss_reflection_score",
-                "response_length_change"
-            ],
-            "feature_values": {
-                "is_xss": 0,
-                "is_sql_injection": 1,
-                "payload_category_boolean": 1,
-                "payload_category_error": 0,
-                "payload_category_time": 0,
-                "payload_category_union": 0,
-                "payload_category_basic": 0,
-                "payload_category_event": 0,
-                "payload_category_encoded": 0,
-                "payload_category_polyglot": 0,
-                "payload_length": 11,
-                "payload_complexity": 0.5177777777777778,
-                "is_time_based": 0,
-                "is_union_based": 0,
-                "is_error_based": 1,
-                "is_script_tag": 0,
-                "is_event_handler": 0,
-                "has_html_tags": 0,
-                "rule_score": 4.5,
-                "has_sql_errors": 0,
-                "has_time_delay": 0,
-                "auth_bypass_detected": 0,
-                "content_changed": 1,
-                "has_payload_reflection": 0,
-                "has_xss_markers": 0,
-                "llm_confidence": 1.0,
-                "llm_verdict": 1,
-                "response_length": 6742,
-                "response_has_db_errors": 0,
-                "response_has_sensitive_data": 1,
-                "response_has_admin_access": 1,
-                "response_has_xss_markers": 1,
-                "status_code": 200,
-                "length_ratio": 0.2212982212982213,
-                "time_difference": -0.2120664119720459,
-                "status_code_change": 0,
-                "payload_reflected": 0,
-                "payload_reflected_decoded": 0,
-                "xss_reflection_score": 0,
-                "response_length_change": 0.2212982212982213
-            }
-        },
-        "is_vulnerable": true
-    },
-    {
-        "timestamp": "2026-05-28T07:56:56.736828",
-        "vuln_type": "reflected_xss",
-        "attack_details": {
-            "payload": "<script>confirm('xss')</script>",
-            "parameter": "ALL_PARAMS",
-            "category": "basic"
-        },
-        "rule_analysis": {
-            "score": 2.5,
-            "evidence": [
-                "xss_markers_detected:</script>,<img ,<body ",
-                "normalized_hash_changed"
-            ]
-        },
-        "ai_analysis": {
-            "verdict": "no",
-            "confidence": 0.0,
-            "explanation": "Safe by rules",
-            "ml_label": 0
-        },
-        "severity_analysis": {
-            "severity": "Medium",
-            "severity_label": 1,
-            "confidence": 0.40316716324047924,
-            "risk_factors": [
-                "sensitive_data",
-                "admin_access"
-            ],
-            "all_probabilities": {
-                "Low": 0.3519127467000974,
-                "Medium": 0.40316716324047924,
-                "High": 0.10950109564601557,
-                "Critical": 0.13541899441340782
+                "Low": 0.1351310348715017,
+                "Medium": 0.3213623507890226,
+                "High": 0.2124896092167999,
+                "Critical": 0.33101700512267584
             },
             "model_used": true,
             "features_used": [
@@ -2080,29 +1130,29 @@
                 "is_xss": 0,
                 "is_sql_injection": 1,
                 "payload_category_boolean": 0,
-                "payload_category_error": 0,
+                "payload_category_error": 1,
                 "payload_category_time": 0,
                 "payload_category_union": 0,
-                "payload_category_basic": 1,
+                "payload_category_basic": 0,
                 "payload_category_event": 0,
                 "payload_category_encoded": 0,
                 "payload_category_polyglot": 0,
-                "payload_length": 31,
-                "payload_complexity": 0.4066666666666667,
+                "payload_length": 43,
+                "payload_complexity": 0.6644444444444445,
                 "is_time_based": 0,
                 "is_union_based": 0,
                 "is_error_based": 1,
-                "is_script_tag": 1,
+                "is_script_tag": 0,
                 "is_event_handler": 0,
-                "has_html_tags": 1,
+                "has_html_tags": 0,
                 "rule_score": 2.5,
-                "has_sql_errors": 0,
+                "has_sql_errors": 1,
                 "has_time_delay": 0,
                 "auth_bypass_detected": 0,
                 "content_changed": 1,
                 "has_payload_reflection": 0,
-                "has_xss_markers": 1,
-                "llm_confidence": 0.0,
+                "has_xss_markers": 0,
+                "llm_confidence": 1.0,
                 "llm_verdict": 1,
                 "response_length": 8604,
                 "response_has_db_errors": 0,
@@ -2111,7 +1161,7 @@
                 "response_has_xss_markers": 1,
                 "status_code": 200,
                 "length_ratio": 0.006237006237006237,
-                "time_difference": -0.39180469512939453,
+                "time_difference": -0.039784908294677734,
                 "status_code_change": 0,
                 "payload_reflected": 0,
                 "payload_reflected_decoded": 0,
@@ -2120,5 +1170,2273 @@
             }
         },
         "is_vulnerable": true
+    },
+    {
+        "timestamp": "2026-06-06T12:31:10.397782",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<script>prompt(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:10.785481",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<script>prompt(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:11.164777",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<script>prompt(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:11.549233",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<script>prompt(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:11.933940",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<script>prompt(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:12.322238",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<script>prompt(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:12.883819",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<script>prompt(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:13.273977",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<script>prompt(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:13.676819",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<script>prompt(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:14.157710",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:14.558910",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:14.956164",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:15.337232",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:15.888587",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:16.266554",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:16.642700",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:17.234497",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:17.602042",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:18.154880",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<svg onload=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:18.534486",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<svg onload=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:18.913443",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<svg onload=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:19.294972",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<svg onload=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:19.678255",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<svg onload=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:20.238897",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<svg onload=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:20.609769",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<svg onload=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:20.981259",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<svg onload=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:21.533656",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<svg onload=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "basic"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:22.075747",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<input autofocus onfocus=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:22.439716",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<input autofocus onfocus=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:22.817800",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<input autofocus onfocus=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:23.187801",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<input autofocus onfocus=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:23.565969",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<input autofocus onfocus=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:24.111085",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<input autofocus onfocus=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:24.491366",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<input autofocus onfocus=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:25.411800",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<input autofocus onfocus=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:25.782265",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<input autofocus onfocus=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:26.159925",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<img src=x onerror=confirm(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:26.521071",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<img src=x onerror=confirm(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:27.021574",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<img src=x onerror=confirm(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:27.378190",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<img src=x onerror=confirm(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:27.731757",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<img src=x onerror=confirm(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:28.056114",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<img src=x onerror=confirm(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:28.414207",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<img src=x onerror=confirm(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:28.742165",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<img src=x onerror=confirm(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:29.256366",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<img src=x onerror=confirm(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:29.790207",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<details open ontoggle=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:30.317750",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<details open ontoggle=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:30.862942",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<details open ontoggle=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:31.232779",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<details open ontoggle=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:31.613232",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<details open ontoggle=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:31.999576",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<details open ontoggle=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:32.479346",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<details open ontoggle=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:32.994106",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<details open ontoggle=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:33.503208",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "<details open ontoggle=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "event"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:34.167799",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:34.713501",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:35.217614",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:35.923137",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:36.348664",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:36.765659",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:37.192340",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:37.778324",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:38.347721",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:38.745096",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:39.319656",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:39.880045",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:40.271964",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:40.672574",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:41.062875",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:41.643034",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:42.319374",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:42.766465",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:43.161628",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Csvg%20onload%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:43.547326",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Csvg%20onload%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:44.117781",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Csvg%20onload%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:44.532135",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Csvg%20onload%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:45.005268",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Csvg%20onload%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:45.579054",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Csvg%20onload%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:45.973428",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Csvg%20onload%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:46.546908",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Csvg%20onload%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:46.927809",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "%3Csvg%20onload%3Dalert(1)%3E",
+            "parameter": "ALL_PARAMS",
+            "category": "encoded"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:47.309774",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:47.690520",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:48.073264",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:48.986433",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:49.337090",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:49.690553",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:50.042038",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:50.573816",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:50.932271",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'><script>alert(1)</script>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:51.260638",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert(1) )//%0D%0A%0D%0A</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert(1)>\\x3e",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:51.584548",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert(1) )//%0D%0A%0D%0A</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert(1)>\\x3e",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:52.120341",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert(1) )//%0D%0A%0D%0A</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert(1)>\\x3e",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:52.650832",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert(1) )//%0D%0A%0D%0A</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert(1)>\\x3e",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:53.014082",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert(1) )//%0D%0A%0D%0A</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert(1)>\\x3e",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:53.513149",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert(1) )//%0D%0A%0D%0A</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert(1)>\\x3e",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:53.869172",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert(1) )//%0D%0A%0D%0A</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert(1)>\\x3e",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:54.410415",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert(1) )//%0D%0A%0D%0A</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert(1)>\\x3e",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:54.780906",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert(1) )//%0D%0A%0D%0A</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert(1)>\\x3e",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:55.147551",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'--></title></style></script><img src=x onerror=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:55.688169",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'--></title></style></script><img src=x onerror=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:56.038784",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'--></title></style></script><img src=x onerror=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:56.383229",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'--></title></style></script><img src=x onerror=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:56.738129",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'--></title></style></script><img src=x onerror=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:57.095924",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'--></title></style></script><img src=x onerror=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:57.471479",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'--></title></style></script><img src=x onerror=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:57.856100",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'--></title></style></script><img src=x onerror=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
+    },
+    {
+        "timestamp": "2026-06-06T12:31:58.234970",
+        "vuln_type": "reflected_xss",
+        "attack_details": {
+            "payload": "\"'--></title></style></script><img src=x onerror=alert(1)>",
+            "parameter": "ALL_PARAMS",
+            "category": "polyglot"
+        },
+        "rule_analysis": {
+            "score": 0,
+            "evidence": []
+        },
+        "ai_analysis": {
+            "verdict": "no",
+            "confidence": 0.0,
+            "explanation": "No strong indicators (rule analysis)",
+            "ml_label": 0
+        },
+        "severity_analysis": null,
+        "is_vulnerable": false
     }
 ]

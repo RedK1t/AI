@@ -8,6 +8,7 @@ vulnerabilities as they are discovered.
 """
 
 import asyncio
+import functools
 import json
 import logging
 import uuid
@@ -48,12 +49,16 @@ async def broadcast_to_scan(scan_id: str, message: dict):
             await send_to_client(client_id, message)
 
 
-async def handle_scan_request(client_id: str, scan_id: str, target_url: str):
+async def handle_scan_request(client_id: str, scan_id: str, target_url: str, raw_request: str | None = None):
     """
     Handle a scan request by running the scan and streaming results.
-    
+
     When a vulnerability is found, it immediately notifies the client
     and stops testing further payloads for that specific parameter.
+
+    If raw_request is provided, the scanner tests exactly that captured HTTP
+    request (method, headers, query + body params); target_url is then used only
+    as the absolute URL for reliable scheme/host resolution.
     """
     try:
         await send_to_client(client_id, {
@@ -69,13 +74,14 @@ async def handle_scan_request(client_id: str, scan_id: str, target_url: str):
         # Store reference to main event loop for callbacks
         main_loop = asyncio.get_event_loop()
 
-        def progress_callback(msg: str, url = None, current = None, total = None):
+        def progress_callback(msg: str, url = None, current = None, total = None, tested = None):
             progress_messages.append({
                 "timestamp": datetime.now().isoformat(),
                 "message": msg,
                 "url": url,
                 "current": current,
-                "total": total
+                "total": total,
+                "tested": tested
             })
             try:
                 msg_data = {
@@ -83,6 +89,7 @@ async def handle_scan_request(client_id: str, scan_id: str, target_url: str):
                     "url": url,
                     "current": current,
                     "total": total,
+                    "tested": tested,
                     "timestamp": datetime.now().isoformat()
                 }
                 # Schedule on main event loop from worker thread
@@ -126,15 +133,20 @@ async def handle_scan_request(client_id: str, scan_id: str, target_url: str):
             except Exception as e:
                 logger.error(f"Error sending endpoint transition: {e}")
 
-        # Run scan in executor to avoid blocking event loop
+        # Run scan in executor to avoid blocking event loop.
+        # functools.partial lets us forward the raw_request/absolute_url kwargs.
         loop = asyncio.get_event_loop()
         result = await loop.run_in_executor(
-            None, 
-            run_scan, 
-            target_url, 
-            progress_callback, 
-            result_callback,
-            endpoint_transition_callback
+            None,
+            functools.partial(
+                run_scan,
+                target_url,
+                progress_callback,
+                result_callback,
+                endpoint_transition_callback,
+                raw_request=raw_request,
+                absolute_url=target_url if raw_request else None,
+            ),
         )
 
         await send_to_client(client_id, {
@@ -176,25 +188,32 @@ async def handle_client(websocket: Any):
                 msg_type = data.get("type")
                 
                 if msg_type == "start_scan":
+                    # Two modes:
+                    #   - raw_request (+ optional url): scan a captured full HTTP request (body params!)
+                    #   - url only: legacy URL/recon scan with form discovery
+                    raw_request = data.get("raw_request")
                     target_url = data.get("url")
-                    if not target_url:
+                    if not target_url and not raw_request:
                         await send_to_client(client_id, {
                             "type": "error",
-                            "error": "Missing 'url' parameter",
+                            "error": "Missing 'url' or 'raw_request' parameter",
                             "timestamp": datetime.now().isoformat()
                         })
                         continue
-                    
+
                     scan_id = str(uuid.uuid4())
                     active_scans[scan_id] = {
-                        "target_url": target_url,
+                        "target_url": target_url or "(raw request)",
                         "client_id": client_id,
                         "watchers": [client_id],
                         "start_time": datetime.now()
                     }
-                    
-                    logger.info(f"Starting scan {scan_id} for {target_url}")
-                    await handle_scan_request(client_id, scan_id, target_url)
+
+                    logger.info(
+                        f"Starting scan {scan_id} for "
+                        f"{'raw request -> ' + str(target_url) if raw_request else target_url}"
+                    )
+                    await handle_scan_request(client_id, scan_id, target_url, raw_request=raw_request)
                     del active_scans[scan_id]
                     
                 elif msg_type == "watch_scan":
@@ -258,14 +277,32 @@ async def handle_client(websocket: Any):
 
 
 async def main():
-    """Start the WebSocket server."""
+    """Start the WebSocket scanner server and the REST report API concurrently."""
     host = config.API_HOST
     port = config.API_PORT
-    
-    logger.info(f"Starting Vulnerability Scanner WebSocket API (SQLi + XSS) on {host}:{port}")
-    
+    report_port = getattr(config, "REPORT_API_PORT", 3007)
+
+    logger.info(f"Starting Vulnerability Scanner WebSocket API (SQLi + XSS) on ws://{host}:{port}")
+
+    # Try to start the REST report API in the same process; degrade gracefully if its
+    # optional dependencies (fastapi/uvicorn/weasyprint) are unavailable.
+    report_server = None
+    try:
+        import uvicorn
+        from report_api import app as report_app
+        uvicorn_config = uvicorn.Config(
+            report_app, host=host, port=report_port, log_level="info", loop="asyncio"
+        )
+        report_server = uvicorn.Server(uvicorn_config)
+        logger.info(f"Starting Report REST API on http://{host}:{report_port}")
+    except Exception as e:
+        logger.warning(f"Report REST API not started (missing deps?): {e}")
+
     async with websockets.serve(handle_client, host, port):
-        await asyncio.Future()
+        if report_server is not None:
+            await report_server.serve()
+        else:
+            await asyncio.Future()
 
 
 if __name__ == "__main__":

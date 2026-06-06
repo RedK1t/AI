@@ -3,7 +3,7 @@ import json
 import time
 import os
 from datetime import datetime
-from core.parser import parse_endpoint
+from core.parser import parse_endpoint, parse_raw_request
 from core.request_builder import RequestBuilder
 from core.http_client import HttpClient
 from payloads.mutator import Mutator
@@ -46,16 +46,27 @@ def _run_vuln_scan_for_endpoint(
     endpoint_data, baseline, scan_client, llm,
     vuln_type, payload_file, quick_probe_payloads,
     progress_callback, result_callback,
-    endpoint_idx, endpoints_len, final_results_log
+    endpoint_idx, endpoints_len, final_results_log,
+    counters=None
 ):
     """
     Run a single vulnerability type scan (SQLi or XSS) on one endpoint.
     Returns number of vulnerabilities found.
+
+    counters: optional dict with a 'tested' key, incremented for every payload sent
+    (quick probe + deep test) so the API can report an accurate total.
     """
+    if counters is None:
+        counters = {'tested': 0}
+
     method = endpoint_data.get('method', 'GET')
     endpoint_url = endpoint_data.get('url', 'unknown')
     params = endpoint_data.get('params', {})
     param_names = list(params.keys())
+
+    # Captured request headers (cookies/auth) and JSON-vs-form body, if this came from a raw request
+    request_headers = endpoint_data.get('request_headers')
+    is_json_body = endpoint_data.get('body_type') == 'json'
 
     if not param_names:
         return 0
@@ -89,14 +100,19 @@ def _run_vuln_scan_for_endpoint(
                 response = scan_client.send(
                     url=endpoint_url,
                     method=method,
-                    data=test_params
+                    data=None if is_json_body else test_params,
+                    json_data=test_params if is_json_body else None,
+                    headers=request_headers
                 )
             else:
                 response = scan_client.send(
                     url=endpoint_url,
                     method=method,
-                    params=test_params
+                    params=test_params,
+                    headers=request_headers
                 )
+
+            counters['tested'] += 1
 
             if vuln_type == "sql_injection":
                 rule_result = analyze_with_rules(baseline, response, hint="check_content_change")
@@ -110,22 +126,25 @@ def _run_vuln_scan_for_endpoint(
                 if param_name not in potentially_vulnerable:
                     potentially_vulnerable[param_name] = []
                 potentially_vulnerable[param_name].append((probe_payload, score))
+                # Strong potential -> stop probing THIS param and move on to deep testing.
+                # (Do NOT add to vulnerable_params here: that set means "already confirmed,
+                #  skip in deep testing", and marking a merely-potential param would cause the
+                #  real vulnerable param to never be deep-tested or reported.)
                 if score >= 2.0:
-                    vulnerable_params.add(param_name)
                     break
 
-    # Phase 2: Deep testing
+    # Phase 2: Deep testing.
+    # Always build the plan from the FULL endpoint (every param + the all-params injection).
+    # This is essential for things like login forms, where injecting only the one param the
+    # quick probe happened to flag (e.g. passw) never triggers the SQLi, but injecting all
+    # params (uid + passw) does (auth bypass). Quick-probe just decides whether to go deep.
+    mutator = Mutator(payload_filename=payload_file, max_per_param=3)
     if potentially_vulnerable:
-        logging.info(f"   Phase 2: Deep testing on {len(potentially_vulnerable)} parameter(s)...")
-        mutator = Mutator(payload_filename=payload_file, max_per_param=3)
-        filtered_params = {k: v for k, v in params.items() if k in potentially_vulnerable}
-        filtered_endpoint = endpoint_data.copy()
-        filtered_endpoint['params'] = filtered_params
-        attack_plan = mutator.create_attack_plan([filtered_endpoint])
+        logging.info(f"   Phase 2: Deep testing all params (flagged: {list(potentially_vulnerable.keys())})...")
+        attack_plan = mutator.create_attack_plan([endpoint_data])
         logging.info(f"   Created {len(attack_plan)} mutations.")
     else:
-        logging.info(f"   Phase 2: No individual params vulnerable, trying multi-parameter injection...")
-        mutator = Mutator(payload_filename=payload_file, max_per_param=3)
+        logging.info(f"   Phase 2: No individual params flagged, trying multi-parameter injection...")
         attack_plan = mutator.create_attack_plan([endpoint_data])
         attack_plan = [a for a in attack_plan if
                        a.get('injection_type') == 'multi' or a.get('target_param') == 'ALL_PARAMS']
@@ -143,14 +162,18 @@ def _run_vuln_scan_for_endpoint(
             url=attack['target_url'],
             method=attack['method'],
             params=attack.get('params_to_send'),
-            data=attack.get('body_data')
+            data=None if is_json_body else attack.get('body_data'),
+            json_data=attack.get('body_data') if is_json_body else None,
+            headers=request_headers
         )
 
         endpoint_current += 1
+        counters['tested'] += 1
 
         progress_msg = f"[{vuln_label}] [{attack['method']}] {attack['target_param']} = {attack['raw_payload'][:50]}..."
         if progress_callback:
-            progress_callback(progress_msg, url=endpoint_url, current=endpoint_current, total=endpoint_total)
+            progress_callback(progress_msg, url=endpoint_url, current=endpoint_current,
+                              total=endpoint_total, tested=counters['tested'])
         logging.info(progress_msg)
 
         if vuln_type == "sql_injection":
@@ -158,9 +181,12 @@ def _run_vuln_scan_for_endpoint(
         else:
             rule_result = analyze_with_rules_xss(baseline, response, attack.get('raw_payload'), hint="xss_detection")
 
+        # Consult the LLM for any payload with medium+ rule evidence (>= 2.0). Medium findings
+        # require the LLM's agreement to be confirmed (see decide_verdict), which is what
+        # eliminates false positives from weak/ambiguous signals.
         llm_result = None
-        if rule_result['score'] >= 3.0:
-            logging.info(f"Score {rule_result['score']} is high. Consulting AI for {vuln_label}...")
+        if rule_result['score'] >= 2.0:
+            logging.info(f"Score {rule_result['score']} warrants AI review for {vuln_label}...")
             llm_result = llm.analyze_vulnerability(
                 attack, response['body'],
                 rule_result=rule_result, baseline=baseline, response=response,
@@ -171,7 +197,7 @@ def _run_vuln_scan_for_endpoint(
             llm_result = {
                 "verdict": "no",
                 "confidence": 0.0,
-                "explanation": "Safe by rules",
+                "explanation": "No strong indicators (rule analysis)",
                 "ml_label": 0
             }
 
@@ -277,14 +303,27 @@ def _run_vuln_scan_for_endpoint(
                 else:
                     resolved_param = []
 
+            # Confidence + explanation come from the FINAL decision, not the (possibly
+            # unused) LLM placeholder, so a confirmed finding never shows "Safe by rules".
+            reasons = final_decision.get('why') or rule_result.get('reasons', [])
+            if final_decision.get('llm_used') and llm_result and llm_result.get('verdict') == 'yes' \
+                    and llm_result.get('explanation'):
+                explanation = llm_result['explanation']
+            else:
+                explanation = "Confirmed by rule analysis"
+                if reasons:
+                    explanation += ": " + ", ".join(str(r) for r in reasons)
+            severity_label = severity_result.get('severity') if severity_result else None
+
             vulnerability_details = {
                 "vuln_type": vuln_type,
+                "severity": severity_label,
                 "parameter": resolved_param,
                 "payload": attack.get('raw_payload'),
                 "url": attack['target_url'],
                 "method": attack['method'],
-                "confidence": llm_result.get('confidence') if llm_result else 0,
-                "explanation": llm_result.get('explanation') if llm_result else "",
+                "confidence": final_decision.get('confidence', 0),
+                "explanation": explanation,
                 "raw_request": raw_request,
                 "raw_response": raw_response
             }
@@ -300,9 +339,23 @@ def _run_vuln_scan_for_endpoint(
     return found_vulnerabilities
 
 
-def run_scan(target_url, progress_callback=None, result_callback=None, endpoint_transition_callback=None):
+# Metadata of the most recent scan, consumed by the report REST API
+LAST_SCAN = {
+    "target_url": None,
+    "results_file": None,
+    "timestamp": None,
+}
+
+
+def run_scan(target_url, progress_callback=None, result_callback=None,
+             endpoint_transition_callback=None, raw_request=None, absolute_url=None):
     """
-    Run SQL Injection + Reflected XSS scan on target URL with smart parameter detection.
+    Run SQL Injection + Reflected XSS scan with smart parameter detection.
+
+    Two input modes:
+    - raw_request provided: scan EXACTLY that captured HTTP request (method, headers,
+      query + body params). This is how POST/PUT/PATCH body parameters get tested.
+    - raw_request omitted: parse target_url and discover forms (recon / URL-only flow).
 
     Uses a two-phase approach for each vulnerability type:
     1. Quick probe each parameter with 1-2 payloads to detect potential vulnerabilities
@@ -322,7 +375,16 @@ def run_scan(target_url, progress_callback=None, result_callback=None, endpoint_
             endpoint_transition_callback(completed_url, next_url)
 
     try:
-        parsed_data = parse_endpoint(target_url)
+        if raw_request:
+            send_progress("Scanning a captured raw HTTP request (GET/POST/any method, body params included)")
+            parsed_data = parse_raw_request(raw_request, absolute_url=absolute_url or target_url)
+            if not parsed_data:
+                send_progress("Could not parse the raw HTTP request")
+                return {"error": "Could not parse the raw HTTP request"}
+            # Use the resolved absolute URL as the reporting target when available
+            target_url = parsed_data.get('full_url') or parsed_data.get('url') or target_url
+        else:
+            parsed_data = parse_endpoint(target_url)
         if not parsed_data:
             send_progress("No data parsed from target")
             return {"error": "No data parsed from target"}
@@ -343,74 +405,74 @@ def run_scan(target_url, progress_callback=None, result_callback=None, endpoint_
             send_progress(f"Parser OK: Target {target_url}")
             send_progress(f"   Method: {method}, Params: {params}")
 
+        scan_client = HttpClient()
+        llm = LLMAnalyzer()
+        builder = RequestBuilder()
+        counters = {'tested': 0}
+
+        # Establish a baseline for each endpoint once; reused by both scan passes.
+        prepared = []  # list of (endpoint_data, baseline)
         for endpoint_idx, endpoint_data in enumerate(endpoints):
-            method = endpoint_data.get('method', 'GET')
             endpoint_url = endpoint_data.get('url', target_url)
-            params = endpoint_data.get('params', {})
-            param_names = list(params.keys())
-
-            if endpoint_idx > 0 and previous_endpoint_url:
-                next_url = endpoint_url if endpoint_idx < len(endpoints) else None
-                send_endpoint_transition(previous_endpoint_url, next_url)
-
+            param_names = list(endpoint_data.get('params', {}).keys())
             send_progress(f"\n{'=' * 60}")
-            send_progress(f"Testing Endpoint {endpoint_idx + 1}/{len(endpoints)}")
-            send_progress(f"   Method: {method}")
-            send_progress(f"   URL: {endpoint_url}")
+            send_progress(f"Endpoint {endpoint_idx + 1}/{len(endpoints)}: "
+                          f"{endpoint_data.get('method', 'GET')} {endpoint_url}")
             send_progress(f"   Params: {param_names}")
-            send_progress(f"{'=' * 60}")
 
-            builder = RequestBuilder()
             baseline = builder.get_baseline(endpoint_data)
-
             if not baseline.get('success'):
                 send_progress(f"Baseline Error for endpoint {endpoint_idx + 1}: {baseline.get('error')}")
                 continue
-
             send_progress(f"Baseline Captured (Length: {baseline['length']})")
+            prepared.append((endpoint_data, baseline))
 
-            scan_client = HttpClient()
-            llm = LLMAnalyzer()
-
-            # Run SQL Injection scan
-            send_progress(f"\n--- SQL Injection Scan ---")
+        # ===== PASS 1/2: SQL Injection across ALL endpoints first =====
+        send_progress(f"\n{'=' * 60}\nPASS 1/2 — SQL Injection\n{'=' * 60}")
+        for endpoint_idx, (endpoint_data, baseline) in enumerate(prepared):
+            send_progress(f"--- [SQLi] {endpoint_data.get('url')} ---")
             sqli_found = _run_vuln_scan_for_endpoint(
                 endpoint_data, baseline, scan_client, llm,
                 "sql_injection", "sql_payloads.json", SQLI_QUICK_PROBE_PAYLOADS,
                 progress_callback, result_callback,
-                endpoint_idx, len(endpoints), final_results_log
+                endpoint_idx, len(prepared), final_results_log, counters
             )
+            total_vulnerabilities += sqli_found
 
-            # Run Reflected XSS scan
-            send_progress(f"\n--- Reflected XSS Scan ---")
+        # ===== PASS 2/2: Reflected XSS across ALL endpoints =====
+        send_progress(f"\n{'=' * 60}\nPASS 2/2 — Reflected XSS\n{'=' * 60}")
+        for endpoint_idx, (endpoint_data, baseline) in enumerate(prepared):
+            send_progress(f"--- [XSS] {endpoint_data.get('url')} ---")
             xss_found = _run_vuln_scan_for_endpoint(
                 endpoint_data, baseline, scan_client, llm,
                 "reflected_xss", "xss_payloads.json", XSS_QUICK_PROBE_PAYLOADS,
                 progress_callback, result_callback,
-                endpoint_idx, len(endpoints), final_results_log
+                endpoint_idx, len(prepared), final_results_log, counters
             )
+            total_vulnerabilities += xss_found
 
-            endpoint_vulns = sqli_found + xss_found
-            total_vulnerabilities += endpoint_vulns
-            send_progress(f"\nEndpoint {endpoint_idx + 1} Complete. SQLi: {sqli_found}, XSS: {xss_found}, Total: {endpoint_vulns}")
-            send_progress("-" * 60)
-
-            previous_endpoint_url = endpoint_url
-
-        if previous_endpoint_url:
-            send_endpoint_transition(previous_endpoint_url, None)
+            # Endpoint is fully scanned (both passes) -> emit exactly one transition for it
+            completed_url = endpoint_data.get('url')
+            next_url = prepared[endpoint_idx + 1][0].get('url') if endpoint_idx + 1 < len(prepared) else None
+            send_endpoint_transition(completed_url, next_url)
 
         output_file = os.path.join(SCRIPT_DIR, "core", "scan_results.json")
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump(final_results_log, f, indent=4, ensure_ascii=False)
 
+        # Record metadata so the report REST API can build a report from this scan
+        LAST_SCAN["target_url"] = target_url
+        LAST_SCAN["results_file"] = output_file
+        LAST_SCAN["timestamp"] = datetime.now().isoformat()
+
         sqli_count = sum(1 for r in final_results_log if r.get('vuln_type') == 'sql_injection' and r.get('is_vulnerable'))
         xss_count = sum(1 for r in final_results_log if r.get('vuln_type') == 'reflected_xss' and r.get('is_vulnerable'))
 
         send_progress(f"\n{'=' * 60}")
         send_progress(f"ALL SCANS COMPLETE!")
-        send_progress(f"Total Endpoints Tested: {len(endpoints)}")
+        send_progress(f"Total Endpoints Tested: {len(prepared)}")
+        send_progress(f"Total Payloads Tested: {counters['tested']}")
         send_progress(f"SQL Injection Vulnerabilities: {sqli_count}")
         send_progress(f"Reflected XSS Vulnerabilities: {xss_count}")
         send_progress(f"Total Vulnerabilities Found: {total_vulnerabilities}")
@@ -431,7 +493,8 @@ def run_scan(target_url, progress_callback=None, result_callback=None, endpoint_
 
         return {
             "success": True,
-            "total_endpoints": len(endpoints),
+            "total_endpoints": len(prepared),
+            "total_payloads_tested": counters['tested'],
             "total_vulnerabilities": total_vulnerabilities,
             "sqli_vulnerabilities": sqli_count,
             "xss_vulnerabilities": xss_count,

@@ -1,4 +1,5 @@
 import os
+import json
 import random
 import requests
 import re
@@ -210,6 +211,123 @@ Optionally fetches the page to discover forms
         return results
     else:
         return url_result if structured_params else None
+
+
+def parse_raw_request(raw_request, absolute_url=None):
+    """
+    Parse a full raw HTTP request (as captured by the proxy/interceptor) into the
+    same endpoint structure produced by parse_endpoint(), so the scanner engine can
+    test it directly — including POST/PUT/PATCH body parameters.
+
+    Args:
+        raw_request (str): The raw HTTP request text (request line + headers + body).
+        absolute_url (str|None): The known absolute URL of the request (preferred for
+            resolving scheme/host reliably, since the raw request line may only carry a path).
+
+    Returns:
+        dict|None: {method, url, full_url, params, request_headers, body_type} or None
+        if the request could not be parsed.
+    """
+    if not raw_request or not str(raw_request).strip():
+        return None
+
+    # Normalize line endings, then split head (request line + headers) from body
+    text = str(raw_request).replace('\r\n', '\n').replace('\r', '\n')
+    if '\n\n' in text:
+        head, body = text.split('\n\n', 1)
+    else:
+        head, body = text, ''
+
+    lines = head.split('\n')
+    request_line = lines[0].strip()
+    parts = request_line.split()
+    if len(parts) < 2:
+        print(f"[-] Could not parse request line: {request_line!r}")
+        return None
+
+    method = parts[0].upper()
+    raw_path = parts[1]
+
+    # Parse headers into a dict (preserve original casing for values)
+    headers = {}
+    for line in lines[1:]:
+        if ':' in line:
+            k, v = line.split(':', 1)
+            headers[k.strip()] = v.strip()
+
+    host = headers.get('Host') or headers.get('host')
+
+    # Resolve the absolute URL: prefer the explicitly provided absolute_url
+    if absolute_url:
+        base = absolute_url
+        # If the caller's URL lost the query string but the raw path carries one, restore it
+        if '?' not in base and '?' in raw_path:
+            base = base + raw_path[raw_path.index('?'):]
+    elif raw_path.lower().startswith(('http://', 'https://')):
+        base = raw_path
+    elif host:
+        base = f"https://{host}{raw_path}"
+    else:
+        print("[-] Cannot resolve absolute URL from raw request (no absolute_url and no Host header)")
+        return None
+
+    parsed = urlparse(base)
+    clean_url = f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
+    query_params = {k: vals[0] for k, vals in parse_qs(parsed.query).items()}
+
+    # Determine Content-Type (case-insensitive)
+    content_type = ''
+    for k, v in headers.items():
+        if k.lower() == 'content-type':
+            content_type = v.lower()
+            break
+
+    # Parse the body into parameters
+    body = body.strip()
+    body_params = {}
+    body_type = 'form'
+    if body:
+        if 'application/json' in content_type or (body.startswith('{') and body.endswith('}')):
+            try:
+                obj = json.loads(body)
+                if isinstance(obj, dict):
+                    body_params = {k: ('' if v is None else str(v)) for k, v in obj.items()}
+                    body_type = 'json'
+            except Exception as e:
+                print(f"[-] Failed to parse JSON body: {e}")
+        else:
+            body_params = {k: vals[0] for k, vals in parse_qs(body).items()}
+            body_type = 'form'
+
+    # Choose which params to test based on the HTTP method (matches the engine's send logic)
+    body_methods = {'POST', 'PUT', 'PATCH'}
+    if method in body_methods:
+        chosen = body_params if body_params else query_params
+    else:
+        chosen = query_params
+
+    structured_params = {
+        key: {"value": val, "type": detect_type(val)}
+        for key, val in chosen.items()
+    }
+
+    # Keep captured headers (cookies/auth/content-type) but drop ones requests recomputes
+    request_headers = {
+        k: v for k, v in headers.items()
+        if k.lower() not in ('host', 'content-length')
+    }
+
+    print(f"[+] Parsed raw request: {method} {clean_url}")
+    print(f"    └── Testing {len(structured_params)} param(s): {list(structured_params.keys())} (body_type={body_type})")
+
+    return {
+        "method": method,
+        "url": clean_url,
+        "full_url": base,
+        "params": structured_params,
+        "request_headers": request_headers,
+        "body_type": body_type,
+    }
 
 
 # ==========================================

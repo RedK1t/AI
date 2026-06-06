@@ -19,6 +19,8 @@ class Config:
     ]
     API_PORT = int(os.getenv("API_PORT", "8765"))
     API_HOST = os.getenv("API_HOST", "0.0.0.0")
+    # Port for the REST report API served alongside the scanner WebSocket
+    REPORT_API_PORT = int(os.getenv("REPORT_API_PORT", "3007"))
 
 def get_config():
     """Returns an instance of the configuration class."""

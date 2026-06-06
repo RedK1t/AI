@@ -170,54 +170,42 @@ def analyze_with_rules_xss(baseline, response, payload_used, hint=None, threshol
     response_body = response.get("body", "") if response else ""
     payload_str = str(payload_used) if payload_used else ""
 
-    # 1) Payload reflection check (primary XSS indicator)
+    # 1) Payload reflection check — the PRIMARY (and required) reflected-XSS indicator.
+    # Reflected XSS only exists if our injected payload appears, unescaped, in the response.
+    # A distinctive fragment of the payload (e.g. confirm('xss') / the <script> we sent) must
+    # be present; otherwise pre-existing page markers must NOT count (testfire etc. ship
+    # <script> tags of their own, which previously caused false positives).
+    reflected = False
     if response_body and payload_str:
         if payload_str in response_body:
             reasons.append("payload_reflected_in_response")
             score += 3
+            reflected = True
         decoded_payload = urllib.parse.unquote(payload_str)
         if decoded_payload != payload_str and decoded_payload in response_body:
-            marker = "payload_reflected_decoded"
-            if marker not in reasons:
-                reasons.append(marker)
+            reasons.append("payload_reflected_decoded")
+            if not reflected:
                 score += 3
+            reflected = True
 
-    # 2) HTML/JS injection markers in response
-    if response_body:
+    # 2) Injection markers — only meaningful when OUR payload actually reflected.
+    # Confirms the reflection landed as live HTML/JS rather than HTML-encoded text.
+    if reflected and response_body:
         body_lower = response_body.lower()
-        found_markers = []
-        for marker in XSS_REFLECTION_MARKERS:
-            if marker in body_lower:
-                found_markers.append(marker)
+        found_markers = [m for m in XSS_REFLECTION_MARKERS if m in body_lower]
         if found_markers:
             reasons.append(f"xss_markers_detected:{','.join(found_markers[:3])}")
-            score += 2
-
-    # 3) Status code change
-    if baseline and baseline.get("status_code") is not None and response.get("status_code") is not None:
-        if baseline["status_code"] != response["status_code"] and response["status_code"] >= 400:
-            reasons.append(f"status_changed_{baseline['status_code']}_to_{response['status_code']}")
             score += 1
 
-    # 4) Length difference
+    # NOTE: status/length/hash differences are recorded for context but do NOT add score
+    # for XSS — they are noise without reflection and were a major false-positive source.
+    if baseline and baseline.get("status_code") is not None and response.get("status_code") is not None:
+        if baseline["status_code"] != response["status_code"]:
+            reasons.append(f"status_changed_{baseline['status_code']}_to_{response['status_code']}")
+
     lr = length_diff_ratio(baseline.get("length", 0) if baseline else 0, response.get("length", 0))
     if lr >= thresholds["length_ratio"]:
         reasons.append(f"length_diff_ratio_{lr:.2f}")
-        score += 1
-
-    abs_diff = abs((baseline.get("length", 0) if baseline else 0) - response.get("length", 0))
-    if abs_diff > 500:
-        reasons.append(f"large_content_change_{abs_diff}_bytes")
-        score += 1
-
-    # 5) Hash change
-    baseline_clean = normalize_body(baseline.get("body", "") if baseline else "")
-    response_clean = normalize_body(response.get("body", "") if response else "")
-    baseline_hash = _md5(baseline_clean[:10000])
-    new_hash = _md5(response_clean[:10000])
-    if baseline_hash != new_hash:
-        reasons.append("normalized_hash_changed")
-        score += 0.5
 
     snippet = snippet_diff(
         baseline.get("body", "") if baseline else "",

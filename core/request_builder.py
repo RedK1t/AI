@@ -42,7 +42,7 @@ class RequestBuilder:
             "X-Forwarded-For": f"{random.randint(1, 255)}.{random.randint(1, 255)}.{random.randint(1, 255)}.{random.randint(1, 255)}"
         }
 
-    def send_request(self, url, method="GET", params=None, data=None):
+    def send_request(self, url, method="GET", params=None, data=None, json_data=None, extra_headers=None):
         """
         Sends an HTTP request and returns a structured response object.
 
@@ -51,11 +51,16 @@ class RequestBuilder:
             method (str): HTTP method (GET/POST).
             params (dict): Query parameters for GET.
             data (dict): Body data for POST.
+            json_data (dict): JSON body (sets Content-Type: application/json).
+            extra_headers (dict): Captured request headers (cookies/auth) merged over defaults.
 
         Returns:
             dict: Contains status_code, response_time, length, and body.
         """
         headers = self._get_random_headers()
+        if extra_headers:
+            # Captured headers (cookies/authorization/etc.) take precedence over random defaults
+            headers.update(extra_headers)
 
         try:
             # Measure response time accurately (Crucial for Time-Based SQLi)
@@ -66,6 +71,7 @@ class RequestBuilder:
                 url=url,
                 params=params,
                 data=data,
+                json=json_data,
                 headers=headers,
                 timeout=self.timeout,
                 verify=False,  # Ignore SSL errors
@@ -111,22 +117,29 @@ class RequestBuilder:
 
         # Determine HTTP method and where to send data
         method = parsed_data.get('method', 'GET').upper()
-        
+
+        # Captured request headers (cookies/auth) and JSON-vs-form body type, if present
+        extra_headers = parsed_data.get('request_headers')
+        is_json_body = parsed_data.get('body_type') == 'json'
+
         # Methods that typically use request body: POST, PUT, PATCH
         # Methods that typically use query params: GET, HEAD, OPTIONS, TRACE, DELETE
         body_methods = {'POST', 'PUT', 'PATCH'}
-        
+
         if method in body_methods:
-            # For body-based methods, send data in request body
+            # For body-based methods, send data in request body (JSON or form-encoded)
             return self.send_request(
                 url=parsed_data['url'],
                 method=method,
-                data=clean_params
+                data=None if is_json_body else clean_params,
+                json_data=clean_params if is_json_body else None,
+                extra_headers=extra_headers
             )
         else:
             # For query-based methods, send data in URL params
             return self.send_request(
                 url=parsed_data['url'],
                 method=method,
-                params=clean_params
+                params=clean_params,
+                extra_headers=extra_headers
             )
