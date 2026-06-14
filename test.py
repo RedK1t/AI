@@ -192,7 +192,9 @@ def _run_vuln_scan_for_endpoint(
                 rule_result=rule_result, baseline=baseline, response=response,
                 vuln_type=vuln_type
             )
-            time.sleep(6)
+            # Rate-limit guard between Cohere calls. Was a flat 6s; now configurable and
+            # lower by default. Raise LLM_RATE_LIMIT_DELAY if you hit Cohere 429s.
+            time.sleep(float(os.getenv("LLM_RATE_LIMIT_DELAY", "2")))
         else:
             llm_result = {
                 "verdict": "no",
@@ -287,12 +289,28 @@ def _run_vuln_scan_for_endpoint(
             raw_request = '\n'.join(raw_request_lines)
 
             status_code = response.get('status_code', 0)
-            raw_response_lines = [f"HTTP/1.1 {status_code}"]
-            for header, value in response.get('headers', {}).items():
-                raw_response_lines.append(f"{header}: {value}")
-            raw_response_lines.append("")
-            raw_response_lines.append(response.get('body', '')[:5000])
-            raw_response = '\n'.join(raw_response_lines)
+            if status_code == 0:
+                # No HTTP response came back (connection error, or the payload made the
+                # server hang past our timeout). Show that explicitly instead of a blank
+                # "HTTP/1.1 0" panel — for time-based blind SQLi the delay IS the signal.
+                err = response.get('error', 'no response received')
+                rt = response.get('response_time', 0.0)
+                raw_response = (
+                    "HTTP/1.1 000 No Response\n"
+                    f"X-Scanner-Note: request did not complete after {rt:.2f}s\n"
+                    f"X-Scanner-Error: {err}\n"
+                    "\n"
+                    "[No response body — the server returned no HTTP response. For a "
+                    "time-based blind SQL injection, this delay/timeout is itself the "
+                    "evidence that the injected SLEEP/WAITFOR executed.]"
+                )
+            else:
+                raw_response_lines = [f"HTTP/1.1 {status_code}"]
+                for header, value in response.get('headers', {}).items():
+                    raw_response_lines.append(f"{header}: {value}")
+                raw_response_lines.append("")
+                raw_response_lines.append(response.get('body', '')[:5000])
+                raw_response = '\n'.join(raw_response_lines)
 
             resolved_param = target_param
             if target_param == "ALL_PARAMS":

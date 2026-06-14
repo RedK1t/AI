@@ -10,7 +10,14 @@ class Mutator:
         self.current_dir = os.path.dirname(os.path.abspath(__file__))
         self.payload_file = os.path.join(self.current_dir, payload_filename)
         self.payloads = self._load_payloads()
-        self.encodings = ["raw", "url", "url_plus"]   # url_plus => quote_plus
+        # Only "raw": the HTTP client (requests) already URL-encodes form/query values
+        # on the wire, so "url"/"url_plus" here would double-encode the payload — which
+        # rarely triggers the injection and just triples the request count. Dropping
+        # them makes the scan ~3x faster with no real loss in detection. Set the env var
+        # SCANNER_ENCODINGS="raw,url" to restore extra encodings (e.g. for WAF bypass).
+        self.encodings = [
+            e.strip() for e in os.getenv("SCANNER_ENCODINGS", "raw").split(",") if e.strip()
+        ]
         self.inject_modes = ["append", "prefix", "replace"]  # common modes
         self.max_per_param = max_per_param  # None => use all
 

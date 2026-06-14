@@ -69,10 +69,17 @@ class HttpClient:
             elapsed = time.time() - start
             return build_response_object(resp, elapsed)
         except (requests.exceptions.RequestException,Exception) as e:
+            # The request never produced an HTTP response (connection reset, or the
+            # payload made the server hang past our timeout). Keep body empty so rule
+            # scoring is unaffected, but preserve the elapsed time and the error so the
+            # UI can show *why* there's no response — for time-based blind SQLi the
+            # delay/timeout itself is the evidence.
+            elapsed = time.time() - start
             return {
                 "status_code": 0,  # بدل None عشان الحسابات
                 "headers": {},
                 "body": "",
                 "length": 0,
-                "response_time": 0.0
+                "response_time": elapsed,
+                "error": str(e)
             }
