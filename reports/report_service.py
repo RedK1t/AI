@@ -21,6 +21,12 @@ REPORTS_DIR = os.path.join(SCRIPT_DIR, "reports")
 # Artifact paths of the most recently generated report, read by the download endpoint
 LAST_REPORT = {"md": None, "docx": None, "pdf": None, "html": None}
 
+# Per-report artifact paths keyed by a unique report id, so concurrent users
+# download exactly the report THEY generated rather than whatever was generated
+# last globally. Bounded to avoid unbounded growth.
+REPORTS: dict[str, dict] = {}
+_MAX_REPORTS = 64
+
 # Styled HTML wrapper for the rendered Markdown (palette mirrors the RedKit report theme)
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -62,7 +68,9 @@ def _markdown_to_html(md_text: str) -> str:
     return HTML_TEMPLATE.format(content=body)
 
 
-def build_report(scan_results_path: str, target_url: str = "Unknown") -> dict:
+def build_report(
+    scan_results_path: str, target_url: str = "Unknown", report_id: str | None = None
+) -> dict:
     """
     Build a report from the given scan results file.
 
@@ -72,7 +80,8 @@ def build_report(scan_results_path: str, target_url: str = "Unknown") -> dict:
           "html_content": str,
           "downloads": {"md": bool, "docx": bool, "pdf": bool}
         }
-    The actual files are tracked in LAST_REPORT for the download endpoint.
+    The actual files are tracked in LAST_REPORT (and, when `report_id` is given,
+    under REPORTS[report_id]) for the download endpoint.
     """
     os.makedirs(REPORTS_DIR, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -108,7 +117,13 @@ def build_report(scan_results_path: str, target_url: str = "Unknown") -> dict:
         print(f"[report] PDF generation skipped/failed: {e}")
         pdf_path = None
 
-    LAST_REPORT.update({"md": md_path, "docx": docx_path, "pdf": pdf_path, "html": html_path})
+    artifacts = {"md": md_path, "docx": docx_path, "pdf": pdf_path, "html": html_path}
+    LAST_REPORT.update(artifacts)
+    if report_id:
+        REPORTS[report_id] = artifacts
+        # Bound memory: drop the oldest entries beyond the cap.
+        while len(REPORTS) > _MAX_REPORTS:
+            REPORTS.pop(next(iter(REPORTS)))
 
     return {
         "markdown_content": md_text,
